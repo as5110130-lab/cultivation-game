@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta name="game-version" content="v8.10.0"/>
+<meta name="game-version" content="v8.10.1"/>
 <meta name="build-profile" content="semi-modular-single-html-utf8"/>
-<title>仙途問道 - v8.10.0 掛機設定手機修正版</title>
+<title>仙途問道 - v8.10.1 掛機設定縮放修正版</title>
 <style>
 /* =========================================================
    《仙途問道》v8.1.0 玄天曆世界時間系統版
@@ -677,6 +677,116 @@ html,body{
   }
 }
 
+
+/* ===== v8.10.1 掛機設定視窗比例縮小修正 ===== */
+.idleModalBox{
+  transform:scale(.92);
+  transform-origin:center bottom;
+  width:min(520px,90vw)!important;
+  max-height:calc((100dvh - 42px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) / .92)!important;
+}
+.idleHead{
+  padding:10px 12px 6px!important;
+}
+.idleHead h3{
+  font-size:16px!important;
+  margin:0 0 3px!important;
+}
+.idleHead p{
+  font-size:11px!important;
+  line-height:1.35!important;
+  margin:0!important;
+}
+.idleSection{
+  padding:8px!important;
+  margin:7px 0!important;
+}
+.idleSection h4{
+  font-size:13px!important;
+  margin:0 0 6px!important;
+}
+.idleRows{
+  gap:5px!important;
+}
+.idleRow{
+  gap:5px!important;
+  font-size:11px!important;
+}
+.idleRow input[type=number]{
+  width:56px!important;
+  padding:4px 5px!important;
+  font-size:11px!important;
+}
+.idleRow select{
+  min-width:96px!important;
+  padding:4px 5px!important;
+  font-size:11px!important;
+}
+.idleCheck{
+  padding:5px!important;
+  font-size:10.5px!important;
+}
+.idleChecks{
+  gap:5px!important;
+  grid-template-columns:repeat(auto-fit,minmax(70px,1fr))!important;
+}
+.idleScroll{
+  padding:0 10px 8px!important;
+}
+.idleFoot{
+  padding:8px 10px calc(10px + env(safe-area-inset-bottom))!important;
+  gap:6px!important;
+}
+.idleFoot .btn{
+  min-height:40px!important;
+  font-size:13px!important;
+  border-radius:8px!important;
+}
+@media(max-width:520px){
+  .idleModalBox{
+    transform:scale(.88);
+    width:96vw!important;
+    max-height:calc((88dvh - env(safe-area-inset-bottom)) / .88)!important;
+    margin-bottom:calc(10px + env(safe-area-inset-bottom))!important;
+  }
+  .idleHead{
+    padding:9px 10px 5px!important;
+  }
+  .idleScroll{
+    padding:0 9px 7px!important;
+  }
+  .idleFoot{
+    grid-template-columns:1fr 1fr!important;
+    padding:7px 9px calc(9px + env(safe-area-inset-bottom))!important;
+  }
+  .idleFoot .btn{
+    min-height:38px!important;
+    font-size:12.5px!important;
+  }
+}
+@media(max-height:700px){
+  .idleModalBox{
+    transform:scale(.84);
+    max-height:calc((86dvh - env(safe-area-inset-bottom)) / .84)!important;
+  }
+  .idleSection{
+    padding:6px!important;
+    margin:5px 0!important;
+  }
+  .idleHead p{
+    display:none!important;
+  }
+  .idleFoot .btn{
+    min-height:36px!important;
+  }
+}
+@media(max-height:620px){
+  .idleModalBox{
+    transform:scale(.78);
+    max-height:calc((84dvh - env(safe-area-inset-bottom)) / .78)!important;
+  }
+}
+
 </style>
 </head>
 <body><div id="root"><div style="padding:24px;color:#d9c27d">載入中...</div></div>
@@ -1001,9 +1111,9 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 "use strict";
 
 /* ===== v8.0.1 工程核心設定 / Build Manifest ===== */
-var GAME_BUILD_VERSION="v8.10.0";
-var GAME_BUILD_NAME="掛機設定手機修正版";
-var SAVE_VERSION="v8.10.0";
+var GAME_BUILD_VERSION="v8.10.1";
+var GAME_BUILD_NAME="掛機設定縮放修正版";
+var SAVE_VERSION="v8.10.1";
 var MIN_COMPATIBLE_SAVE="v8.9.8";
 var GAME_MODULE_PROFILE={
   core:["React Runtime","角色存檔","舊檔修復","數值公式"],
