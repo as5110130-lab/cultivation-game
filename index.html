@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta name="game-version" content="v8.9.9"/>
+<meta name="game-version" content="v8.10.0"/>
 <meta name="build-profile" content="semi-modular-single-html-utf8"/>
-<title>仙途問道 - v8.9.9 穩定主線整理版</title>
+<title>仙途問道 - v8.10.0 掛機設定手機修正版</title>
 <style>
 /* =========================================================
    《仙途問道》v8.1.0 玄天曆世界時間系統版
@@ -598,6 +598,85 @@ html,body{
   box-sizing:border-box;
 }
 
+
+/* ===== v8.10.0 掛機設定手機安全區修正 ===== */
+.modal{
+  padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom)) 10px;
+}
+.idleModalBox{
+  width:min(560px,94vw)!important;
+  max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  padding:0!important;
+}
+.idleHead{
+  flex:0 0 auto!important;
+  padding:14px 14px 8px!important;
+  margin:0!important;
+  border-bottom:1px solid rgba(245,215,75,.14);
+  background:rgba(5,7,13,.98);
+}
+.idleScroll{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  overflow:auto!important;
+  padding:0 14px 12px!important;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+}
+.idleFoot{
+  position:sticky!important;
+  bottom:0!important;
+  z-index:9!important;
+  flex:0 0 auto!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:8px!important;
+  margin:0!important;
+  padding:10px 14px calc(12px + env(safe-area-inset-bottom))!important;
+  background:linear-gradient(180deg,rgba(8,11,22,.94),rgba(5,7,13,1));
+  border-top:1px solid rgba(245,215,75,.24);
+  box-shadow:0 -12px 24px rgba(0,0,0,.35);
+}
+.idleFoot .btn{
+  min-height:48px!important;
+  border-radius:10px!important;
+  font-size:14px!important;
+}
+@supports not (height:100dvh){
+  .idleModalBox{
+    max-height:calc(100vh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
+  }
+}
+@media(max-width:520px){
+  .modal{
+    place-items:end center!important;
+    padding-left:8px!important;
+    padding-right:8px!important;
+  }
+  .idleModalBox{
+    width:100%!important;
+    max-height:calc(92dvh - env(safe-area-inset-bottom))!important;
+    border-radius:14px 14px 0 0!important;
+  }
+  .idleHead{
+    padding:12px 12px 8px!important;
+  }
+  .idleScroll{
+    padding:0 12px 10px!important;
+  }
+  .idleFoot{
+    grid-template-columns:1fr!important;
+    padding:9px 12px calc(14px + env(safe-area-inset-bottom))!important;
+  }
+  .idleFoot .btn{
+    min-height:52px!important;
+    font-size:15px!important;
+  }
+}
+
 </style>
 </head>
 <body><div id="root"><div style="padding:24px;color:#d9c27d">載入中...</div></div>
@@ -922,9 +1001,9 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 "use strict";
 
 /* ===== v8.0.1 工程核心設定 / Build Manifest ===== */
-var GAME_BUILD_VERSION="v8.9.9";
-var GAME_BUILD_NAME="穩定主線整理版";
-var SAVE_VERSION="v8.9.9";
+var GAME_BUILD_VERSION="v8.10.0";
+var GAME_BUILD_NAME="掛機設定手機修正版";
+var SAVE_VERSION="v8.10.0";
 var MIN_COMPATIBLE_SAVE="v8.9.8";
 var GAME_MODULE_PROFILE={
   core:["React Runtime","角色存檔","舊檔修復","數值公式"],
@@ -1638,7 +1717,7 @@ function stat(label,val){return React.createElement("div",{className:"statusStat
 return React.createElement("div",{className:"page statusPage"},React.createElement("div",{className:"statusHeroV7"},React.createElement("div",{className:"statusPortraitV7"},React.createElement("img",{src:_charS.gender==="女修"?FEMALE_PORTRAIT:MALE_PORTRAIT,alt:_charS.gender+"頭像"})),React.createElement("div",null,React.createElement("div",{className:"statusNameRow"},React.createElement("h2",null,_charS.name),React.createElement("span",{className:"realmBadgeV7"},realm)),React.createElement("div",{className:"powerV7"},React.createElement("small",null,"戰力"),React.createElement("b",null,fmt(power))),React.createElement("div",{className:"statusMetaV7"},React.createElement("span",null,"性別：",_charS.gender),React.createElement("span",null,"靈根：",rootName),React.createElement("span",null,"宗門：",guild?guild.name:"未加入"),React.createElement("span",null,"主修：",art?art.name:"未修習"),React.createElement("span",null,"破境率：",Math.round(breakChance(_charS.level)*100),"%")))),React.createElement("div",{className:"statusProgressGrid"},meter("修為",fmt(_charS.exp)+" / "+fmt(need),expPct,"exp"),meter("氣血",(_charS.hp||0)+" / "+st.hp,hpPct,"hp"),meter("靈力",(_charS.mp||0)+" / "+st.mp,mpPct,"mp")),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"基礎戰鬥屬性"),React.createElement("span",null,"裝備、功法、境界會即時影響")),React.createElement("div",{className:"statusStatGridV7"},stat("⚔ 攻擊",st.atk),stat("🛡 防禦",st.def),stat("❤️ 最大氣血",st.hp),stat("🔷 最大靈力",st.mp))),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"修仙資源"),React.createElement("span",null,"目前角色養成狀態")),React.createElement("div",{className:"statusStatGridV7"},stat("💎 靈石",fmt(_charS.stones)),stat("🎒 背包容量",bagCount+" / "+bagMax(_charS)),stat("📖 已修功法",art?art.name:"未修習"),stat("⏳ 遊戲時間",gameDate(_charS.started)))),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"最近成長紀錄"),React.createElement("span",null,"已隱藏自動服藥洗版訊息")),React.createElement("div",{className:"statusTimelineV7"},cleanLog.map(function(l){return React.createElement("div",{key:l.id,className:l.t},l.m);}),!cleanLog.length&&React.createElement("p",{className:"muted"},"尚無紀錄。"))));}
 function AutoPotion(_refA){var c=_refA["char"],setChar=_refA.setChar,cfg=normalizeAutoPotion(c.autoPotion),hpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.hp;}),mpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.mp;});function upd(kind,key,val){setChar(function(ch){var ap=normalizeAutoPotion(ch.autoPotion);ap[kind]=_objectSpread(_objectSpread({},ap[kind]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},ch),{},{autoPotion:ap});});}function row(kind,label,items){var st=cfg[kind];return React.createElement("div",{className:"card autoBox"},React.createElement("div",{className:"row"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return upd(kind,"enabled",e.target.checked);}})," ",label,"自動吃藥"),React.createElement("span",{className:"muted"},"低於"),React.createElement("input",{type:"number",min:"1",max:"99",placeholder:"30",value:st.pct,onChange:function onChange(e){var v=e.target.value;return upd(kind,"pct",v===""?"":Math.max(1,Math.min(99,parseInt(v,10)||1)));},onBlur:function onBlur(e){if(e.target.value==="")upd(kind,"pct",30);}}),React.createElement("span",null,"%"),React.createElement("select",{value:st.itemName,onChange:function onChange(e){return upd(kind,"itemName",e.target.value);}},React.createElement("option",{value:""},"自動選擇"),items.map(function(i){return React.createElement("option",{key:i.uid,value:i.name},i.name," x",i.qty||1);}))));}return React.createElement("div",null,React.createElement("h3",null,"自動服用丹藥"),React.createElement("p",{className:"muted"},"可分別設定氣血與靈力低於指定百分比時，自動使用指定丹藥；未指定時會自動選擇可用丹藥。"),row("hp","氣血",hpItems),row("mp","靈力",mpItems));}
 /* ===== Module 13：UI 彈窗 - 掛機設定 / Idle Settings Modal ===== */
-function IdleSettingsModal(_refIdle){var c=_refIdle["char"],setChar=_refIdle.setChar,onClose=_refIdle.onClose,cfg=normalizeAutoPotion(c.autoPotion),sellCfg=normalizeAutoSell(c.autoSell),hpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.hp;}),mpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.mp;});var _useStateLocal=useState({autoPotion:cfg,autoSell:sellCfg}),_useStateLocal2=_slicedToArray(_useStateLocal,2),local=_useStateLocal2[0],setLocal=_useStateLocal2[1];function setPotion(kind,key,val){setLocal(function(x){var ap=normalizeAutoPotion(x.autoPotion);ap[kind]=_objectSpread(_objectSpread({},ap[kind]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoPotion:ap});});}function setSellGroup(g,key,val){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g]=_objectSpread(_objectSpread({},as[g]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function toggleRank(g,r){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g].ranks[r]=!as[g].ranks[r];return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function save(){setChar(function(ch){return _objectSpread(_objectSpread({},ch),{},{autoPotion:normalizeAutoPotion(local.autoPotion),autoSell:normalizeAutoSell(local.autoSell)});});onClose();}function potionRow(kind,label,items){var st=local.autoPotion[kind];return React.createElement("div",{className:"idleRow"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setPotion(kind,"enabled",e.target.checked);}})," ",label),React.createElement("span",{className:"muted"},"低於"),React.createElement("input",{type:"number",min:"1",max:"99",value:st.pct,onChange:function onChange(e){var v=e.target.value;return setPotion(kind,"pct",v===""?"":Math.max(1,Math.min(99,parseInt(v,10)||1)));},onBlur:function onBlur(e){if(e.target.value==="")setPotion(kind,"pct",30);}}),React.createElement("span",null,"%"),React.createElement("select",{value:st.itemName,onChange:function onChange(e){return setPotion(kind,"itemName",e.target.value);}},React.createElement("option",{value:""},"自動選擇"),items.map(function(i){return React.createElement("option",{key:i.uid,value:i.name},i.name," x",i.qty||1);})));}function sellSection(g,title,desc){var st=local.autoSell[g];return React.createElement("div",{className:"idleSection"},React.createElement("div",{className:"idleRow"},React.createElement("h4",{className:"grow"},title),React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setSellGroup(g,"enabled",e.target.checked);}})," 啟用")),React.createElement("p",{className:"muted"},desc),React.createElement("div",{className:"idleChecks"},autoSellRanks.map(function(r){return React.createElement("label",{key:g+r,className:"idleCheck",style:{color:rankColor[r]}},React.createElement("input",{type:"checkbox",checked:!!st.ranks[r],onChange:function onChange(){return toggleRank(g,r);}}),r);})));}return React.createElement("div",{className:"modal"},React.createElement("div",{className:"idleModalBox"},React.createElement("div",{className:"idleHead"},React.createElement("div",null,React.createElement("h3",null,"掛機設定"),React.createElement("p",{className:"muted"},"自動喝水與自動販售統一在這裡設定，確認後會保存到角色存檔。")),React.createElement("button",{className:"btn",onClick:onClose},"關閉")),React.createElement("div",{className:"idleSection"},React.createElement("h4",null,"自動補給"),React.createElement("div",{className:"idleRows"},potionRow("hp","自動喝血藥",hpItems),potionRow("mp","自動喝靈力藥",mpItems))),sellSection("equip","自動販售裝備","依品階自動賣出戰鬥掉落裝備；已穿戴裝備不會被系統處理。"),sellSection("item","自動販售物品","依品階自動賣出丹藥、材料與一般物品掉落。"),sellSection("art","自動販售功法","功法預設不自動賣，避免誤賣高階玉簡；玩家可自行勾選品階。"),React.createElement("div",{className:"idleFoot"},React.createElement("button",{className:"btn",onClick:onClose},"取消"),React.createElement("button",{className:"btn sel",onClick:save},"確認保存"))));}
+function IdleSettingsModal(_refIdle){var c=_refIdle["char"],setChar=_refIdle.setChar,onClose=_refIdle.onClose,cfg=normalizeAutoPotion(c.autoPotion),sellCfg=normalizeAutoSell(c.autoSell),hpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.hp;}),mpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.mp;});var _useStateLocal=useState({autoPotion:cfg,autoSell:sellCfg}),_useStateLocal2=_slicedToArray(_useStateLocal,2),local=_useStateLocal2[0],setLocal=_useStateLocal2[1];function setPotion(kind,key,val){setLocal(function(x){var ap=normalizeAutoPotion(x.autoPotion);ap[kind]=_objectSpread(_objectSpread({},ap[kind]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoPotion:ap});});}function setSellGroup(g,key,val){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g]=_objectSpread(_objectSpread({},as[g]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function toggleRank(g,r){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g].ranks[r]=!as[g].ranks[r];return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function save(){setChar(function(ch){return _objectSpread(_objectSpread({},ch),{},{autoPotion:normalizeAutoPotion(local.autoPotion),autoSell:normalizeAutoSell(local.autoSell)});});onClose();}function potionRow(kind,label,items){var st=local.autoPotion[kind];return React.createElement("div",{className:"idleRow"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setPotion(kind,"enabled",e.target.checked);}})," ",label),React.createElement("span",{className:"muted"},"低於"),React.createElement("input",{type:"number",min:"1",max:"99",value:st.pct,onChange:function onChange(e){var v=e.target.value;return setPotion(kind,"pct",v===""?"":Math.max(1,Math.min(99,parseInt(v,10)||1)));},onBlur:function onBlur(e){if(e.target.value==="")setPotion(kind,"pct",30);}}),React.createElement("span",null,"%"),React.createElement("select",{value:st.itemName,onChange:function onChange(e){return setPotion(kind,"itemName",e.target.value);}},React.createElement("option",{value:""},"自動選擇"),items.map(function(i){return React.createElement("option",{key:i.uid,value:i.name},i.name," x",i.qty||1);})));}function sellSection(g,title,desc){var st=local.autoSell[g];return React.createElement("div",{className:"idleSection"},React.createElement("div",{className:"idleRow"},React.createElement("h4",{className:"grow"},title),React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setSellGroup(g,"enabled",e.target.checked);}})," 啟用")),React.createElement("p",{className:"muted"},desc),React.createElement("div",{className:"idleChecks"},autoSellRanks.map(function(r){return React.createElement("label",{key:g+r,className:"idleCheck",style:{color:rankColor[r]}},React.createElement("input",{type:"checkbox",checked:!!st.ranks[r],onChange:function onChange(){return toggleRank(g,r);}}),r);})));}return React.createElement("div",{className:"modal"},React.createElement("div",{className:"idleModalBox"},React.createElement("div",{className:"idleHead"},React.createElement("div",null,React.createElement("h3",null,"掛機設定"),React.createElement("p",{className:"muted"},"自動喝水與自動販售統一在這裡設定，確認後會保存到角色存檔。")),React.createElement("button",{className:"btn",onClick:onClose},"關閉")),React.createElement("div",{className:"idleScroll"},React.createElement("div",{className:"idleSection"},React.createElement("h4",null,"自動補給"),React.createElement("div",{className:"idleRows"},potionRow("hp","自動喝血藥",hpItems),potionRow("mp","自動喝靈力藥",mpItems))),sellSection("equip","自動販售裝備","依品階自動賣出戰鬥掉落裝備；已穿戴裝備不會被系統處理。"),sellSection("item","自動販售物品","依品階自動賣出丹藥、材料與一般物品掉落。"),sellSection("art","自動販售功法","功法預設不自動賣，避免誤賣高階玉簡；玩家可自行勾選品階。")),React.createElement("div",{className:"idleFoot"},React.createElement("button",{className:"btn",onClick:onClose},"取消"),React.createElement("button",{className:"btn sel",onClick:save},"確認保存"))));}
 function Hunt(_ref3){
 var _char2=_ref3["char"],setChar=_ref3.setChar,battle=_ref3.battle,setBattle=_ref3.setBattle,start=_ref3.start,useSkill=_ref3.useSkill,bref=_ref3.bref;
 var _useState23=useState(0),_useState24=_slicedToArray(_useState23,2),pick=_useState24[0],setPick=_useState24[1],_useState25=useState(0),_useState26=_slicedToArray(_useState25,2),mapPick=_useState26[0],setMapPick=_useState26[1],_useState27w=useState("map"),_useState28w=_slicedToArray(_useState27w,2),worldMode=_useState28w[0],setWorldMode=_useState28w[1],_useStateIdle=useState(false),_useStateIdle2=_slicedToArray(_useStateIdle,2),idleOpen=_useStateIdle2[0],setIdleOpen=_useStateIdle2[1];
