@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta name="game-version" content="v8.9.8"/>
+<meta name="game-version" content="v8.9.9"/>
 <meta name="build-profile" content="semi-modular-single-html-utf8"/>
-<title>仙途問道 - v8.9.8 洞府真實收益版</title>
+<title>仙途問道 - v8.9.9 穩定主線整理版</title>
 <style>
 /* =========================================================
    《仙途問道》v8.1.0 玄天曆世界時間系統版
@@ -588,6 +588,16 @@
 .sectJoinCard .card{background:rgba(0,0,0,.18);border-color:rgba(245,215,75,.14)}
 .sectJoinCard .card b{color:#f5d77f}.sectJoinCard .gold{line-height:1.45}
 
+
+/* ===== v8.9.9 手機 UI 穩定修正 ===== */
+html,body{
+  overflow-x:hidden;
+}
+.page,.panel,.card,.modal{
+  max-width:100%;
+  box-sizing:border-box;
+}
+
 </style>
 </head>
 <body><div id="root"><div style="padding:24px;color:#d9c27d">載入中...</div></div>
@@ -912,8 +922,10 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 "use strict";
 
 /* ===== v8.0.1 工程核心設定 / Build Manifest ===== */
-var GAME_BUILD_VERSION="v8.9.8";
-var GAME_BUILD_NAME="洞府真實收益系統版";
+var GAME_BUILD_VERSION="v8.9.9";
+var GAME_BUILD_NAME="穩定主線整理版";
+var SAVE_VERSION="v8.9.9";
+var MIN_COMPATIBLE_SAVE="v8.9.8";
 var GAME_MODULE_PROFILE={
   core:["React Runtime","角色存檔","舊檔修復","數值公式"],
   gameplay:["境界","世界探索","自動戰鬥","自動喝藥","黑市","副本","Boss","宗門"],
@@ -963,6 +975,28 @@ window.addEventListener("unhandledrejection",function(e){
     if(e && typeof e.preventDefault === "function") e.preventDefault();
   }catch(_){}
 });
+
+
+/* ===== v8.9.9 存檔安全層 ===== */
+function safeReadSave(key){
+  try{
+    var raw = localStorage.getItem(key);
+    if(!raw) return null;
+    return JSON.parse(raw);
+  }catch(err){
+    console.warn("存檔讀取失敗", err);
+    return null;
+  }
+}
+function safeWriteSave(key,data){
+  try{
+    localStorage.setItem(key, JSON.stringify(data));
+    return true;
+  }catch(err){
+    console.warn("存檔寫入失敗", err);
+    return false;
+  }
+}
 
 var _React=React,useEffect=_React.useEffect,useMemo=_React.useMemo,useRef=_React.useRef,useState=_React.useState;
 var ranks=["凡品","良品","上品","極品","仙品","上古","太古","仙遺"];
@@ -1514,8 +1548,26 @@ var sbuf=sectPositionBuff(c),rbuf=spiritRootOf(c).bonus||{};var gain=Math.floor(
 var nc=_objectSpread(_objectSpread({},c),{},{exp:c.exp+gain});addLog("\u4FEE\u7149\u7372\u5F97\u4FEE\u70BA +".concat(gain),"good");if(nc.exp>=stageNeed(nc.level)){
 var chance=breakChance(nc.level);if(Math.random()<chance){nc.level++;nc.exp=0;addLog("\u7A81\u7834\u6210\u529F\uFF0C\u6649\u5347\u81F3 ".concat(realms[nc.level]||"更高境界","\u3002"),"gold");
 var _s=stats(nc);nc.hp=_s.hp;nc.mp=_s.mp;}else{nc.exp=Math.floor(stageNeed(nc.level)*.65);addLog("\u7A81\u7834\u5931\u6557\uFF0C\u5883\u754C\u672A\u7A69\uFF0C\u4FEE\u70BA\u56DE\u843D\u81F3 ".concat((nc.exp/stageNeed(nc.level)*100).toFixed(0),"%\u3002"),"bad");}}return nc;});}
+
+/* ===== v8.9.9 戰鬥安全檢查 ===== */
+function safeBattleMonster(mon){
+  mon = mon && typeof mon === "object" ? mon : {};
+  return {
+    name: mon.name || "未知妖獸",
+    hp: Math.max(1, Math.floor(Number(mon.hp)||30)),
+    atk: Math.max(1, Math.floor(Number(mon.atk)||6)),
+    def: Math.max(0, Math.floor(Number(mon.def)||0)),
+    exp: Math.max(0, Math.floor(Number(mon.exp)||8)),
+    stone: Array.isArray(mon.stone)?mon.stone:[1,3],
+    emoji: mon.emoji || "👹",
+    type: mon.type || "妖獸",
+    req: Math.max(0, Math.floor(Number(mon.req)||0))
+  };
+}
+
 function start(mon){
 var auto=arguments.length>1&&arguments[1]!==undefined?arguments[1]:false;
+mon=safeBattleMonster(mon);
 var skillId=arguments.length>2&&arguments[2]!==undefined?arguments[2]:null;
 var s=stats(_char);if((_char.hp||0)<=0){setNotice("氣血不足，請先服用丹藥恢復。");return;}
 mon=mon&&typeof mon==="object"?mon:{name:"未知妖獸",type:"妖獸",emoji:"👹",req:0,hp:30,atk:6,def:0,exp:8,stone:[1,3]};
@@ -1754,7 +1806,15 @@ var merchants=[
 ],_useState29=useState("藥品商人"),_useState30=_slicedToArray(_useState29,2),mode=_useState30[0],setMode=_useState30[1],town=towns[Math.min(towns.length-1,Math.floor(_char6.level/3))],sceneLevel=Math.min(9,Math.max(1,_char6.level+1)),currentNpc=merchants.find(function(m){return m.name===mode;})||merchants[0],goods=shop.filter(function(i){var merchant=merchantNameOf(i);if(merchant!==mode)return false;if((i.cat==="功法"||i.cat==="裝備")&&(i.req||0)>=10)return false;return(i.req||0)<=_char6.level;});
 return React.createElement("div",{className:"townHub"},React.createElement("div",{className:"townScene"},React.createElement("div",{className:"townHeroLine"},React.createElement("div",{className:"townTitle"},React.createElement("div",{className:"townGate"},"🏯"),React.createElement("div",null,React.createElement("h2",null,town),React.createElement("p",{className:"muted"},"仙市開張，丹香、劍光與玉簡氣息交錯。"))),React.createElement("div",{className:"townWallet"},React.createElement("span",{className:"chip"},"靈石",React.createElement("br",null),React.createElement("b",{className:"gold"},fmt(_char6.stones))),React.createElement("span",{className:"chip"},"目前境界",React.createElement("br",null),React.createElement("b",null,realms[_char6.level]||"大道境")))),React.createElement("div",{className:"townInfoStrip"},React.createElement("div",{className:"townInfo"},React.createElement("small",null,"城鎮等階"),React.createElement("b",null,sceneLevel," 階坊市")),React.createElement("div",{className:"townInfo"},React.createElement("small",null,"推薦活動"),React.createElement("b",null,mode==="拍賣"?"黑市競標":"補給採買")),React.createElement("div",{className:"townInfo"},React.createElement("small",null,"今日氣運"),React.createElement("b",null,"靈氣充盈")))),React.createElement("div",{className:"townBody"},React.createElement("div",{className:"townEvent"},React.createElement("b",null,"今日城鎮傳聞"),React.createElement("span",{className:"muted"},"黑市有高階功法與裝備現世；上古靈器改由指定 Boss 掉落碎片合成。")),React.createElement("div",{className:"townNpcGrid"},merchants.map(function(m){return React.createElement("button",{key:m.name,className:"townNpc "+(mode===m.name?"sel":""),onClick:function onClick(){return setMode(m.name);}},React.createElement("span",{className:"townNpcTag"},m.tag),React.createElement("div",{className:"townNpcIcon"},m.icon),React.createElement("b",null,m.place),React.createElement("small",null,m.npc,"｜",m.desc));})),React.createElement("div",{className:"townPanel"},React.createElement("div",{className:"townPanelHead"},React.createElement("div",null,React.createElement("h3",null,currentNpc.icon," ",currentNpc.place),React.createElement("div",{className:"muted"},currentNpc.npc," 正在招呼來往修士。")),mode==="拍賣"&&React.createElement("button",{className:"btn",disabled:(_char6.stones||0)<2000,onClick:function onClick(){return refreshAuction();}},(_char6.stones||0)<2000?"靈石不足":"刷新黑市 · 2000")),mode!=="拍賣"?React.createElement("div",{className:"townGoodsGrid"},goods.length?goods.map(function(i){var si=merchantStockInfo(i,stock,now),cool=merchantTracked(i)&&si.left<=0&&si.readyAt>now;return React.createElement("div",{className:"townGoodCard",key:i.id},React.createElement("div",{className:"townGoodTop"},React.createElement("div",{className:"townGoodIcon"},itemIcon(i)),React.createElement("div",null,React.createElement("b",{style:{color:rankColor[i.rank]}},i.name),React.createElement("div",{className:"townGoodMeta"},i.cat," · ",i.rank," · ",realms[i.req||0]||"通用"))),merchantTracked(i)?React.createElement("div",{className:cool?"bad":"good",style:{marginTop:7}},"庫存 ",si.left,"/",si.base,cool?" · 補貨 "+cooldownText(si.readyAt-now):""):React.createElement("div",{className:"muted",style:{marginTop:7}},"常備商品"),React.createElement("p",null,i.desc),React.createElement("div",{className:"townGoodFoot"},React.createElement("span",{className:"gold"},fmt(i.price)," 靈石"),React.createElement("button",{className:"btn",disabled:cool||si.left<=0||_char6.stones<i.price,onClick:function onClick(){return buy(i);}},_char6.stones<i.price?"靈石不足":"購買")));}):React.createElement("div",{className:"townEmpty"},"此商人目前沒有適合你境界的商品。")):React.createElement("div",{className:"townGoodsGrid"},auc.map(function(i){return React.createElement("div",{className:"townGoodCard",key:i.uid},React.createElement("div",{className:"townGoodTop"},React.createElement("div",{className:"townGoodIcon"},itemIcon(i)),React.createElement("div",null,React.createElement("b",{style:{color:rankColor[i.rank]}},i.name),React.createElement("div",{className:"townGoodMeta"},i.rank," · 起標珍品"))),React.createElement("p",null,i.desc||i.slot),React.createElement("div",{className:"townGoodFoot"},React.createElement("span",{className:"gold"},fmt(i.auctionPrice)," 靈石"),React.createElement("button",{className:"btn",disabled:_char6.stones<i.auctionPrice,onClick:function onClick(){return bid(i);}},_char6.stones<i.auctionPrice?"靈石不足":"拍下")));})))));}
 try{
-  ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App,null));
+  try{
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App,null));
+}catch(bootErr){
+console.error("啟動失敗",bootErr);
+var r=document.getElementById("root");
+if(r){
+r.innerHTML='<div style="padding:16px;color:#f5d74b;background:#07090f;min-height:100vh">仙途問道 v8.9.9 啟動失敗<br>'+String(bootErr&&bootErr.message?bootErr.message:bootErr)+'</div>';
+}
+}
 }catch(bootErr){
   console.error("《仙途問道》真正啟動失敗", bootErr);
   var bootRoot=document.getElementById('root');
