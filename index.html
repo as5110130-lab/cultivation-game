@@ -4,9 +4,9 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta name="game-version" content="v8.19.2-bag_slot_visual_restore"/>
+<meta name="game-version" content="v8.27.1-equip_build_guide_scope_fix"/>
 <meta name="build-profile" content="semi-modular-single-html-utf8"/>
-<title>仙途問道 - v8.19.2 背包格子視覺修正版</title>
+<title>仙途問道 - v8.27.1 裝備 Build 指引修正版</title>
 <style>
 /* =========================================================
    《仙途問道》v8.1.0 玄天曆世界時間系統版
@@ -2587,6 +2587,397 @@ font-size:9px!important;
 }
 }
 
+
+/* ===== v8.19.3 功法重數實際屬性修復 ===== */
+.artStats span:first-child{
+font-weight:700!important;
+}
+
+
+/* ===== v8.20.0 大道裝備詞綴顯示 ===== */
+.equipMetaTags .dropTag.dao{
+border-color:rgba(245,215,75,.42)!important;
+background:linear-gradient(90deg,rgba(245,215,75,.13),rgba(122,159,245,.08))!important;
+color:#ffe29a!important;
+box-shadow:0 0 12px rgba(245,215,75,.08);
+}
+.daoAffixBox{
+margin:10px 14px!important;
+padding:10px!important;
+border-radius:12px!important;
+border:1px solid rgba(245,215,75,.22)!important;
+background:linear-gradient(135deg,rgba(245,215,75,.08),rgba(122,159,245,.035))!important;
+line-height:1.55!important;
+}
+.daoAffixBox b{color:#f5d74b!important}
+.daoAffixBox small{display:block;margin-top:4px}
+
+
+/* ===== v8.20.1 重複功法掉落修復 ===== */
+/* 副本功法與 Boss 秘卷可重複掉落，用於功法重數/熟練度系統。 */
+
+
+/* ===== v8.21.0 大道共鳴 UI ===== */
+.daoResonancePanel{margin:10px 0 14px;padding:12px;border-radius:14px;background:linear-gradient(135deg,rgba(245,215,75,.08),rgba(122,159,245,.04));border:1px solid rgba(245,215,75,.18);}
+.daoResonanceList{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.daoResonanceChip{padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.24);border:1px solid rgba(245,215,75,.22);color:#f5d77f;font-size:12px;font-weight:700;}
+
+
+/* ===== v8.22.1 大道戰鬥特效安全版 ===== */
+.battleLogLine.cast{color:#9ecbff}
+.battleLogLine.crit{font-weight:700}
+
+
+/* ===== v8.23.0 存檔遷移核心 ===== */
+/* 新增 SAVE_VERSION / MIN_COMPATIBLE_SAVE / xt230MigrateSaveCore，強化舊存檔相容。 */
+
+
+/* ===== v8.24.0 Boss 技能第一版 ===== */
+.battleLogLine.hurt{font-weight:600}
+
+
+/* ===== v8.25.0 狀態系統第一版 ===== */
+.battleStatusBar{margin:8px 0;padding:8px 10px;border-radius:10px;border:1px solid rgba(122,159,245,.22);background:rgba(122,159,245,.06);color:#d9e6ff;font-size:12px;}
+
+
+/* ===== XT8255_BATTLE_UI_SKILL_SCROLL_FIX ===== */
+.battleActions{
+  position:relative !important;
+  z-index:2 !important;
+  gap:8px !important;
+  padding:8px !important;
+  border-radius:14px !important;
+  background:rgba(8,12,20,.72) !important;
+  border:1px solid rgba(122,159,245,.16) !important;
+}
+.battleSkillList{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  gap:8px !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  max-height:58px !important;
+  padding:2px 2px 8px !important;
+  -webkit-overflow-scrolling:touch !important;
+  scrollbar-width:thin !important;
+}
+.battleSkillList .battleSkill{
+  flex:0 0 auto !important;
+  min-width:108px !important;
+  max-width:132px !important;
+  padding:7px 9px !important;
+  line-height:1.15 !important;
+}
+.battleSkillList .battleSkill b{
+  display:block !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  font-size:12px !important;
+}
+.battleSkillList .battleSkill small{
+  display:block !important;
+  font-size:10px !important;
+  opacity:.78 !important;
+  white-space:nowrap !important;
+}
+.battleMainBtns{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:8px !important;
+}
+.battleDesc{
+  max-height:34px !important;
+  overflow:auto !important;
+  line-height:1.35 !important;
+}
+.battleLogPanel{
+  position:relative !important;
+  z-index:1 !important;
+  max-height:34vh !important;
+  overflow:auto !important;
+  padding-bottom:12px !important;
+}
+@media (max-width:480px){
+  .battleActions{padding:7px !important;margin-top:8px !important;}
+  .battleSkillList{max-height:54px !important;}
+  .battleSkillList .battleSkill{min-width:102px !important;max-width:122px !important;}
+  .battleLogPanel{max-height:32vh !important;}
+}
+
+
+/* ===== XT8256_DAO_AFFIX_COMPACT ===== */
+.daoAffixBox{
+  padding:6px 8px !important;
+  border-radius:10px !important;
+  margin-top:6px !important;
+  gap:4px !important;
+}
+.daoAffixTitle{
+  font-size:10px !important;
+  letter-spacing:.5px !important;
+  opacity:.78 !important;
+  margin-bottom:3px !important;
+}
+.daoAffixList{
+  gap:4px !important;
+}
+.daoAffixTag{
+  padding:3px 6px !important;
+  border-radius:999px !important;
+  font-size:10px !important;
+  line-height:1.15 !important;
+  min-height:auto !important;
+}
+.daoAffixDesc{
+  margin-top:4px !important;
+  font-size:10px !important;
+  line-height:1.3 !important;
+  opacity:.82 !important;
+}
+.itemTip .daoAffixBox,
+.equipTip .daoAffixBox{
+  transform:scale(.96);
+  transform-origin:top center;
+}
+
+
+/* ===== XT8257_STATUS_CLEAN_UI ===== */
+.statusPanel .versionTag,
+.statusPanel .buildVersion,
+.statusPanel .versionText{
+  display:none !important;
+}
+
+
+/* ===== XT8260_BATTLE_INFO_CLARITY ===== */
+.bossSkillHintBar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  align-items:center;
+  justify-content:center;
+  margin:6px 0 2px;
+  padding:5px 6px;
+  border-radius:10px;
+  background:rgba(255,138,102,.07);
+  border:1px solid rgba(255,138,102,.18);
+}
+.bossSkillHintBar .hintTitle{
+  font-size:10px;
+  color:#ffcf9c;
+  opacity:.85;
+  margin-right:2px;
+}
+.bossSkillHint{
+  font-size:10px;
+  padding:2px 6px;
+  border-radius:999px;
+  background:rgba(255,138,102,.12);
+  border:1px solid rgba(255,138,102,.2);
+  color:#ffd8bc;
+  white-space:nowrap;
+}
+.battleStatusBadgeRow{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:6px 0 8px;
+}
+.battleStatusBadge{
+  font-size:11px;
+  padding:3px 7px;
+  border-radius:999px;
+  border:1px solid rgba(122,159,245,.22);
+  background:rgba(122,159,245,.08);
+  color:#d9e6ff;
+}
+.battleStatusBadge.buff{
+  border-color:rgba(126,203,161,.24);
+  background:rgba(126,203,161,.08);
+  color:#bff0d2;
+}
+.battleStatusBadge.debuff{
+  border-color:rgba(224,122,122,.24);
+  background:rgba(224,122,122,.08);
+  color:#ffc8c8;
+}
+.battleStatusBar.compact{
+  font-size:11px;
+  padding:6px 8px;
+  margin:4px 0 6px;
+  opacity:.9;
+}
+.battleLogLine.cast::before{content:"✦ ";opacity:.8}
+.battleLogLine.hurt::before{content:"! ";opacity:.75}
+.battleLogLine.heal::before{content:"+ ";opacity:.75}
+
+
+/* ===== XT8262_STATUS_ICON_BAR ===== */
+.battleBuffIconRow{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:5px;
+  min-height:22px;
+  margin:6px 0 3px;
+}
+.battleBuffIcon{
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  padding:3px 7px;
+  border-radius:999px;
+  font-size:11px;
+  line-height:1.1;
+  white-space:nowrap;
+  box-shadow:0 0 10px rgba(0,0,0,.18);
+}
+.battleBuffIcon b{
+  display:inline-grid;
+  place-items:center;
+  min-width:15px;
+  height:15px;
+  padding:0 3px;
+  border-radius:999px;
+  background:rgba(0,0,0,.35);
+  font-size:10px;
+  margin-left:2px;
+}
+.battleBuffIcon.buff{
+  border:1px solid rgba(126,203,161,.32);
+  background:rgba(126,203,161,.12);
+  color:#c8f5d9;
+}
+.battleBuffIcon.debuff{
+  border:1px solid rgba(224,122,122,.34);
+  background:rgba(224,122,122,.12);
+  color:#ffd0d0;
+}
+.battleCard.playerCard .battleBuffIconRow:empty,
+.battleCard.enemyCard .battleBuffIconRow:empty{
+  display:none;
+}
+
+
+/* ===== XT8263_STATUS_READABILITY_POLISH ===== */
+.battleBuffIconRow{
+  min-height:26px !important;
+  align-items:center !important;
+  padding:2px 0 !important;
+}
+.battleBuffIcon.empty{
+  border:1px dashed rgba(255,255,255,.12) !important;
+  background:rgba(255,255,255,.035) !important;
+  color:rgba(210,220,235,.52) !important;
+  font-size:10px !important;
+  padding:3px 8px !important;
+}
+.bossSkillHintBar{
+  margin-top:7px !important;
+  padding:6px 7px !important;
+  box-shadow:0 0 14px rgba(255,138,102,.08) inset !important;
+}
+.bossSkillHintBar .hintTitle{
+  width:100% !important;
+  text-align:center !important;
+  font-weight:700 !important;
+  color:#ffd08a !important;
+}
+.bossSkillHint{
+  font-weight:700 !important;
+  letter-spacing:.2px !important;
+}
+.battleStatusBadgeRow{
+  margin-top:4px !important;
+  margin-bottom:6px !important;
+}
+.battleStatusBar.compact{
+  display:none !important;
+}
+.battleLogPanel{
+  scroll-behavior:smooth !important;
+}
+@media (max-width:480px){
+  .battleBuffIcon{
+    font-size:10px !important;
+    padding:3px 6px !important;
+  }
+  .battleBuffIcon b{
+    min-width:14px !important;
+    height:14px !important;
+    font-size:9px !important;
+  }
+  .bossSkillHint{
+    font-size:9.5px !important;
+    padding:2px 5px !important;
+  }
+  .battleStatusBadgeRow{
+    display:none !important;
+  }
+}
+
+
+/* ===== XT8270_EQUIP_BUILD_GUIDE ===== */
+.equipBuildGuide{
+  margin:6px 0;
+  padding:7px 8px;
+  border-radius:11px;
+  border:1px solid rgba(122,159,245,.18);
+  background:rgba(122,159,245,.055);
+  font-size:11px;
+}
+.equipBuildGuide.good{
+  border-color:rgba(126,203,161,.28);
+  background:rgba(126,203,161,.075);
+}
+.equipBuildGuide.warn{
+  border-color:rgba(255,207,110,.26);
+  background:rgba(255,207,110,.065);
+}
+.equipBuildGuideTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-bottom:5px;
+}
+.equipBuildGuideTop b{
+  color:#f5d77f;
+  font-size:11px;
+}
+.equipBuildTag{
+  padding:2px 6px;
+  border-radius:999px;
+  background:rgba(0,0,0,.25);
+  border:1px solid rgba(245,215,127,.2);
+  color:#ffe6a6;
+  font-size:10px;
+  white-space:nowrap;
+}
+.equipBuildGuideGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4px 8px;
+  color:#bfc9dd;
+}
+.equipBuildGuideGrid span{
+  min-width:0;
+}
+.equipBuildGuideGrid b{
+  color:#fff0bd;
+}
+.equipBuildNote{
+  margin-top:5px;
+  line-height:1.35;
+  color:rgba(220,230,245,.78);
+  font-size:10px;
+}
+@media (max-width:480px){
+  .equipBuildGuide{padding:6px 7px;font-size:10px;}
+  .equipBuildGuideGrid{grid-template-columns:1fr;}
+}
+
 </style>
 </head>
 <body><div id="root"><div style="padding:24px;color:#d9c27d">載入中...</div></div>
@@ -2911,9 +3302,9 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 "use strict";
 
 /* ===== v8.0.1 工程核心設定 / Build Manifest ===== */
-var GAME_BUILD_VERSION="v8.17.7-create_display_checkfix";
-var GAME_BUILD_NAME="創角靈根與大道顯示檢查修正版";
-var SAVE_VERSION="v8.15.4";
+var GAME_BUILD_VERSION="v8.27.1-equip_build_guide_scope_fix";
+var GAME_BUILD_NAME="裝備 Build 指引修正版";
+var SAVE_VERSION="v8.27.1";
 var MIN_COMPATIBLE_SAVE="v8.9.8";
 var GAME_MODULE_PROFILE={
   core:["React Runtime","角色存檔","舊檔修復","數值公式"],
@@ -2988,8 +3379,8 @@ function safeWriteSave(key,data){
 }
 
 var _React=React,useEffect=_React.useEffect,useMemo=_React.useMemo,useRef=_React.useRef,useState=_React.useState;
-var ranks=["凡品","良品","上品","極品","仙品","上古","太古","仙遺"];
-var rankOrder=["凡品","良品","上品","極品","仙品","秘傳","神品"];
+var ranks=["凡品","良品","上品","極品","仙品","秘傳","神品","上古","太古","仙遺"];
+var rankOrder=["凡品","良品","上品","極品","仙品","秘傳","神品","上古","太古","仙遺"];
 function rankIndex(r){var i=rankOrder.indexOf(r);return i<0?999:i;}
 var rankColor={凡品:"#999",良品:"#7ecba1",上品:"#7a9ff5",極品:"#b47fdf",仙品:"#f5d74b",秘傳:"#e07aa0",神品:"#ffb86c",上古:"#b88cff",太古:"#66e0ff",仙遺:"#ffb84d"};
 /* ===== Module 01：世界觀資料表 / Realms, Items, Monsters ===== */
@@ -3288,6 +3679,77 @@ function xt160RegionalEquipPool(mon,c,isBoss){
  var cross=pool.filter(function(e){return e.setKey&&!xt160EquipInSet(e,profile.sets);});
  return {profile:profile,all:pool,themed:themed,sameRealm:sameRealm,universal:universal,cross:cross};
 }
+
+/* ===== v8.20.0 大道專屬裝備詞綴：第一版 ===== */
+var daoAffixPools={
+ sword:[
+  {id:"sword_intent",name:"劍意",desc:"劍修專屬詞綴，提升暴擊與劍道爆發。",bonus:{critRate:2,critDmg:6},slots:["武器","飾品"]},
+  {id:"sword_edge",name:"破鋒",desc:"劍鋒破敵，直接提升攻擊。",bonus:{atk:18,critDmg:4},slots:["武器"]}
+ ],
+ thunder:[
+  {id:"thunder_mark",name:"雷痕",desc:"雷修專屬詞綴，提升雷法節奏與爆發。",bonus:{atk:14,critRate:2,mp:80},slots:["武器","法寶"]},
+  {id:"thunder_surge",name:"靈雷",desc:"靈力化雷，增加靈力與攻擊。",bonus:{mp:120,atk:10},slots:["法寶","飾品"]}
+ ],
+ body:[
+  {id:"body_vajra",name:"金剛",desc:"體修專屬詞綴，強化氣血與防禦。",bonus:{hp:180,def:12},slots:["護甲","法寶"]},
+  {id:"body_counter",name:"反震",desc:"肉身凝實，提升防禦與閃避。",bonus:{def:10,dodge:2},slots:["護甲","飾品"]}
+ ],
+ alchemy:[
+  {id:"alchemy_spirit",name:"藥靈",desc:"丹修專屬詞綴，提升續航屬性。",bonus:{hp:120,mp:120,def:6},slots:["法寶","飾品"]},
+  {id:"alchemy_recover",name:"回元",desc:"丹氣回元，提升靈力與生存。",bonus:{mp:160,hp:80},slots:["法寶"]}
+ ],
+ demon:[
+  {id:"demon_blood",name:"血煞",desc:"魔修專屬詞綴，提升攻擊與暴傷。",bonus:{atk:20,critDmg:8},slots:["武器","飾品"]},
+  {id:"demon_soul",name:"噬魂",desc:"煞氣入兵，強化爆發。",bonus:{atk:14,critRate:1,critDmg:6},slots:["武器","法寶"]}
+ ],
+ spirit:[
+  {id:"spirit_focus",name:"神識",desc:"靈修專屬詞綴，提升靈力與法術基礎。",bonus:{mp:180,atk:12},slots:["法寶","飾品"]},
+  {id:"spirit_surge",name:"靈湧",desc:"靈海湧動，提升靈力上限。",bonus:{mp:240},slots:["法寶","護甲"]}
+ ]
+};
+function daoAffixLabel(id){return id==="sword"?"劍修":id==="thunder"?"雷修":id==="body"?"體修":id==="alchemy"?"丹修":id==="demon"?"魔修":id==="spirit"?"靈修":"大道";}
+function xt200PickDaoAffix(c,it,isBoss){
+ var dao=daoMainPath(c||{})||"sword",pool=daoAffixPools[dao]||[];
+ if(!pool.length)return null;
+ var slot=it&&it.slot,usable=pool.filter(function(a){return !a.slots||a.slots.indexOf(slot)>=0;});
+ if(!usable.length)usable=pool;
+ var chance=isBoss?.42:.18;
+ if(it&&it.mutation)chance+=.12;
+ if(Math.random()>chance)return null;
+ var a=usable[Math.floor(Math.random()*usable.length)];
+ return _objectSpread(_objectSpread({},a),{},{dao:dao,daoLabel:daoAffixLabel(dao)});
+}
+function xt200ApplyDaoAffix(it,c,isBoss){
+ if(!it||!it.slot)return it;
+ if(it.daoAffix)return it;
+ var a=xt200PickDaoAffix(c,it,isBoss);
+ if(!a)return it;
+ var mul=isBoss?1.35:1;
+ if(it.mutation)mul+=.25;
+ var b=a.bonus||{},next=_objectSpread({},it);
+ next.daoAffix={id:a.id,name:a.name,dao:a.dao,daoLabel:a.daoLabel,desc:a.desc,bonus:{}};
+ Object.keys(b).forEach(function(k){
+  var v=Math.ceil((b[k]||0)*mul);
+  next.daoAffix.bonus[k]=v;
+  next[k]=(next[k]||0)+v;
+ });
+ next.buildTag=(next.buildTag?next.buildTag+" / ":"")+a.daoLabel+"詞綴";
+ if(next.desc&&next.desc.indexOf("大道詞綴：")<0)next.desc+="。大道詞綴："+a.daoLabel+"「"+a.name+"」。";
+ return next;
+}
+function xt200DaoAffixText(i){
+ if(!i||!i.daoAffix)return "";
+ var b=i.daoAffix.bonus||{},arr=[];
+ if(b.atk)arr.push("攻擊 +"+fmt(b.atk));
+ if(b.def)arr.push("防禦 +"+fmt(b.def));
+ if(b.hp)arr.push("氣血 +"+fmt(b.hp));
+ if(b.mp)arr.push("靈力 +"+fmt(b.mp));
+ if(b.critRate)arr.push("暴擊 +"+b.critRate+"%");
+ if(b.critDmg)arr.push("暴傷 +"+b.critDmg+"%");
+ if(b.dodge)arr.push("閃避 +"+b.dodge+"%");
+ return i.daoAffix.daoLabel+"「"+i.daoAffix.name+"」"+(arr.length?"｜"+arr.join("、"):"");
+}
+
 function xt161RollRegionalEquip(mon,c,isBoss){
  var data=xt160RegionalEquipPool(mon,c,isBoss),profile=data.profile;
  var group=xt161WeightedPick([
@@ -3303,7 +3765,7 @@ function xt161RollRegionalEquip(mon,c,isBoss){
  it.dropType=group.type;
  if(group.type==="cross")it.offRegion=true;
  if(group.type==="mutation")it.mutation=true;
- return xt163ApplySlotTag(xt160ApplyRegionalAffix(it,profile,isBoss),mon,isBoss);
+ return xt163ApplySlotTag(xt200ApplyDaoAffix(xt160ApplyRegionalAffix(it,profile,isBoss),c,isBoss),mon,isBoss);
 }
 function xt160ApplyRegionalAffix(it,profile,isBoss){
  var next=_objectSpread({},it),a=(profile&&profile.affix)||{};
@@ -3330,7 +3792,7 @@ function xt160BossExclusiveDrop(mon,c){
  if(!it)return null;
  var idx=Math.min(ranks.length-1,Math.max(0,ranks.indexOf(it.rank))+1);
  it.rank=ranks[idx];it.atk=Math.ceil((it.atk||0)*1.32);it.def=Math.ceil((it.def||0)*1.32);it.price=Math.ceil((it.price||100)*1.8);it.name="王級·"+String(it.name||"").replace(/^王級·/,"");it.cat="裝備";it.uid=uid("xbe");
- return xt163ApplySlotTag(xt160ApplyRegionalAffix(it,profile,true),mon,true);
+ return xt163ApplySlotTag(xt200ApplyDaoAffix(xt160ApplyRegionalAffix(it,profile,true),c,true),mon,true);
 }
 function xt160GenericBossFragment(mon,c){
  if(!mon||!mon.isBoss)return null;
@@ -3352,7 +3814,7 @@ function xt166DropTypeLabel(i){
 function xt166EquipTags(i){
  if(!i||!i.slot)return [];
  var out=[];
- if(i.mutation)out.push({cls:"mutation",text:"✦異變"});
+ if(i.mutation)out.push({cls:"mutation",text:"✦異變"});if(i.daoAffix)out.push({cls:"dao",text:(i.daoAffix.daoLabel||"大道")+"·"+i.daoAffix.name});
  if(i.dropRegion)out.push({cls:"region",text:i.dropRegion});
  if(i.buildTag)out.push({cls:"flow",text:String(i.buildTag).replace(/\s*\/\s*/g," / ")});
  if(i.slotDropTag)out.push({cls:"slot",text:i.slotDropTag});
@@ -3481,11 +3943,101 @@ function setBonusState(c){var counts={};(c.bag||[]).forEach(function(raw){var it
 function setBonusStats(c){var counts=setBonusState(c),out={atk:0,def:0,hp:0,mp:0,atkPct:0,defPct:0,hpPct:0,mpPct:0,critRate:0,critDmg:0,dodge:0};Object.keys(counts).forEach(function(k){var def=lianxuSetDefs[k];if(!def)return;def.effects.forEach(function(e){if(counts[k]>=e.need){var b=e.bonus||{};out.atk+=b.atk||0;out.def+=b.def||0;out.hp+=b.hp||0;out.mp+=b.mp||0;out.atkPct+=b.atkPct||0;out.defPct+=b.defPct||0;out.hpPct+=b.hpPct||0;out.mpPct+=b.mpPct||0;out.critRate+=b.critRate||0;out.critDmg+=b.critDmg||0;out.dodge+=b.dodge||0;}});});return out;}
 function pctText(v){return Math.round((v||0)*100)+"%";}
 /* ===== Module 02：數值公式層 / Stats, Power, Combat Math ===== */
+
+/* ===== v8.21.0 大道共鳴系統 ===== */
+function xt210DaoResonance(c){
+ var out={counts:{},bonus:{atk:0,def:0,hp:0,mp:0,critRate:0,critDmg:0,dodge:0},active:[]};
+ (c.bag||[]).forEach(function(it){
+   var _eq;
+   if(it&&it.daoAffix&&it.daoAffix.dao&&xt81618CanEquip(c,it)&&(((_eq=c.equipped)===null||_eq===void 0?void 0:_eq[it.slot])===it.uid)){
+      out.counts[it.daoAffix.dao]=(out.counts[it.daoAffix.dao]||0)+1;
+   }
+ });
+ Object.keys(out.counts).forEach(function(dao){
+   var n=out.counts[dao];
+   if(n>=2){
+      out.active.push({dao:dao,tier:2});
+      if(dao==="sword"){out.bonus.critRate+=5;}
+      else if(dao==="thunder"){out.bonus.atk+=18;out.bonus.mp+=80;}
+      else if(dao==="body"){out.bonus.hp+=260;out.bonus.def+=16;}
+      else if(dao==="alchemy"){out.bonus.hp+=120;out.bonus.mp+=120;}
+      else if(dao==="demon"){out.bonus.atk+=24;}
+      else if(dao==="spirit"){out.bonus.mp+=260;}
+   }
+   if(n>=4){
+      out.active.push({dao:dao,tier:4});
+      if(dao==="sword"){out.bonus.critDmg+=15;}
+      else if(dao==="thunder"){out.bonus.critRate+=4;}
+      else if(dao==="body"){out.bonus.def+=22;}
+      else if(dao==="alchemy"){out.bonus.def+=10;out.bonus.mp+=180;}
+      else if(dao==="demon"){out.bonus.critDmg+=18;}
+      else if(dao==="spirit"){out.bonus.atk+=28;}
+   }
+   if(n>=6){
+      out.active.push({dao:dao,tier:6});
+      if(dao==="sword"){out.bonus.atk+=42;}
+      else if(dao==="thunder"){out.bonus.atk+=36;out.bonus.critRate+=6;}
+      else if(dao==="body"){out.bonus.hp+=520;}
+      else if(dao==="alchemy"){out.bonus.hp+=280;out.bonus.mp+=280;}
+      else if(dao==="demon"){out.bonus.atk+=48;}
+      else if(dao==="spirit"){out.bonus.mp+=420;}
+   }
+ });
+ return out;
+}
+
+/* ===== v8.27.0 裝備 Build 指引 ===== */
+function xt270EquipBuildGuide(c,it){
+ var empty={dao:null,daoName:"通用",match:false,current:0,after:0,delta:0,tag:"通用",note:"無大道詞綴，適合作為過渡裝備。",cls:"neutral"};
+ if(!it||!it.daoAffix||!it.daoAffix.dao)return empty;
+ var dao=it.daoAffix.dao,daoName=xt210DaoName(dao),main=daoMainPath(c),match=main===dao;
+ var cur=xt210DaoResonance(c),current=(cur&&cur.counts&&cur.counts[dao])||0,after=current;
+ if(c&&c.equipped&&it.slot){
+   var oldUid=c.equipped[it.slot];
+   var oldItem=(c.bag||[]).find(function(x){return x&&x.uid===oldUid;});
+   if(!oldItem||!oldItem.daoAffix||oldItem.daoAffix.dao!==dao)after=current+1;
+ }
+ var delta=after-current,tag=match?(delta>0?"強烈推薦":"推薦"):(delta>0?"可湊共鳴":"可用");
+ var cls=match?"good":(delta>0?"warn":"neutral");
+ var note="";
+ if(match&&delta>0)note="符合目前主修大道，穿戴後可推進 "+daoName+" 共鳴。";
+ else if(match)note="符合目前主修大道，但共鳴件數不會增加。";
+ else if(delta>0)note="不符合主修，但可增加 "+daoName+" 共鳴；適合混搭或轉流派。";
+ else note="不符合目前主修大道，建議只在數值明顯更高時過渡使用。";
+ return {dao:dao,daoName:daoName,match:match,current:current,after:after,delta:delta,tag:tag,note:note,cls:cls};
+}
+function xt270EquipBuildGuideNode(c,it){
+ var g=xt270EquipBuildGuide(c,it);
+ return React.createElement("div",{className:"equipBuildGuide "+g.cls},
+   React.createElement("div",{className:"equipBuildGuideTop"},
+     React.createElement("b",null,"Build 指引"),
+     React.createElement("span",{className:"equipBuildTag"},g.tag)
+   ),
+   React.createElement("div",{className:"equipBuildGuideGrid"},
+     React.createElement("span",null,"推薦大道：",React.createElement("b",null,g.daoName)),
+     React.createElement("span",null,"主修符合：",React.createElement("b",null,g.match?"是":"否")),
+     g.dao&&React.createElement("span",null,"共鳴：",React.createElement("b",null,g.current," → ",g.after))
+   ),
+   React.createElement("div",{className:"equipBuildNote"},g.note)
+ );
+}
+
+function xt210DaoName(id){
+ return id==="sword"?"劍修":id==="thunder"?"雷修":id==="body"?"體修":id==="alchemy"?"丹修":id==="demon"?"魔修":id==="spirit"?"靈修":"大道";
+}
+function xt220DaoResonanceCount(c,dao){
+ var r=xt210DaoResonance(c||{}),n=0;
+ if(r&&r.counts)n=Math.max(0,Math.floor(Number(r.counts[dao])||0));
+ return n;
+}
+function xt220HasDaoTier(c,dao,tier){return xt220DaoResonanceCount(c,dao)>=tier;}
+
+
 function stats(c){
 var level=Math.max(0,Math.min(realms.length-1,Math.floor(+c.level||0)));
 var atk=12+level*5,def=6+level*4,hp=realmHpBase[level]||Math.floor(120*Math.pow(1.35,level)),mp=realmMpBase[level]||Math.floor(70*Math.pow(1.35,level));
 var b=spiritRootOf(c).bonus||{};atk+=b.atk||0;def+=b.def||0;
-var growth={hpPct:0,mpPct:0};equippedArtIds(c).forEach(function(id,idx){var art=arts.find(function(a){return a.id===id;}),g=artGrowth[id]||{hpPct:0,mpPct:0},rate=idx===0?1:.45;if(art){atk+=Math.floor((art.atk||0)*rate);def+=Math.floor((art.def||0)*rate);mp+=Math.floor((art.mp||0)*rate);growth.hpPct+=(g.hpPct||0)*rate;growth.mpPct+=(g.mpPct||0)*rate;}});
+var growth={hpPct:0,mpPct:0};equippedArtIds(c).forEach(function(id,idx){var art=arts.find(function(a){return a.id===id;}),g=artGrowth[id]||{hpPct:0,mpPct:0},rate=idx===0?1:.45,mul=artMasteryBonus(artMasteryOf(c,id));if(art){atk+=Math.floor((art.atk||0)*rate*mul);def+=Math.floor((art.def||0)*rate*mul);mp+=Math.floor((art.mp||0)*rate*mul);growth.hpPct+=(g.hpPct||0)*rate*mul;growth.mpPct+=(g.mpPct||0)*rate*mul;}});
 var spb=sectPositionBuff(c);
 atk+=Math.floor(atk*(spb.expPct||0)*.25);def+=Math.floor(def*(spb.expPct||0)*.25);
 hp=Math.floor(hp*(b.hp||1)*(1+(growth.hpPct||0)+(spb.expPct||0)*.6));
@@ -3497,8 +4049,8 @@ critRate+=gb2.critRate||0;critRate+=db2.critRate||0;critRate+=cb2.critRate||0;cr
 critDmg+=gb2.critDmg||0;critDmg+=db2.critDmg||0;critDmg+=cb2.critDmg||0;critDmg+=sb2.critDmg||0;critDmg+=rb2.critDmg||0;
 dodge+=gb2.dodge||0;dodge+=db2.dodge||0;dodge+=cb2.dodge||0;dodge+=sb2.dodge||0;dodge+=rb2.dodge||0;
 (c.bag||[]).forEach(function(it){var _eq;if(xt81618CanEquip(c,it)&&(((_eq=c.equipped)===null||_eq===void 0?void 0:_eq[it.slot])===it.uid)){critRate+=it.critRate||0;critDmg+=it.critDmg||0;dodge+=it.dodge||0;}});
-var isSwordMain=daoMainPath(c)==="sword",critRateCap=isSwordMain?70:50,critDmgCap=isSwordMain?250:200;
-return{atk:Math.max(1,atk),def:Math.max(0,def),hp:Math.max(1,hp),mp:Math.max(1,mp),critRate:xt120CritRateOf({critRate:critRate,critRateCap:critRateCap},5),critDmg:xt120CritDmgOf({critDmg:critDmg,critDmgCap:critDmgCap},105),dodge:xt120DodgeOf({dodge:dodge},3),critRateCap:critRateCap,critDmgCap:critDmgCap,isSwordMain:isSwordMain};}
+var resonance=xt210DaoResonance(c);atk+=resonance.bonus.atk||0;def+=resonance.bonus.def||0;hp+=resonance.bonus.hp||0;mp+=resonance.bonus.mp||0;critRate+=resonance.bonus.critRate||0;critDmg+=resonance.bonus.critDmg||0;dodge+=resonance.bonus.dodge||0;var isSwordMain=daoMainPath(c)==="sword",critRateCap=isSwordMain?70:50,critDmgCap=isSwordMain?250:200;
+return{atk:Math.max(1,atk),def:Math.max(0,def),hp:Math.max(1,hp),mp:Math.max(1,mp),critRate:xt120CritRateOf({critRate:critRate,critRateCap:critRateCap},5),critDmg:xt120CritDmgOf({critDmg:critDmg,critDmgCap:critDmgCap},105),dodge:xt120DodgeOf({dodge:dodge},3),critRateCap:critRateCap,critDmgCap:critDmgCap,isSwordMain:isSwordMain,resonance:resonance};}
 function availableSkills(c){
 var ids=[];equippedArtIds(c).forEach(function(aid){var a=arts.find(function(x){return x.id===aid;});((a&&a.skills)||[]).forEach(function(sid){if(ids.indexOf(sid)<0)ids.push(sid);});});if(ids.indexOf("basic")<0)ids.unshift("basic");return ids.map(function(id){return skills[id];}).filter(Boolean);}
 /* ===== v8.1 世界時間核心：玄天曆 / 十二時辰 / 四季 / 靈氣濃度 ===== */
@@ -3636,8 +4188,8 @@ function rollDrops(mon,c){
  }
  if(isBoss&&Math.random()<(.16+boost)){var ex2=xt160BossExclusiveDrop(mon,c);if(ex2)out.push(ex2);}
  if(isBoss){[{id:"boss1",p:.18},{id:"boss2",p:.14}].forEach(function(x){
-  var a=arts.find(function(v){return v.id===x.id;});if(a&&!c.arts.includes(a.id)&&Math.random()<x.p+boost)out.push({uid:uid("b"),id:"book_"+a.id,name:a.name+"秘卷",cat:"功法",rank:"秘傳",price:4000,desc:"王級怪物掉落的特殊武學，Boss 掉落率已於 v8.16.2 大類分流調整。",effect:{art:a.id}});});}
- if(mon.uniqueArts&&mon.uniqueArts.length){mon.uniqueArts.forEach(function(id){var a=arts.find(function(v){return v.id===id;});var rate=(Number(mon.dropRate)||.2)+(isBoss?.08:.03)+boost;if(a&&!c.arts.includes(a.id)&&Math.random()<rate)out.push({uid:uid("du"),id:"book_"+a.id,name:a.name+"殘卷",cat:"功法",rank:a.rank,req:a.req,price:80000,desc:"副本唯一掉落功法，需求境界："+(realms[a.req]||"高階")+"。"+a.desc,effect:{art:a.id}});});}
+  var a=arts.find(function(v){return v.id===x.id;});if(a&&Math.random()<x.p+boost)out.push({uid:uid("b"),id:"book_"+a.id,name:a.name+"秘卷",cat:"功法",rank:"秘傳",price:4000,desc:((c.arts||[]).includes(a.id)?"可重複研讀，提升功法重數。":"王級怪物掉落的特殊武學。")+" Boss 掉落率已於 v8.16.2 大類分流調整。",effect:{art:a.id}});});}
+ if(mon.uniqueArts&&mon.uniqueArts.length){mon.uniqueArts.forEach(function(id){var a=arts.find(function(v){return v.id===id;});var rate=(Number(mon.dropRate)||.2)+(isBoss?.08:.03)+boost;if(a&&Math.random()<rate)out.push({uid:uid("du"),id:"book_"+a.id,name:a.name+"殘卷",cat:"功法",rank:a.rank,req:a.req,price:80000,desc:"副本唯一掉落功法，可重複研讀提升功法重數。需求境界："+(realms[a.req]||"高階")+"。"+a.desc,effect:{art:a.id}});});}
  if(isBoss&&relicFragmentBossMap[mon.name]){var relicId=relicFragmentBossMap[mon.name];var fragRate=.52+boost;if(Math.random()<fragRate){var qty=mon.name==="玄天鎮海殿主"?2:1;out.push(_objectSpread(_objectSpread({},relicFragmentItem(relicId,qty)),{},{uid:uid("rf")}));}}
  else if(isBoss&&Math.random()<(.24+boost)){var frag=xt160GenericBossFragment(mon,c);if(frag)out.push(frag);}
  if(!out.some(function(i){return i&&i.cat==="丹藥";})&&Math.random()<(isBoss?.28:.18)){var fallback=xt162RollPillDrop(c);if(fallback)out.push(fallback);}
@@ -3698,23 +4250,129 @@ function xt176DaoRecommendRoots(id){id=daoPathById(id).id;if(id==="sword")return
 function xt176DaoBuildText(id){id=daoPathById(id).id;if(id==="sword")return "暴擊流、暴傷流、爆發流";if(id==="thunder")return "靈力流、多段輸出、清怪流";if(id==="body")return "坦修流、反傷流、長線續戰";if(id==="alchemy")return "掛機流、回復流、資源流";if(id==="demon")return "暴傷流、極限輸出、風險流";if(id==="spirit")return "靈力流、技能流、後期法修";return "自由混搭";}
 function xt170DaoStateSafe(st){st=st&&typeof st==="object"?st:{};return {shock:Math.max(0,Math.floor(Number(st.shock)||0)),bodyMended:!!st.bodyMended,alchemyTicks:Math.max(0,Math.floor(Number(st.alchemyTicks)||0))};}
 function xt175DaoProcBonus(c){var b=(spiritRootOf(c).bonus)||{};return Math.max(0,Math.min(.12,Number(b.daoProc)||0));}
-function xt170ApplyDaoBeforeHit(ctx){var c=ctx.char,sk=ctx.skill||skills.basic,s=ctx.stats||stats(c),id=daoMainPath(c),ch=ctx.playerHp,dmg=ctx.damage,lg=ctx.log||[],floats=ctx.floats||[],state=xt170DaoStateSafe(ctx.daoState),mpNow=Math.max(0,Number(c.mp)||0),mpPct=s.mp?mpNow/s.mp:0,hpPct=s.hp?ch/s.hp:1;
- if(id==="demon"&&hpPct<.55){var demonMul=1+Math.min(.35,(.55-hpPct)*.75);dmg=Math.floor(dmg*demonMul);lg.push({m:"🩸 魔修狂血｜低血狂暴，傷害提升 "+Math.round((demonMul-1)*100)+"%。",c:"#e07a7a",tag:"crit"});}
- if(id==="spirit"&&sk&&sk.id!=="basic"&&mpPct>=.55){var spiritMul=1+Math.min(.22,mpPct*.18);dmg=Math.floor(dmg*spiritMul);lg.push({m:"🔷 靈修聚靈｜靈力充盈，招式傷害提升 "+Math.round((spiritMul-1)*100)+"%。",c:"#7a9ff5",tag:"cast"});}
- return {damage:dmg,playerHp:ch,daoState:state};}
-function xt170ApplyDaoAfterHit(ctx){var c=ctx.char,sk=ctx.skill||skills.basic,s=ctx.stats||stats(c),mon=ctx.monster||{},id=daoMainPath(c),dmg=ctx.damage,extra=0,ch=ctx.playerHp,lg=ctx.log||[],floats=ctx.floats||[],state=xt170DaoStateSafe(ctx.daoState),hit=ctx.playerAttack&&!ctx.playerAttack.dodged,crit=ctx.playerAttack&&ctx.playerAttack.crit;
+function xt170ApplyDaoBeforeHit(ctx){
+ var c=ctx.char,sk=ctx.skill||skills.basic,s=ctx.stats||stats(c),id=daoMainPath(c),ch=ctx.playerHp,dmg=ctx.damage,lg=ctx.log||[],floats=ctx.floats||[],state=xt170DaoStateSafe(ctx.daoState),mpNow=Math.max(0,Number(c.mp)||0),mpPct=s.mp?mpNow/s.mp:0,hpPct=s.hp?ch/s.hp:1;
+ if(id==="demon"&&hpPct<.55){
+  var demonMul=1+Math.min(.42,(.55-hpPct)*.75+(xt220HasDaoTier(c,"demon",4)?.06:0));
+  dmg=Math.floor(dmg*demonMul);
+  lg.push({m:"🩸 魔修狂血｜低血狂暴，傷害提升 "+Math.round((demonMul-1)*100)+"%。",c:"#e07a7a",tag:"crit"});
+  floats.push(xt144BattleFloat("狂血","player","crit"));
+ }
+ if(id==="spirit"&&sk&&sk.id!=="basic"&&mpPct>=.55){
+  var spiritMul=1+Math.min(.28,mpPct*.18+(xt220HasDaoTier(c,"spirit",4)?.05:0));
+  dmg=Math.floor(dmg*spiritMul);
+  lg.push({m:"🔷 靈修聚靈｜靈力充盈，招式傷害提升 "+Math.round((spiritMul-1)*100)+"%。",c:"#7a9ff5",tag:"cast"});
+  if(xt220HasDaoTier(c,"spirit",6)&&Math.random()<.22+xt175DaoProcBonus(c)){
+   var spiritBurst=Math.max(1,Math.floor(s.mp*.045));
+   dmg+=spiritBurst;
+   lg.push({m:"🔷 靈修法爆｜神識穿透，追加 "+spiritBurst+" 法術傷害。",c:"#9ecbff",tag:"crit"});
+   floats.push(xt144BattleFloat("法爆 -"+spiritBurst,"enemy","crit"));
+  }
+ }
+ return {damage:dmg,playerHp:ch,daoState:state};
+}
+function xt170ApplyDaoAfterHit(ctx){
+ var c=ctx.char,sk=ctx.skill||skills.basic,s=ctx.stats||stats(c),id=daoMainPath(c),dmg=ctx.damage,extra=0,ch=ctx.playerHp,lg=ctx.log||[],floats=ctx.floats||[],state=xt170DaoStateSafe(ctx.daoState),hit=ctx.playerAttack&&!ctx.playerAttack.dodged,crit=ctx.playerAttack&&ctx.playerAttack.crit;
  if(!hit)return {extraDamage:0,playerHp:ch,daoState:state};
- if(id==="sword"&&crit&&Math.random()<(.22+xt175DaoProcBonus(c))){extra=Math.max(1,Math.floor(s.atk*.45));lg.push({m:"⚔️ 劍修被動｜暴擊牽引劍氣，追加 "+extra+" 傷害。",c:"#ffcf6e",tag:"crit"});floats.push(xt144BattleFloat("劍氣 -"+extra,"enemy","crit"));}
- if(id==="thunder"){state.shock=Math.min(3,(state.shock||0)+1);lg.push({m:"⚡ 雷修被動｜雷痕附著（"+state.shock+"/3）。",c:"#8fd8ff",tag:"cast"});if(state.shock>=3){var thunderDmg=Math.max(1,Math.floor(s.atk*.55+(s.mp||0)*.025));extra+=thunderDmg;state.shock=0;lg.push({m:"⚡ 雷痕爆裂｜三層感電引發雷擊，追加 "+thunderDmg+" 傷害。",c:"#8fd8ff",tag:"crit"});floats.push(xt144BattleFloat("雷擊 -"+thunderDmg,"enemy","crit"));}}
- if(id==="alchemy"&&sk&&sk.id!=="basic"&&Math.random()<(.18+xt175DaoProcBonus(c))){var mpBack=Math.max(1,Math.floor(s.mp*.035));c.mp=Math.min(s.mp,(c.mp||0)+mpBack);lg.push({m:"🧪 丹修被動｜藥息回流，靈力恢復 "+mpBack+"。",c:"#7ecba1",tag:"heal"});}
- if(id==="body"&&s.hp&&ch/s.hp<.35&&!state.bodyMended){var heal=Math.max(1,Math.floor(s.hp*.10));ch=Math.min(s.hp,ch+heal);state.bodyMended=true;lg.push({m:"🛡️ 體修被動｜戰體護命，低血恢復氣血 "+heal+"。",c:"#7ecba1",tag:"heal"});floats.push(xt144BattleFloat("護體 +"+heal,"player","dodge"));}
- return {extraDamage:extra,playerHp:ch,daoState:state};}
-function xt170ApplyDaoAfterTaken(ctx){var c=ctx.char,s=ctx.stats||stats(c),id=daoMainPath(c),taken=ctx.taken||0,ch=ctx.playerHp,lg=ctx.log||[],floats=ctx.floats||[],state=xt170DaoStateSafe(ctx.daoState),reflect=0,monsterHp=Math.max(0,Math.floor(Number(ctx.monsterHp)||0));
- if(id==="body"&&taken>0&&monsterHp>1){reflect=Math.max(1,Math.floor(Math.min(taken*.18,s.def*.22+3)));reflect=Math.min(reflect,monsterHp-1);if(reflect>0){lg.push({m:"🛡️ 體修反震｜肉身反震敵人 "+reflect+" 傷害。",c:"#d8c078",tag:"hurt"});floats.push(xt144BattleFloat("反震 -"+reflect,"enemy","hit"));}}
- if(id==="demon"&&taken>0&&ch>0&&s.hp&&ch/s.hp<.45){var bleed=Math.max(1,Math.floor(s.hp*.025));ch=Math.max(0,ch-bleed);lg.push({m:"🩸 魔修代價｜煞血反噬，額外流失 "+bleed+" 氣血。",c:"#e07a7a",tag:"hurt"});}
- return {reflectDamage:reflect,playerHp:ch,daoState:state};}
+ if(id==="sword"&&crit&&Math.random()<(.22+xt175DaoProcBonus(c)+(xt220HasDaoTier(c,"sword",4)?.08:0))){
+  extra=Math.max(1,Math.floor(s.atk*(xt220HasDaoTier(c,"sword",6)?.68:.45)));
+  lg.push({m:"⚔️ 劍修劍意｜暴擊牽引劍氣，追加 "+extra+" 傷害。",c:"#ffcf6e",tag:"crit"});
+  floats.push(xt144BattleFloat("劍氣 -"+extra,"enemy","crit"));
+ }
+ if(id==="thunder"){
+  var limit=xt220HasDaoTier(c,"thunder",4)?2:3;
+  state.shock=Math.min(limit,(state.shock||0)+1);
+  lg.push({m:"⚡ 雷修雷痕｜雷痕附著（"+state.shock+"/"+limit+"）。",c:"#8fd8ff",tag:"cast"});
+  if(state.shock>=limit){
+   var thunderDmg=Math.max(1,Math.floor(s.atk*.55+(s.mp||0)*.025));
+   extra+=thunderDmg;state.shock=0;
+   lg.push({m:"⚡ 雷痕爆裂｜感電引發雷擊，追加 "+thunderDmg+" 傷害。",c:"#8fd8ff",tag:"crit"});
+   floats.push(xt144BattleFloat("雷擊 -"+thunderDmg,"enemy","crit"));
+   if(xt220HasDaoTier(c,"thunder",6)&&Math.random()<.28+xt175DaoProcBonus(c)){
+    var chain=Math.max(1,Math.floor(thunderDmg*.45));
+    extra+=chain;
+    lg.push({m:"⚡ 雷修連鎖｜天雷游走，再追加 "+chain+" 傷害。",c:"#b8ecff",tag:"crit"});
+    floats.push(xt144BattleFloat("連鎖 -"+chain,"enemy","crit"));
+   }
+  }
+ }
+ if(id==="alchemy"&&sk&&sk.id!=="basic"&&Math.random()<(.18+xt175DaoProcBonus(c)+(xt220HasDaoTier(c,"alchemy",4)?.08:0))){
+  var mpBack=Math.max(1,Math.floor(s.mp*(xt220HasDaoTier(c,"alchemy",6)?.055:.035)));
+  c.mp=Math.min(s.mp,(c.mp||0)+mpBack);
+  lg.push({m:"🧪 丹修藥息｜靈力恢復 "+mpBack+"。",c:"#7ecba1",tag:"heal"});
+  if(xt220HasDaoTier(c,"alchemy",2)){
+   var ah=Math.max(1,Math.floor(s.hp*.035));
+   ch=Math.min(s.hp,ch+ah);
+   lg.push({m:"🧪 丹火回春｜氣血恢復 "+ah+"。",c:"#7ecba1",tag:"heal"});
+   floats.push(xt144BattleFloat("回春 +"+ah,"player","heal"));
+  }
+ }
+ if(id==="body"&&s.hp&&ch/s.hp<.35&&!state.bodyMended){
+  var heal=Math.max(1,Math.floor(s.hp*(xt220HasDaoTier(c,"body",4)?.15:.10)));
+  ch=Math.min(s.hp,ch+heal);state.bodyMended=true;
+  lg.push({m:"🛡️ 體修霸體｜戰體護命，低血恢復氣血 "+heal+"。",c:"#7ecba1",tag:"heal"});
+  floats.push(xt144BattleFloat("霸體 +"+heal,"player","dodge"));
+ }
+ if(id==="demon"&&s.hp&&ch/s.hp<.55&&dmg>0&&xt220HasDaoTier(c,"demon",2)){
+  var leech=Math.max(1,Math.floor(dmg*(xt220HasDaoTier(c,"demon",6)?.10:.06)));
+  ch=Math.min(s.hp,ch+leech);
+  lg.push({m:"🩸 魔修噬魂｜低血吸納氣血 "+leech+"。",c:"#e07aa0",tag:"heal"});
+  floats.push(xt144BattleFloat("噬魂 +"+leech,"player","heal"));
+ }
+ return {extraDamage:extra,playerHp:ch,daoState:state};
+}
+function xt170ApplyDaoAfterTaken(ctx){
+ var c=ctx.char,s=ctx.stats||stats(c),id=daoMainPath(c),taken=ctx.taken||0,ch=ctx.playerHp,lg=ctx.log||[],floats=ctx.floats||[],state=xt170DaoStateSafe(ctx.daoState),reflect=0,monsterHp=Math.max(0,Math.floor(Number(ctx.monsterHp)||0));
+ if(id==="body"&&taken>0&&monsterHp>1){
+  var refMul=xt220HasDaoTier(c,"body",6)?.34:xt220HasDaoTier(c,"body",4)?.26:.18;
+  reflect=Math.max(1,Math.floor(Math.min(taken*refMul,s.def*(xt220HasDaoTier(c,"body",4)?.32:.22)+3)));
+  reflect=Math.min(reflect,monsterHp-1);
+  if(reflect>0){
+   lg.push({m:"🛡️ 體修反震｜金剛肉身反震敵人 "+reflect+" 傷害。",c:"#d8c078",tag:"hurt"});
+   floats.push(xt144BattleFloat("反震 -"+reflect,"enemy","hit"));
+  }
+ }
+ if(id==="demon"&&taken>0&&ch>0&&s.hp&&ch/s.hp<.45&&!xt220HasDaoTier(c,"demon",4)){
+  var bleed=Math.max(1,Math.floor(s.hp*.025));
+  ch=Math.max(0,ch-bleed);
+  lg.push({m:"🩸 魔修代價｜煞血反噬，額外流失 "+bleed+" 氣血。",c:"#e07a7a",tag:"hurt"});
+ }
+ return {reflectDamage:reflect,playerHp:ch,daoState:state};
+}
 
+
+var SAVE_VERSION="8.25.2";
+var MIN_COMPATIBLE_SAVE="8.10.1";
 var SAVE_KEY="cg_save";
+function xt230SaveVersionLabel(){return "v"+SAVE_VERSION;}
+function xt230MigrateSaveCore(c){
+ if(!c||typeof c!=="object")return c;
+ c.saveVersion=SAVE_VERSION;
+ c.minCompatibleSave=MIN_COMPATIBLE_SAVE;
+ var baseEq={武器:null,護甲:null,飾品:null,法寶:null};
+ c.equipped=c.equipped&&typeof c.equipped==="object"?_objectSpread(_objectSpread({},baseEq),c.equipped):baseEq;
+ c.bag=Array.isArray(c.bag)?c.bag:[];
+ c.arts=Array.isArray(c.arts)?c.arts:["a1","a2","m1","x1","h1"];
+ if(!c.art)c.art=c.arts[0]||"a1";
+ if(!c.artSlots||typeof c.artSlots!=="object")c.artSlots={main:c.art,sub:"a2",move:"m1",secret:"x1"};
+ if(!c.daoMainPath)c.daoMainPath=c.daoPath||"sword";
+ if(!c.daoPath)c.daoPath=c.daoMainPath||"sword";
+ c.daoMainPath=daoPathById(c.daoMainPath).id;
+ c.daoPath=daoPathById(c.daoPath).id;
+ c.daoPathInsights=normalizeDaoInsights(c.daoPathInsights);
+ c.artMastery=normalizeArtMastery(c.artMastery,c.arts);
+ if(typeof normalizeAutoPotion==="function")c.autoPotion=normalizeAutoPotion(c.autoPotion);
+ if(typeof normalizeAutoSell==="function")c.autoSell=normalizeAutoSell(c.autoSell);
+ Object.keys(baseEq).forEach(function(sl){
+  var uid=c.equipped&&c.equipped[sl];
+  if(!uid)return;
+  var it=c.bag.find(function(x){return x&&x.uid===uid;});
+  if(!it||!it.slot||it.slot!==sl)c.equipped[sl]=null;
+  else if(typeof xt81618CanEquip==="function"&&!xt81618CanEquip(c,it))c.equipped[sl]=null;
+ });
+ return c;
+}
+
 function safeJSONParse(s){try{return s?JSON.parse(s):null;}catch(e){return null;}}
 function baseEquipped(){return {武器:null,護甲:null,飾品:null,法寶:null};}
 function defaultAutoPotion(){return {hp:{enabled:true,pct:30,itemName:""},mp:{enabled:true,pct:30,itemName:""}};}
@@ -3913,7 +4571,7 @@ var XT102_WORLD_EVENTS=[
 function xt102WorldEvent(started,now){var wt=worldTimeLabel(started||Date.now(),now||Date.now()),idx=Math.abs(Math.floor(((wt.day||1)-1)/2))%XT102_WORLD_EVENTS.length;return XT102_WORLD_EVENTS[idx]||XT102_WORLD_EVENTS[0];}
 function xt102EventBonusText(ev){if(!ev)return "";var arr=[];if((ev.exp||1)!==1)arr.push("修為 x"+(ev.exp||1).toFixed(2));if((ev.stone||1)!==1)arr.push("靈石 x"+(ev.stone||1).toFixed(2));if((ev.cave||1)!==1)arr.push("洞府 x"+(ev.cave||1).toFixed(2));if((ev.sect||1)!==1)arr.push("宗門提示 x"+(ev.sect||1).toFixed(2));return arr.join("｜")||"穩定無額外波動";}
 function xt102CaveIncomePreview(c,now){if(!c||!c.name)return {exp:0,stones:0,event:XT102_WORLD_EVENTS[0],mult:1,bonus:""};var ev=xt102WorldEvent(c.started,now),cv=caveState(c),g=guildBonusOf(c),level=Math.max(1,Number(cv.level)||Number(c.caveLevel)||1),mult=(Number(cv.aura)||1)*(ev.cave||1)*(ev.exp||1)*(1+(g.cavePct||0)),stoneMult=ev.stone||1;return {exp:Math.max(1,Math.floor((5+level*3)*mult)),stones:Math.max(1,Math.floor((1+level*.6)*stoneMult)),event:ev,mult:mult,bonus:xt102EventBonusText(ev)};}
-function xt102ApplyPassiveCaveIncome(c,now){if(!c||!c.name)return c;var pv=xt102CaveIncomePreview(c,now),nc=_objectSpread({},c);nc.exp=Math.max(0,Math.floor((nc.exp||0)+pv.exp));nc.stones=Math.max(0,Math.floor((nc.stones||0)+pv.stones));nc.xt102CaveTicks=Math.max(0,Math.floor(Number(nc.xt102CaveTicks)||0))+1;nc.xt102LastCaveAt=now||Date.now();nc.xt103LastEvent=pv.event.id;return nc;}
+function xt102ApplyPassiveCaveIncome(c,now){if(!c||!c.name)return c;var pv=xt102CaveIncomePreview(c,now),nc=_objectSpread({},c);nc.exp=Math.max(0,Math.floor((nc.exp||0)+pv.exp));nc.stones=Math.max(0,Math.floor((nc.stones||0)+pv.stones));nc.xt102CaveTicks=Math.max(0,Math.floor(Number(nc.xt102CaveTicks)||0))+1;nc.xt102LastCaveAt=now||Date.now();nc.xt103LastEvent=pv.event.id;nc=xt230MigrateSaveCore(nc)||nc;return nc;}
 function xt102SectHints(c,now){var g=guildOf(c),pv=xt102CaveIncomePreview(c,now),h=[];if(!g){h.push("築基後可選擇宗門，宗門會影響洞府、傳功與任務路線。 ");h.push("今日世界事件：「"+pv.event.name+"」｜"+pv.event.note);return h;}h.push("今日世界事件：「"+pv.event.name+"」，"+pv.event.note);h.push("外圍倍率："+pv.bonus+"，目前洞府收益約 x"+pv.mult.toFixed(2)+"。 ");h.push("建議順序：先收納洞府靈氣，再做宗門任務，最後用功勳補足傳功或資源。 ");if((c.sectTaskUsed||0)<=0)h.push("今日宗門任務尚有空間，適合累積功勳與聲望。 ");if((c.sectInsightUsed||0)<3)h.push("傳功參悟尚未用盡，可優先補主修大道。 ");return h.slice(0,5);}
 function XT102GuidePanel(_ref102){var c=_ref102["char"],now=_ref102.now,mode=_ref102.mode;if(!c||!c.name)return null;var pv=xt102CaveIncomePreview(c,now),h=xt102SectHints(c,now),ev=pv.event;return React.createElement("div",{className:"xt102Panel"},React.createElement("div",null,React.createElement("b",null,ev.icon," ",ev.name),React.createElement("span",{className:"xt102Tag"},"v8.10.3 世界事件")),React.createElement("p",{className:"muted"},mode==="sect"?h[0]:ev.desc),React.createElement("div",{className:"xt102Grid"},React.createElement("span",null,React.createElement("small",null,"洞府每分鐘"),"修為 +",pv.exp),React.createElement("span",null,React.createElement("small",null,"靈石收納"),"+",pv.stones),React.createElement("span",null,React.createElement("small",null,"事件倍率"),pv.bonus)),React.createElement("p",{className:"muted"},"風險：",ev.risk,"｜",ev.note),mode==="sect"&&React.createElement("p",{className:"muted"},h.slice(1).join("｜")));}
 function xt104EventNoticeText(c,now){var pv=xt102CaveIncomePreview(c,now),ev=pv.event;return ev.icon+" "+ev.name+"\n━━━━━━━━━━━━\n"+ev.desc+"\n\n目前加成："+pv.bonus+"\n洞府收益：每分鐘修為 +"+pv.exp+"、靈石 +"+pv.stones+"\n事件風險："+ev.risk+"\n修行建議："+ev.note;}
@@ -4213,7 +4871,7 @@ var t=setInterval(function(){setChar(function(c){if(!c||!c.name)return c;var s=s
 function addLog(m){
 var t=arguments.length>1&&arguments[1]!==undefined?arguments[1]:"";setLog(function(l){return[].concat(_toConsumableArray(l.slice(-120)),[{m:m,t:t,id:uid("l")}]);});}
 function create(){
-var c={name:name.trim()||"韓立",gender:gender,sect:sect,spiritRoot:sect,level:0,exp:0,stones:100,art:"a1",arts:["a1","a2","m1","x1","h1"],artSlots:{main:"a1",sub:"a2",move:"m1",secret:"x1"},equipped:{武器:null,護甲:null,飾品:null,法寶:null},bag:[],guild:null,autoPotion:defaultAutoPotion(),autoSell:defaultAutoSell(),activeRelic:null,daoMainPath:daoPathById(daoChoice).id,daoPath:daoPathById(daoChoice).id,daoPathInsights:defaultDaoInsights(),started:Date.now()};
+var c={name:name.trim()||"韓立",gender:gender,sect:sect,spiritRoot:sect,level:0,exp:0,stones:100,art:"a1",arts:["a1","a2","m1","x1","h1"],artSlots:{main:"a1",sub:"a2",move:"m1",secret:"x1"},equipped:{武器:null,護甲:null,飾品:null,法寶:null},bag:[],guild:null,autoPotion:defaultAutoPotion(),autoSell:defaultAutoSell(),activeRelic:null,daoMainPath:daoPathById(daoChoice).id,daoPath:daoPathById(daoChoice).id,daoPathInsights:defaultDaoInsights(),started:Date.now(),saveVersion:SAVE_VERSION,minCompatibleSave:MIN_COMPATIBLE_SAVE};
 var root=spiritRootOf(c);var s=stats(c);setChar(_objectSpread(_objectSpread({},c),{},{hp:s.hp,mp:s.mp}));setAuc(auctionList(0));setLog([{m:"".concat(c.name," \u4EE5").concat(gender,"\u4E4B\u8EAB\u8E0F\u5165\u4FEE\u4ED9\u754C\uFF0C\u6E2C\u5F97\u5148\u5929\u9748\u6839「").concat(root.name,"」\u3002"),t:"",id:"init"}]);setScreen("game");}
 function cultivate(){setChar(function(c){
 var sbuf=sectPositionBuff(c),rbuf=spiritRootOf(c).bonus||{};var gain=Math.floor((25+Math.random()*35)*(rbuf.exp||1)*(1+(sbuf.expPct||0)));
@@ -4240,6 +4898,144 @@ function safeBattleMonster(mon){
   return safe;
 }
 
+
+/* ===== v8.24.0 Boss 技能第一版 ===== */
+function xt240BossSkillStateSafe(st){
+ st=st&&typeof st==="object"?st:{};
+ return {poison:Math.max(0,Math.floor(Number(st.poison)||0)),armorBreak:Math.max(0,Math.floor(Number(st.armorBreak)||0)),rage:!!st.rage};
+}
+
+function xt260BossSkillHints(mon){
+ if(!mon||!mon.isBoss)return [];
+ var n=String(mon.name||"");
+ var arr=[];
+ if(/蛇|毒|蟾|蠍|蛛/.test(n))arr.push("毒傷");
+ if(/骨|鬼|魔|妖|煞/.test(n))arr.push("破防");
+ if(/龍|蛟|熊|王|將/.test(n))arr.push("重擊");
+ if(/靈|雷|星|玄|海/.test(n))arr.push("靈力灼燒");
+ if(!arr.length)arr=["重擊","破防","靈力灼燒","毒傷"];
+ arr.push("低血狂暴");
+ return Array.from(new Set(arr)).slice(0,4);
+}
+function xt260StatusBadgeList(st){
+ try{
+  st=st&&typeof st==="object"?st:{buffs:[],debuffs:[]};
+  var buffs=Array.isArray(st.buffs)?st.buffs:[],debuffs=Array.isArray(st.debuffs)?st.debuffs:[],arr=[];
+  buffs.forEach(function(x){if(x&&x.name)arr.push({side:"我方",name:x.name,turns:Math.max(0,Math.floor(Number(x.turns)||0)),kind:"buff"});});
+  debuffs.forEach(function(x){if(x&&x.name)arr.push({side:"敵方",name:x.name,turns:Math.max(0,Math.floor(Number(x.turns)||0)),kind:"debuff"});});
+  return arr;
+ }catch(e){return [];}
+}
+
+function xt240BossSkillName(mon){
+ if(!mon||!mon.isBoss)return "";
+ var n=String(mon.name||"");
+ if(/蛇|毒|蟾|蠍|蛛/.test(n))return "poison";
+ if(/骨|鬼|魔|妖|煞/.test(n))return "armorBreak";
+ if(/龍|蛟|熊|王|將/.test(n))return "heavy";
+ if(/靈|雷|星|玄|海/.test(n))return "manaBurn";
+ return ["heavy","armorBreak","manaBurn","poison"][Math.floor(Math.random()*4)];
+}
+function xt240ApplyBossBeforePlayer(ctx){
+ var mon=ctx.monster||{},state=xt240BossSkillStateSafe(ctx.bossState),ch=ctx.playerHp,lg=ctx.log||[],floats=ctx.floats||[],s=ctx.stats||{};
+ if(!mon.isBoss)return {playerHp:ch,bossState:state};
+ if(state.poison>0){
+  var pd=Math.max(1,Math.floor((s.hp||100)*.025));
+  ch=Math.max(0,ch-pd);
+  state.poison=Math.max(0,state.poison-1);
+  lg.push({m:"☠️ Boss 毒傷｜毒息侵體，氣血 -"+pd+"（剩餘 "+state.poison+" 回合）。",c:"#9be07a",tag:"hurt"});
+  floats.push(xt144BattleFloat("毒 -"+pd,"player","hurt"));
+ }
+ return {playerHp:ch,bossState:state};
+}
+function xt240ApplyBossSkill(ctx){
+ var mon=ctx.monster||{},state=xt240BossSkillStateSafe(ctx.bossState),ch=ctx.playerHp,lg=ctx.log||[],floats=ctx.floats||[],s=ctx.stats||{},monsterHp=Math.max(0,Math.floor(Number(ctx.monsterHp)||0));
+ if(!mon.isBoss||monsterHp<=0)return {playerHp:ch,bossState:state,mpDelta:0,extraTaken:0};
+ var maxHp=Math.max(1,Math.floor(Number(mon.hp)||monsterHp||1)),hpPct=monsterHp/maxHp,mpDelta=0,extraTaken=0;
+ if(hpPct<.35&&!state.rage&&Math.random()<.55){state.rage=true;lg.push({m:"🔥 Boss 狂暴｜"+mon.name+" 氣息暴走，下一輪攻勢更兇猛。",c:"#ff8a66",tag:"crit"});}
+ var chance=state.rage?.32:.22;
+ if(Math.random()>chance)return {playerHp:ch,bossState:state,mpDelta:0,extraTaken:0};
+ var skill=xt240BossSkillName(mon);
+ if(skill==="heavy"){
+  var dmg=Math.max(1,Math.floor((mon.atk||10)*(state.rage?1.15:.82)));
+  ch=Math.max(0,ch-dmg);extraTaken+=dmg;
+  lg.push({m:"💥 Boss 技能｜"+mon.name+" 施展重擊，額外造成 "+dmg+" 傷害。",c:"#ffcf6e",tag:"hurt"});
+  floats.push(xt144BattleFloat("重擊 -"+dmg,"player","hurt"));
+ }else if(skill==="armorBreak"){
+  state.armorBreak=Math.max(state.armorBreak,2);
+  lg.push({m:"🩸 Boss 技能｜"+mon.name+" 施展破防，護體靈光削弱 2 回合。",c:"#e07a7a",tag:"hurt"});
+  floats.push(xt144BattleFloat("破防","player","hurt"));
+ }else if(skill==="manaBurn"){
+  var burn=Math.max(1,Math.floor((s.mp||100)*.08));
+  mpDelta-=burn;
+  lg.push({m:"🔷 Boss 技能｜"+mon.name+" 灼燒靈力，靈力 -"+burn+"。",c:"#7a9ff5",tag:"cast"});
+  floats.push(xt144BattleFloat("靈灼 -"+burn,"player","hurt"));
+ }else if(skill==="poison"){
+  state.poison=Math.max(state.poison,3);
+  lg.push({m:"☠️ Boss 技能｜"+mon.name+" 釋放毒息，造成持續毒傷。",c:"#9be07a",tag:"hurt"});
+  floats.push(xt144BattleFloat("中毒","player","hurt"));
+ }
+ return {playerHp:ch,bossState:state,mpDelta:mpDelta,extraTaken:extraTaken};
+}
+
+
+/* ===== v8.25.0 狀態系統第一版 ===== */
+function xt250BattleStatusSafe(st){
+ st=st&&typeof st==="object"?st:{};
+ function normList(a){
+  return Array.isArray(a)?a.filter(function(x){return x&&x.id;}).map(function(x){
+   return {id:String(x.id),name:String(x.name||x.id),turns:Math.max(0,Math.floor(Number(x.turns)||0)),power:Number(x.power)||0,type:String(x.type||"")};
+  }):[];
+ }
+ return {buffs:normList(st.buffs),debuffs:normList(st.debuffs)};
+}
+function xt250AddStatus(st,side,status){
+ st=xt250BattleStatusSafe(st);
+ var key=side==="enemy"?"debuffs":"buffs",list=st[key],idx=list.findIndex(function(x){return x.id===status.id;});
+ var item={id:String(status.id),name:String(status.name||status.id),turns:Math.max(1,Math.floor(Number(status.turns)||1)),power:Number(status.power)||0,type:String(status.type||"")};
+ if(idx>=0){list[idx].turns=Math.max(list[idx].turns,item.turns);list[idx].power=Math.max(list[idx].power,item.power);}
+ else list.push(item);
+ return st;
+}
+function xt250TickList(list){
+ return (list||[]).map(function(x){return _objectSpread(_objectSpread({},x),{},{turns:Math.max(0,(x.turns||0)-1)});}).filter(function(x){return x.turns>0;});
+}
+function xt250ApplyStartOfRound(ctx){
+ var st=xt250BattleStatusSafe(ctx.status),s=ctx.stats||{},ch=ctx.playerHp,mh=ctx.monsterHp,lg=ctx.log||[],floats=ctx.floats||[];
+ st.buffs.forEach(function(b){
+  if(b.id==="regen"){
+   var heal=Math.max(1,Math.floor((s.hp||100)*(b.power||.03)));
+   ch=Math.min(s.hp||ch,ch+heal);
+   lg.push({m:"🌿 狀態｜回春生效，氣血 +"+heal+"。",c:"#7ecba1",tag:"heal"});
+   floats.push(xt144BattleFloat("回春 +"+heal,"player","heal"));
+  }
+  if(b.id==="focus"){
+   var mpHeal=Math.max(1,Math.floor((s.mp||100)*(b.power||.025)));
+   ctx.char.mp=Math.min(s.mp||ctx.char.mp,(ctx.char.mp||0)+mpHeal);
+   lg.push({m:"🔷 狀態｜聚靈生效，靈力 +"+mpHeal+"。",c:"#7a9ff5",tag:"cast"});
+  }
+ });
+ st.debuffs.forEach(function(d){
+  if(d.id==="electro"){
+   var ed=Math.max(1,Math.floor((s.atk||10)*(d.power||.08)));
+   mh=Math.max(0,mh-ed);
+   lg.push({m:"⚡ 狀態｜感電震盪，敵方 -"+ed+" 氣血。",c:"#8fd8ff",tag:"crit"});
+   floats.push(xt144BattleFloat("感電 -"+ed,"enemy","crit"));
+  }
+  if(d.id==="bleed"){
+   var bd=Math.max(1,Math.floor((s.atk||10)*(d.power||.06)));
+   mh=Math.max(0,mh-bd);
+   lg.push({m:"🩸 狀態｜血咒流失，敵方 -"+bd+" 氣血。",c:"#e07a7a",tag:"crit"});
+  }
+ });
+ st.buffs=xt250TickList(st.buffs);
+ st.debuffs=xt250TickList(st.debuffs);
+ return {status:st,playerHp:ch,monsterHp:mh};
+}
+function xt250StatusSummary(st){
+ try{st=xt250BattleStatusSafe(st);var arr=[];st.buffs.forEach(function(x){arr.push("我方："+x.name+"("+x.turns+")");});st.debuffs.forEach(function(x){arr.push("敵方："+x.name+"("+x.turns+")");});return arr.join("、");}catch(e){return "";}
+}
+
 function start(mon){
 var auto=arguments.length>1&&arguments[1]!==undefined?arguments[1]:false;
 mon=safeBattleMonster(mon);
@@ -4252,7 +5048,7 @@ mon.atk=Math.max(1,Math.floor(Number(mon.atk)||6));
 mon.def=Math.max(0,Math.floor(Number(mon.def)||0));
 mon.exp=Math.max(0,Math.floor(Number(mon.exp)||8));
 var enc=mon;if(!mon.sectArena&&!mon.isBoss&&!mon.uniqueArts&&Math.random()<.15)enc=_objectSpread(_objectSpread({},mon),{},{name:mon.name+"王",hp:Math.ceil(mon.hp*4.2),atk:Math.ceil(mon.atk*1.45),def:Math.ceil(mon.def*1.35),exp:Math.ceil(mon.exp*2.2),stone:(Array.isArray(mon.stone)?mon.stone:[1,3]).map(function(x){return Math.ceil((Number(x)||1)*2.5);}),isBoss:true,base:mon});
-enc=xt142TuneMonsterCombatStats(enc);mon=xt142TuneMonsterCombatStats(mon);var ids=availableSkills(_char).map(function(x){return x.id;});try{playMonster(enc);}catch(soundErr){console.warn("怪物音效略過",soundErr);}setBattle({monster:enc,base:mon,charHp:Math.min(_char.hp,s.hp),monHp:enc.hp,log:[],floatTexts:[],resultGrid:null,battleStats:xt149BattleStatsInit(),daoState:xt170DaoStateSafe(null),round:1,done:false,won:false,auto:auto,skillId:ids.includes(skillId)?skillId:"basic"});}
+enc=xt142TuneMonsterCombatStats(enc);mon=xt142TuneMonsterCombatStats(mon);var ids=availableSkills(_char).map(function(x){return x.id;});try{playMonster(enc);}catch(soundErr){console.warn("怪物音效略過",soundErr);}setBattle({monster:enc,base:mon,charHp:Math.min(_char.hp,s.hp),monHp:enc.hp,log:[],floatTexts:[],resultGrid:null,battleStats:xt149BattleStatsInit(),daoState:xt170DaoStateSafe(null),bossState:xt240BossSkillStateSafe(null),battleStatus:(function(){try{return xt250BattleStatusSafe(null);}catch(e){return {buffs:[],debuffs:[]};}})(),round:1,done:false,won:false,auto:auto,skillId:ids.includes(skillId)?skillId:"basic"});}
 function useSkill(sk){if(!battle||battle.done||window.__cgActing)return;window.__cgActing=true;setTimeout(function(){window.__cgActing=false;},180);
 var curChar=_char,curBattle=battle,potion=applyAutoPotionSnapshot(curChar,curBattle);
 if(potion.changed){curChar=potion.char;curBattle=potion.battle;if(potion.used.length){curBattle=_objectSpread(_objectSpread({},curBattle),{},{log:[].concat(_toConsumableArray((curBattle.log||[]).slice(-78)),[{m:"補給｜"+potion.used.join("；"),c:"#7ecba1",tag:"heal"}])});}}
@@ -4260,13 +5056,15 @@ var s=stats(curChar);if((curChar.mp||0)<sk.mp){if(potion.changed){setChar(curCha
 var lg=_toConsumableArray((curBattle.log||[]).slice(-74));
 var battleRound=Math.max(1,Math.floor(Number(curBattle.round)||1));
 var bstats=xt149BattleStatsSafe(curBattle.battleStats);bstats.turns=Math.max(bstats.turns,battleRound);
-var daoState=xt170DaoStateSafe(curBattle.daoState);
+var daoState=xt170DaoStateSafe(curBattle.daoState),bossState=xt240BossSkillStateSafe(curBattle.bossState),battleStatus=xt250BattleStatusSafe(curBattle.battleStatus);
 lg.push(xt143RoundLine(battleRound));
 var monStats=xt142TuneMonsterCombatStats(_objectSpread({},curBattle.monster||{}));
 var playerAttack=xt140RollCombatHit(s,monStats,{mul:sk.mul,ignore:sk.ignore,extraMul:relicDamageMul(curChar,monStats),attackerCritFallback:5,attackerCritDmgFallback:150,defenderDodgeFallback:1,damageCapPct:monStats.isBoss?.38:.55});
 var dmg=playerAttack.damage;
 var floats=[];
 var ch=Math.min(s.hp,Math.max(curBattle.charHp,curChar.hp||0));
+var statusStart=xt250ApplyStartOfRound({char:curChar,stats:s,playerHp:ch,monsterHp:curBattle.monHp,log:lg,floats:floats,status:battleStatus});ch=statusStart.playerHp;battleStatus=statusStart.status;var statusMonHp=statusStart.monsterHp;if(statusMonHp<=0){playVictory();var statusDrops=curBattle.monster.sectArena?[]:rollDrops(curBattle.monster,curChar),statusExp=curBattle.monster.sectArena?0:relicExpGain(curChar,rewardExp(curBattle.monster)),statusStones=curBattle.monster.sectArena?0:Math.floor(curBattle.monster.stone[0]+Math.random()*(curBattle.monster.stone[1]-curBattle.monster.stone[0]+1)),statusGrid=xt144ResultGrid(curBattle.monster,statusExp,statusStones,statusDrops,true);floats.push(xt144BattleFloat("斬殺！","enemy","finish"));lg.push({m:"勝負已分｜狀態傷害擊敗 "+curBattle.monster.name+"，獲得修為 "+statusExp+"、靈石 "+statusStones+"。",c:"#f5d74b",tag:"crit"});setChar(function(c){var nc=_objectSpread(_objectSpread({},c),{},{bag:curChar.bag,mp:curChar.mp,exp:c.exp+statusExp,stones:c.stones+statusStones,hp:Math.min(stats(c).hp,ch)});if(curBattle.monster.sectArena){nc=applySectArenaResult(nc,true,curBattle.monster);lg.push({m:nc.sectLastArenaMsg,c:"#f5d74b"});}var missed=0,autoSold=0,autoGain=0;statusDrops.forEach(function(d){if(shouldAutoSellItem(nc,d)){var sp=autoSellPrice(d);nc.stones+=sp;autoSold++;autoGain+=sp;var st=xt146DropTier(d);lg.push({m:"自動販售｜"+st.label+"："+d.name+"（"+(d.rank||"凡品")+"） +"+sp+" 靈石",c:"#7ecba1"});return;}var tier=xt146DropTier(d);lg.push({m:"掉落｜"+tier.label+"："+d.name+"（"+(d.rank||"凡品")+"）",c:rankColor[d.rank]||"#ddd",tag:tier.cls||"drop"});var before=nc.bag.length;nc=addItem(nc,d);if(nc.bag.length===before&&!canReceiveItem(nc,d))missed++;});if(autoSold>0)lg.push({m:"自動販售結算｜售出 "+autoSold+" 件，獲得 "+autoGain+" 靈石。",c:"#7ecba1",tag:"heal"});var bagRisk=xt154BagRiskLine(nc,missed);if(bagRisk){lg.push({m:"背包提醒｜"+bagRisk,c:missed>0?"#e07a7a":"#ffcf6e",tag:missed>0?"hurt":"warn"});setNotice(bagRisk);}if(nc.exp>=stageNeedOf(nc)){var chance=breakChance(nc.level);if(Math.random()<chance){nc.level++;nc.exp=0;addLog("戰後氣機牽引，突破成功至 "+(realms[nc.level]||"更高境界")+"。","gold");var ms=stats(nc);nc.hp=ms.hp;nc.mp=ms.mp;}else{nc.exp=Math.floor(stageNeedOf(nc)*.65);addLog("戰後嘗試突破失敗，修為回落，尚需穩固根基。","bad");}}return nc;});setBattle(function(b){return _objectSpread(_objectSpread({},curBattle),{},{monHp:0,log:lg,floatTexts:floats,resultGrid:statusGrid,battleStats:bstats,daoState:daoState,bossState:bossState,battleStatus:battleStatus,done:true,won:true});});return;}curBattle=_objectSpread(_objectSpread({},curBattle),{},{monHp:statusMonHp});
+var bossBefore=xt240ApplyBossBeforePlayer({char:curChar,stats:s,monster:monStats,playerHp:ch,log:lg,floats:floats,bossState:bossState});ch=bossBefore.playerHp;bossState=bossBefore.bossState;if(ch<=0){floats.push(xt144BattleFloat("戰敗","player","finish"));var poisonLoseGrid=xt144ResultGrid(curBattle.monster,0,0,[],false);lg.push({m:"戰敗｜毒傷侵蝕，氣血耗盡。",c:"#e07a7a",tag:"hurt"});setChar(function(c){return _objectSpread(_objectSpread({},c),{},{hp:0,mp:curChar.mp,exp:curBattle.monster.sectArena?c.exp:Math.floor(c.exp*.8)});});setBattle(function(b){return _objectSpread(_objectSpread({},curBattle),{},{charHp:0,log:lg,floatTexts:floats,resultGrid:poisonLoseGrid,battleStats:bstats,bossState:bossState,battleStatus:battleStatus,done:true,won:false});});return;}
 var beforeHit=xt170ApplyDaoBeforeHit({char:curChar,skill:sk,stats:s,monster:monStats,damage:dmg,playerHp:ch,playerAttack:playerAttack,log:lg,floats:floats,daoState:daoState});
 dmg=beforeHit.damage;ch=beforeHit.playerHp;daoState=beforeHit.daoState;
 if(playerAttack.dodged)bstats.monsterDodges++;else{bstats.playerDamage+=dmg;if(playerAttack.crit)bstats.playerCrits++;}
@@ -4274,7 +5072,7 @@ if(playerAttack.dodged)floats.push(xt144BattleFloat("閃避！","enemy","dodge")
 else floats.push(xt144BattleFloat((playerAttack.crit?"暴擊！ -":"-")+dmg,"enemy",playerAttack.crit?"crit":"hit"));
 xt140PushPlayerAttackLog(lg,_objectSpread({name:curChar.name},s),monStats,sk,playerAttack);
 var afterHit=xt170ApplyDaoAfterHit({char:curChar,skill:sk,stats:s,monster:monStats,damage:dmg,playerHp:ch,playerAttack:playerAttack,log:lg,floats:floats,daoState:daoState});
-dmg+=afterHit.extraDamage||0;ch=afterHit.playerHp;daoState=afterHit.daoState;if(afterHit.extraDamage)bstats.playerDamage+=afterHit.extraDamage;
+dmg+=afterHit.extraDamage||0;ch=afterHit.playerHp;daoState=afterHit.daoState;if(afterHit.extraDamage)bstats.playerDamage+=afterHit.extraDamage;if(!playerAttack.dodged){var daoNow=daoMainPath(curChar);if(daoNow==="thunder"){battleStatus=xt250AddStatus(battleStatus,"enemy",{id:"electro",name:"感電",turns:2,power:xt220HasDaoTier(curChar,"thunder",4)?.12:.08,type:"debuff"});lg.push({m:"⚡ 狀態附加｜敵方陷入感電。",c:"#8fd8ff",tag:"cast"});}if(daoNow==="alchemy"&&sk&&sk.id!=="basic"&&Math.random()<.28){battleStatus=xt250AddStatus(battleStatus,"player",{id:"regen",name:"回春",turns:2,power:xt220HasDaoTier(curChar,"alchemy",4)?.045:.03,type:"buff"});lg.push({m:"🌿 狀態附加｜丹修回春。",c:"#7ecba1",tag:"heal"});}if(daoNow==="spirit"&&sk&&sk.id!=="basic"&&Math.random()<.22){battleStatus=xt250AddStatus(battleStatus,"player",{id:"focus",name:"聚靈",turns:2,power:.025,type:"buff"});lg.push({m:"🔷 狀態附加｜靈修聚靈。",c:"#7a9ff5",tag:"cast"});}if(daoNow==="demon"&&ch/(s.hp||1)<.55&&Math.random()<.25){battleStatus=xt250AddStatus(battleStatus,"enemy",{id:"bleed",name:"血咒",turns:2,power:.07,type:"debuff"});lg.push({m:"🩸 狀態附加｜魔修血咒。",c:"#e07a7a",tag:"crit"});}}
 var mh=Math.max(0,curBattle.monHp-dmg);if(sk.heal){
 var h=Math.floor(s.hp*sk.heal);ch=Math.min(s.hp,ch+h);lg.push({m:"回復氣血 "+h+"。",c:"#e07aa0"});}if(sk.leech&&dmg>0){
 var _h=Math.floor(dmg*sk.leech);ch=Math.min(s.hp,ch+_h);lg.push({m:"吸納氣血 "+_h+"。",c:"#e07aa0"});}if(mh<=0){playVictory();
@@ -4287,13 +5085,13 @@ var missed=0,autoSold=0,autoGain=0;drops.forEach(function(d){
  var tier=xt146DropTier(d);lg.push({m:"掉落｜"+tier.label+"："+d.name+"（"+(d.rank||"凡品")+"）",c:rankColor[d.rank]||"#ddd",tag:tier.cls||"drop"});
  var before=nc.bag.length;nc=addItem(nc,d);if(nc.bag.length===before&&!canReceiveItem(nc,d))missed++;});if(autoSold>0)lg.push({m:"自動販售結算｜售出 "+autoSold+" 件，獲得 "+autoGain+" 靈石。",c:"#7ecba1",tag:"heal"});var bagRisk=xt154BagRiskLine(nc,missed);if(bagRisk){lg.push({m:"背包提醒｜"+bagRisk,c:missed>0?"#e07a7a":"#ffcf6e",tag:missed>0?"hurt":"warn"});setNotice(bagRisk);}if(nc.exp>=stageNeedOf(nc)){
 var chance=breakChance(nc.level);if(Math.random()<chance){nc.level++;nc.exp=0;addLog("戰後氣機牽引，突破成功至 "+(realms[nc.level]||"更高境界")+"。","gold");
-var ms=stats(nc);nc.hp=ms.hp;nc.mp=ms.mp;}else{nc.exp=Math.floor(stageNeedOf(nc)*.65);addLog("戰後嘗試突破失敗，修為回落，尚需穩固根基。","bad");}}return nc;});setBattle(function(b){return _objectSpread(_objectSpread({},curBattle),{},{monHp:0,log:lg,floatTexts:floats,resultGrid:resultGrid,battleStats:bstats,daoState:daoState,done:true,won:true});});return;}if(!(sk.stun&&Math.random()<sk.stun)){playMonster(curBattle.monster);
-var monsterAttack=xt140RollCombatHit(monStats,s,{mul:1,extraMul:relicTakenMul(curChar),attackerCritFallback:2,attackerCritDmgFallback:135,defenderDodgeFallback:3,damageCapPct:.42});
+var ms=stats(nc);nc.hp=ms.hp;nc.mp=ms.mp;}else{nc.exp=Math.floor(stageNeedOf(nc)*.65);addLog("戰後嘗試突破失敗，修為回落，尚需穩固根基。","bad");}}return nc;});setBattle(function(b){return _objectSpread(_objectSpread({},curBattle),{},{monHp:0,log:lg,floatTexts:floats,resultGrid:resultGrid,battleStats:bstats,daoState:daoState,bossState:bossState,battleStatus:battleStatus,done:true,won:true});});return;}if(!(sk.stun&&Math.random()<sk.stun)){playMonster(curBattle.monster);
+var playerDefStats=_objectSpread({},s);if(bossState.armorBreak>0){playerDefStats.def=Math.max(0,Math.floor((playerDefStats.def||0)*.72));bossState.armorBreak=Math.max(0,bossState.armorBreak-1);lg.push({m:"🩸 破防殘效｜防禦降低，本回合剩餘 "+bossState.armorBreak+" 回合。",c:"#e07a7a",tag:"hurt"});}var monsterAttack=xt140RollCombatHit(monStats,playerDefStats,{mul:1,extraMul:relicTakenMul(curChar),attackerCritFallback:2,attackerCritDmgFallback:135,defenderDodgeFallback:3,damageCapPct:.42});
 if(monsterAttack.dodged)bstats.playerDodges++;else{bstats.monsterDamage+=monsterAttack.damage;if(monsterAttack.crit)bstats.monsterCrits++;}
 if(monsterAttack.dodged)floats.push(xt144BattleFloat("閃避！","player","dodge"));
 else floats.push(xt144BattleFloat((monsterAttack.crit?"暴擊！ -":"-")+monsterAttack.damage,"player",monsterAttack.crit?"crit":"hurt"));
-ch=Math.max(0,ch-monsterAttack.damage);xt140PushMonsterAttackLog(lg,monStats,_objectSpread({name:curChar.name},s),monsterAttack);var afterTaken=xt170ApplyDaoAfterTaken({char:curChar,stats:s,monster:monStats,monsterHp:mh,taken:monsterAttack.damage,playerHp:ch,log:lg,floats:floats,daoState:daoState});ch=afterTaken.playerHp;daoState=afterTaken.daoState;if(afterTaken.reflectDamage){mh=Math.max(0,mh-afterTaken.reflectDamage);bstats.playerDamage+=afterTaken.reflectDamage;}}else{floats.push(xt144BattleFloat("震懾！","enemy","dodge"));lg.push({m:curBattle.monster.name+" 被招式震懾，本回合無法反擊。",c:"#8fd8ff"});}
-if(ch<=0){floats.push(xt144BattleFloat("戰敗","player","finish"));var loseGrid=xt144ResultGrid(curBattle.monster,0,0,[],false);lg.push(xt142LogTagLine("勝負已分："+curChar.name+" 戰敗，修為損失。","hurt","#e07a7a"));setChar(function(c){var nc=_objectSpread(_objectSpread({},c),{},{bag:curChar.bag,mp:curChar.mp,hp:0,exp:curBattle.monster.sectArena?c.exp:Math.floor(c.exp*.8)});if(curBattle.monster.sectArena){nc=applySectArenaResult(nc,false,curBattle.monster);lg.push({m:nc.sectLastArenaMsg,c:"#f5d74b"});}return nc;});setBattle(function(b){return _objectSpread(_objectSpread({},curBattle),{},{charHp:0,monHp:mh,log:lg,floatTexts:floats,resultGrid:loseGrid,battleStats:bstats,daoState:daoState,done:true,won:false});});return;}setChar(function(c){return _objectSpread(_objectSpread({},c),{},{bag:curChar.bag,mp:curChar.mp,hp:Math.min(stats(c).hp,ch)});});setBattle(function(b){return _objectSpread(_objectSpread({},curBattle),{},{charHp:ch,monHp:mh,log:lg,floatTexts:floats,resultGrid:null,battleStats:bstats,daoState:daoState,round:battleRound+1});});}
+ch=Math.max(0,ch-monsterAttack.damage);xt140PushMonsterAttackLog(lg,monStats,_objectSpread({name:curChar.name},s),monsterAttack);var afterTaken=xt170ApplyDaoAfterTaken({char:curChar,stats:s,monster:monStats,monsterHp:mh,taken:monsterAttack.damage,playerHp:ch,log:lg,floats:floats,daoState:daoState});ch=afterTaken.playerHp;daoState=afterTaken.daoState;if(afterTaken.reflectDamage){mh=Math.max(0,mh-afterTaken.reflectDamage);bstats.playerDamage+=afterTaken.reflectDamage;}var bossSkill=xt240ApplyBossSkill({char:curChar,stats:s,monster:monStats,monsterHp:mh,playerHp:ch,log:lg,floats:floats,bossState:bossState});ch=bossSkill.playerHp;bossState=bossSkill.bossState;if(bossSkill.mpDelta){curChar=_objectSpread(_objectSpread({},curChar),{},{mp:Math.max(0,(curChar.mp||0)+bossSkill.mpDelta)});}if(bossSkill.extraTaken)bstats.monsterDamage=(bstats.monsterDamage||0)+bossSkill.extraTaken;}else{floats.push(xt144BattleFloat("震懾！","enemy","dodge"));lg.push({m:curBattle.monster.name+" 被招式震懾，本回合無法反擊。",c:"#8fd8ff"});}
+if(ch<=0){floats.push(xt144BattleFloat("戰敗","player","finish"));var loseGrid=xt144ResultGrid(curBattle.monster,0,0,[],false);lg.push(xt142LogTagLine("勝負已分："+curChar.name+" 戰敗，修為損失。","hurt","#e07a7a"));setChar(function(c){var nc=_objectSpread(_objectSpread({},c),{},{bag:curChar.bag,mp:curChar.mp,hp:0,exp:curBattle.monster.sectArena?c.exp:Math.floor(c.exp*.8)});if(curBattle.monster.sectArena){nc=applySectArenaResult(nc,false,curBattle.monster);lg.push({m:nc.sectLastArenaMsg,c:"#f5d74b"});}return nc;});setBattle(function(b){return _objectSpread(_objectSpread({},curBattle),{},{charHp:0,monHp:mh,log:lg,floatTexts:floats,resultGrid:loseGrid,battleStats:bstats,daoState:daoState,bossState:bossState,battleStatus:battleStatus,done:true,won:false});});return;}setChar(function(c){return _objectSpread(_objectSpread({},c),{},{bag:curChar.bag,mp:curChar.mp,hp:Math.min(stats(c).hp,ch)});});setBattle(function(b){return _objectSpread(_objectSpread({},curBattle),{},{charHp:ch,monHp:mh,log:lg,floatTexts:floats,resultGrid:null,battleStats:bstats,daoState:daoState,bossState:bossState,battleStatus:battleStatus,round:battleRound+1});});}
 useEffect(function(){if(!battle||battle.done||!battle.auto)return;
 var t=setTimeout(function(){
 var sk=availableSkills(_char).find(function(x){return x.id===battle.skillId;})||skills.basic;useSkill((_char.mp||0)>=sk.mp?sk:skills.basic);},800);return function(){return clearTimeout(t);};},[battle,_char]);useEffect(function(){if(!battle||!battle.done||!battle.won||!battle.auto)return;
@@ -4350,7 +5148,8 @@ function Status(_ref2){
 var log=_ref2.log,_charS=_ref2["char"],setChar=_ref2.setChar,st=stats(_charS),need=stageNeedOf(_charS),art=arts.find(function(a){return a.id===_charS.art;}),guild=guilds.find(function(g){return g.id===_charS.guild;}),hpPct=Math.min(100,Math.round(((_charS.hp||0)/st.hp)*100)),mpPct=Math.min(100,Math.round(((_charS.mp||0)/st.mp)*100)),expPct=Math.min(100,Math.round(((_charS.exp||0)/need)*100)),realm=realms[_charS.level]||"大道境",rootName=spiritRootOf(_charS).name,power=st.atk*12+st.def*10+st.hp*2+st.mp*3+(_charS.level||0)*520+Math.floor((_charS.stones||0)/20),bagCount=(_charS.bag||[]).length,cleanLog=(log||[]).filter(function(l){return !(l&&typeof l.m==="string"&&l.m.indexOf("自動服用")>=0);}).slice(-8).reverse();
 function meter(label,val,pct,cls){return React.createElement("div",{className:"statusMeterCard"},React.createElement("div",{className:"statusMeterTop"},React.createElement("span",null,label),React.createElement("b",null,val)),React.createElement("div",{className:"statusMeterTrack"},React.createElement("div",{className:"statusMeterFill "+cls,style:{width:pct+"%"}})));}
 function stat(label,val){return React.createElement("div",{className:"statusStatV7"},React.createElement("small",null,label),React.createElement("b",null,val));}
-return React.createElement("div",{className:"page statusPage"},React.createElement("div",{className:"statusHeroV7"},React.createElement("div",{className:"statusPortraitV7"},React.createElement("img",{src:_charS.gender==="女修"?FEMALE_PORTRAIT:MALE_PORTRAIT,alt:_charS.gender+"頭像"})),React.createElement("div",null,React.createElement("div",{className:"statusNameRow"},React.createElement("h2",null,_charS.name),React.createElement("span",{className:"realmBadgeV7"},realm)),React.createElement("div",{className:"powerV7"},React.createElement("small",null,"戰力"),React.createElement("b",null,fmt(power))),React.createElement("div",{className:"statusMetaV7"},React.createElement("span",null,"性別：",_charS.gender),React.createElement("span",null,"靈根：",rootName),React.createElement("span",null,"大道：",xt170DaoPassiveLabel(_charS)),React.createElement("span",{title:xt170DaoPassiveDesc(_charS)},"被動：",xt170DaoPassiveDesc(_charS)),React.createElement("span",null,"宗門：",guild?guild.name:"未加入"),React.createElement("span",null,"主修：",art?art.name:"未修習"),React.createElement("span",null,"破境率：",Math.round(breakChance(_charS.level)*100),"%")))),React.createElement("div",{className:"statusProgressGrid"},meter("修為",fmt(_charS.exp)+" / "+fmt(need),expPct,"exp"),meter("氣血",(_charS.hp||0)+" / "+st.hp,hpPct,"hp"),meter("靈力",(_charS.mp||0)+" / "+st.mp,mpPct,"mp")),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"基礎戰鬥屬性"),React.createElement("span",null,"裝備、功法、境界會即時影響")),React.createElement("div",{className:"statusStatGridV7"},stat("⚔ 攻擊",st.atk),stat("🛡 防禦",st.def),stat("❤️ 最大氣血",st.hp),stat("🔷 最大靈力",st.mp),stat("🎯 暴擊率",st.critRate+"% / "+st.critRateCap+"%"),stat("💥 暴擊傷害",st.critDmg+"% / "+st.critDmgCap+"%"),stat("🌀 閃避率",st.dodge+"%"))),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"最近成長紀錄"),React.createElement("span",null,"已隱藏自動服藥洗版訊息")),React.createElement("div",{className:"statusTimelineV7"},cleanLog.map(function(l){return React.createElement("div",{key:l.id,className:l.t},l.m);}),!cleanLog.length&&React.createElement("p",{className:"muted"},"尚無紀錄。"))));}
+function resonancePanel(){var r=st.resonance||xt210DaoResonance(_charS);return React.createElement("div",{className:"daoResonancePanel"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"大道共鳴"),React.createElement("span",null,"穿戴同大道詞綴裝備可觸發")),React.createElement("div",{className:"daoResonanceList"},r.active&&r.active.length?r.active.map(function(x,i){return React.createElement("div",{key:i,className:"daoResonanceChip"},xt210DaoName(x.dao)," · ",x.tier," 件共鳴");}):React.createElement("div",{className:"muted"},"尚未形成大道共鳴")));}
+return React.createElement("div",{className:"page statusPage"},React.createElement("div",{className:"statusHeroV7"},React.createElement("div",{className:"statusPortraitV7"},React.createElement("img",{src:_charS.gender==="女修"?FEMALE_PORTRAIT:MALE_PORTRAIT,alt:_charS.gender+"頭像"})),React.createElement("div",null,React.createElement("div",{className:"statusNameRow"},React.createElement("h2",null,_charS.name),React.createElement("span",{className:"realmBadgeV7"},realm)),React.createElement("div",{className:"powerV7"},React.createElement("small",null,"戰力"),React.createElement("b",null,fmt(power))),React.createElement("div",{className:"statusMetaV7"},React.createElement("span",null,"性別：",_charS.gender),React.createElement("span",null,"靈根：",rootName),React.createElement("span",null,"大道：",xt170DaoPassiveLabel(_charS)),React.createElement("span",{title:xt170DaoPassiveDesc(_charS)},"被動：",xt170DaoPassiveDesc(_charS)),React.createElement("span",null,"宗門：",guild?guild.name:"未加入"),React.createElement("span",null,"主修：",art?art.name:"未修習")))),React.createElement("div",{className:"statusProgressGrid"},meter("修為",fmt(_charS.exp)+" / "+fmt(need),expPct,"exp"),meter("氣血",(_charS.hp||0)+" / "+st.hp,hpPct,"hp"),meter("靈力",(_charS.mp||0)+" / "+st.mp,mpPct,"mp")),resonancePanel(),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"基礎戰鬥屬性"),React.createElement("span",null,"裝備、功法、境界會即時影響")),React.createElement("div",{className:"statusStatGridV7"},stat("⚔ 攻擊",st.atk),stat("🛡 防禦",st.def),stat("❤️ 最大氣血",st.hp),stat("🔷 最大靈力",st.mp),stat("🎯 暴擊率",st.critRate+"% / "+st.critRateCap+"%"),stat("💥 暴擊傷害",st.critDmg+"% / "+st.critDmgCap+"%"),stat("🌀 閃避率",st.dodge+"%"))),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"最近成長紀錄"),React.createElement("span",null,"已隱藏自動服藥洗版訊息")),React.createElement("div",{className:"statusTimelineV7"},cleanLog.map(function(l){return React.createElement("div",{key:l.id,className:l.t},l.m);}),!cleanLog.length&&React.createElement("p",{className:"muted"},"尚無紀錄。"))));}
 function AutoPotion(_refA){var c=_refA["char"],setChar=_refA.setChar,cfg=normalizeAutoPotion(c.autoPotion),hpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.hp;}),mpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.mp;});function upd(kind,key,val){setChar(function(ch){var ap=normalizeAutoPotion(ch.autoPotion);ap[kind]=_objectSpread(_objectSpread({},ap[kind]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},ch),{},{autoPotion:ap});});}function row(kind,label,items){var st=cfg[kind];return React.createElement("div",{className:"card autoBox"},React.createElement("div",{className:"row"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return upd(kind,"enabled",e.target.checked);}})," ",label,"自動吃藥"),React.createElement("span",{className:"muted"},"低於"),React.createElement("input",{type:"number",min:"1",max:"99",placeholder:"30",value:st.pct,onChange:function onChange(e){var v=e.target.value;return upd(kind,"pct",v===""?"":Math.max(1,Math.min(99,parseInt(v,10)||1)));},onBlur:function onBlur(e){if(e.target.value==="")upd(kind,"pct",30);}}),React.createElement("span",null,"%"),React.createElement("select",{value:st.itemName,onChange:function onChange(e){return upd(kind,"itemName",e.target.value);}},React.createElement("option",{value:""},"自動選擇"),items.map(function(i){return React.createElement("option",{key:i.uid,value:i.name},i.name," x",i.qty||1);}))));}return React.createElement("div",null,React.createElement("h3",null,"自動服用丹藥"),React.createElement("p",{className:"muted"},"可分別設定氣血與靈力低於指定百分比時，自動使用指定丹藥；未指定時會自動選擇可用丹藥。"),row("hp","氣血",hpItems),row("mp","靈力",mpItems));}
 /* ===== Module 13：UI 彈窗 - 掛機設定 / Idle Settings Modal ===== */
 function IdleSettingsModal(_refIdle){var c=_refIdle["char"],setChar=_refIdle.setChar,onClose=_refIdle.onClose,cfg=normalizeAutoPotion(c.autoPotion),sellCfg=normalizeAutoSell(c.autoSell),hpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.hp;}),mpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.mp;});var _useStateLocal=useState({autoPotion:cfg,autoSell:sellCfg}),_useStateLocal2=_slicedToArray(_useStateLocal,2),local=_useStateLocal2[0],setLocal=_useStateLocal2[1];function setPotion(kind,key,val){setLocal(function(x){var ap=normalizeAutoPotion(x.autoPotion);ap[kind]=_objectSpread(_objectSpread({},ap[kind]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoPotion:ap});});}function setSellGroup(g,key,val){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g]=_objectSpread(_objectSpread({},as[g]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function setSellOption(g,key,val){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g].options=as[g].options||{};as[g].options[key]=val;return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function toggleRank(g,r){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g].ranks[r]=!as[g].ranks[r];return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function save(){setChar(function(ch){return _objectSpread(_objectSpread({},ch),{},{autoPotion:normalizeAutoPotion(local.autoPotion),autoSell:normalizeAutoSell(local.autoSell)});});onClose();}function potionRow(kind,label,items){var st=local.autoPotion[kind];return React.createElement("div",{className:"idleRow"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setPotion(kind,"enabled",e.target.checked);}})," ",label),React.createElement("span",{className:"muted"},"低於"),React.createElement("input",{type:"number",min:"1",max:"99",value:st.pct,onChange:function onChange(e){var v=e.target.value;return setPotion(kind,"pct",v===""?"":Math.max(1,Math.min(99,parseInt(v,10)||1)));},onBlur:function onBlur(e){if(e.target.value==="")setPotion(kind,"pct",30);}}),React.createElement("span",null,"%"),React.createElement("select",{value:st.itemName,onChange:function onChange(e){return setPotion(kind,"itemName",e.target.value);}},React.createElement("option",{value:""},"自動選擇"),items.map(function(i){return React.createElement("option",{key:i.uid,value:i.name},i.name," x",i.qty||1);})));}function sellSection(g,title,desc){var st=local.autoSell[g];return React.createElement("div",{className:"idleSection"},React.createElement("div",{className:"idleRow"},React.createElement("h4",{className:"grow"},title),React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setSellGroup(g,"enabled",e.target.checked);}})," 啟用")),React.createElement("p",{className:"muted"},desc),React.createElement("div",{className:"idleChecks"},autoSellRanks.map(function(r){return React.createElement("label",{key:g+r,className:"idleCheck",style:{color:rankColor[r]}},React.createElement("input",{type:"checkbox",checked:!!st.ranks[r],onChange:function onChange(){return toggleRank(g,r);}}),r);})),g==="equip"&&React.createElement("div",{className:"idleChecks"},React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeSet!==false,onChange:function onChange(e){return setSellOption(g,"excludeSet",e.target.checked);}}),"排除套裝"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeMutation!==false,onChange:function onChange(e){return setSellOption(g,"excludeMutation",e.target.checked);}}),"排除異變"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeBoss!==false,onChange:function onChange(e){return setSellOption(g,"excludeBoss",e.target.checked);}}),"排除 Boss 裝"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeProtected!==false,onChange:function onChange(e){return setSellOption(g,"excludeProtected",e.target.checked);}}),"排除鎖定裝")));}return React.createElement("div",{className:"modal"},React.createElement("div",{className:"idleModalBox"},React.createElement("div",{className:"idleHead"},React.createElement("div",null,React.createElement("h3",null,"掛機設定"),React.createElement("p",{className:"muted"},"自動喝水與自動販售統一在這裡設定，確認後會保存到角色存檔。"),React.createElement("div",{className:"idleHintBar"},React.createElement("span",null,"預設喝藥 30%"),React.createElement("span",null,"自動販售預設關"),React.createElement("span",null,"背包滿會提醒"),React.createElement("span",null,"手動鎖定安全排除"))),React.createElement("button",{className:"btn",onClick:onClose},"關閉")),React.createElement("div",{className:"idleScroll"},React.createElement("div",{className:"idleSection"},React.createElement("h4",null,"自動補給"),React.createElement("p",{className:"muted idleWarnText"},"掛機戰鬥中若氣血或靈力低於設定比例，會自動服用丹藥，並在戰鬥訊息顯示補給原因。"),React.createElement("div",{className:"idleRows"},potionRow("hp","自動喝血藥",hpItems),potionRow("mp","自動喝靈力藥",mpItems))),sellSection("equip","自動販售裝備","依品階自動賣出戰鬥掉落裝備；鎖定裝永不自動販售；套裝、異變與 Boss 裝可依規則排除；新掉落不會自動鎖定。"),sellSection("item","自動販售物品","依品階自動賣出丹藥、材料與一般物品掉落。"),sellSection("art","自動販售功法","功法預設不自動賣，避免誤賣高階玉簡；玩家可自行勾選品階。"),React.createElement("p",{className:"muted idleWarnText"},"提醒：自動販售維持關閉時，長時間掛機可能讓背包快速滿格；系統會在戰鬥結算時提示剩餘空位。")),React.createElement("div",{className:"idleFoot"},React.createElement("button",{className:"btn",onClick:onClose},"取消"),React.createElement("button",{className:"btn sel",onClick:save},"確認保存"))));}
@@ -4389,16 +5188,16 @@ var s=stats(_char2),skList=availableSkills(_char2),sel=skList.find(function(x){r
 var mon=battle.monster||{},field=mon.sectArena?"宗門比武":(mon.dungeon?"副本挑戰":((battle.base&&battle.base.name)||"野外遭遇"));
 var playerHpPct=clampPct(s.hp?battle.charHp/s.hp*100:0),playerMpPct=clampPct(s.mp?(_char2.mp||0)/s.mp*100:0),monHpPct=clampPct(mon.hp?battle.monHp/mon.hp*100:0);
 var recentLogs=(battle.log||[]).slice(-10),canRebattle=battle.done&&battle.won&&!mon.sectArena,resultTitle=battle.done?(battle.won?"戰鬥勝利":"戰鬥失敗"):"";
-var floatTexts=(battle.floatTexts||[]).slice(-6),resultGrid=battle.resultGrid||null,battleSummary=xt149BattleStatsSummary(battle.battleStats,battle.won),playerTags=xt144BattleStatTags(s,false),enemyTags=xt144BattleStatTags(mon,true);
+var floatTexts=(battle.floatTexts||[]).slice(-6),resultGrid=battle.resultGrid||null,battleSummary=xt149BattleStatsSummary(battle.battleStats,battle.won),playerTags=xt144BattleStatTags(s,false),enemyTags=xt144BattleStatTags(mon,true),battleStatusText=(function(st){try{st=st&&typeof st==="object"?st:{buffs:[],debuffs:[]};var buffs=Array.isArray(st.buffs)?st.buffs:[],debuffs=Array.isArray(st.debuffs)?st.debuffs:[],arr=[];buffs.forEach(function(x){if(x&&x.name)arr.push("我方："+x.name+"("+Math.max(0,Math.floor(Number(x.turns)||0))+")");});debuffs.forEach(function(x){if(x&&x.name)arr.push("敵方："+x.name+"("+Math.max(0,Math.floor(Number(x.turns)||0))+")");});return arr.join("、");}catch(e){return "";}})(battle&&battle.battleStatus),battleStatusBadges=(function(st){try{st=st&&typeof st==="object"?st:{buffs:[],debuffs:[]};var buffs=Array.isArray(st.buffs)?st.buffs:[],debuffs=Array.isArray(st.debuffs)?st.debuffs:[],arr=[];buffs.forEach(function(x){if(x&&x.name)arr.push({side:"我方",name:x.name,turns:Math.max(0,Math.floor(Number(x.turns)||0)),kind:"buff"});});debuffs.forEach(function(x){if(x&&x.name)arr.push({side:"敵方",name:x.name,turns:Math.max(0,Math.floor(Number(x.turns)||0)),kind:"debuff"});});return arr;}catch(e){return [];}})(battle&&battle.battleStatus),bossSkillHints=(function(mon){try{if(!mon||!mon.isBoss)return [];var n=String(mon.name||""),arr=[];if(/蛇|毒|蟾|蠍|蛛/.test(n))arr.push("毒傷");if(/骨|鬼|魔|妖|煞/.test(n))arr.push("破防");if(/龍|蛟|熊|王|將/.test(n))arr.push("重擊");if(/靈|雷|星|玄|海/.test(n))arr.push("靈力灼燒");if(!arr.length)arr=["重擊","破防","靈力灼燒","毒傷"];arr.push("低血狂暴");return Array.from(new Set(arr)).slice(0,4);}catch(e){return [];}})(mon),playerStatusIcons=battleStatusBadges.filter(function(x){return x.side==="我方";}),enemyStatusIcons=battleStatusBadges.filter(function(x){return x.side==="敵方";});
 function meter(label,cur,max,cls){return React.createElement("div",{className:"battleMeter "+(cls||"")},React.createElement("div",{className:"battleMeterTop"},React.createElement("span",null,label),React.createElement("b",null,fmt(Math.max(0,Math.floor(cur||0)))," / ",fmt(Math.max(1,Math.floor(max||1))))),React.createElement("div",{className:"battleMeterBar"},React.createElement("div",{className:"battleMeterFill",style:{width:clampPct(max?cur/max*100:0)+"%"}})));}
 return React.createElement("div",{className:"arena battleStage"},
 React.createElement("div",{className:"battleHeader"},React.createElement("div",null,React.createElement("b",null,field," · 戰鬥中"),React.createElement("div",{className:"muted"},mon.isBoss?"王級目標":(mon.type||"修仙對戰"))),React.createElement("span",{className:"battlePill"},battle.auto?"自動戰鬥":"手動操作")),
 React.createElement("div",{className:"battleBoard"},React.createElement("div",{className:"battleFloatLayer"},floatTexts.map(function(f){return React.createElement("div",{key:f.id||f.text,className:"battleFloatText "+(f.side||"")+" "+(f.tag||"")},f.text);})),
-React.createElement("div",{className:"battleCard playerCard"},React.createElement("div",{className:"battleNameRow"},React.createElement("b",null,_char2.name),React.createElement("span",{className:"battleRealm"},_char2.gender," · ",realms[_char2.level]||"大道境")),React.createElement("div",{className:"battlePortraitWrap"},React.createElement("img",{className:"battlePortraitBig",src:_char2.gender==="女修"?FEMALE_PORTRAIT:MALE_PORTRAIT,alt:_char2.gender+"戰鬥頭像"})),meter("氣血",battle.charHp,s.hp,"hp"),meter("靈力",_char2.mp||0,s.mp,"mp"),React.createElement("div",{className:"battleSmallInfo"},"功法：",(arts.find(function(a){return a.id===_char2.art;})||{}).name||"未修習"),React.createElement("div",{className:"battleSmallInfo",title:xt170DaoPassiveDesc(_char2)},"大道：",xt170DaoPassiveLabel(_char2)),React.createElement("div",{className:"battleStatTags"},playerTags.map(function(t){return React.createElement("span",{key:t},t);}))),
+React.createElement("div",{className:"battleCard playerCard"},React.createElement("div",{className:"battleNameRow"},React.createElement("b",null,_char2.name),React.createElement("span",{className:"battleRealm"},_char2.gender," · ",realms[_char2.level]||"大道境")),React.createElement("div",{className:"battlePortraitWrap"},React.createElement("img",{className:"battlePortraitBig",src:_char2.gender==="女修"?FEMALE_PORTRAIT:MALE_PORTRAIT,alt:_char2.gender+"戰鬥頭像"})),meter("氣血",battle.charHp,s.hp,"hp"),meter("靈力",_char2.mp||0,s.mp,"mp"),React.createElement("div",{className:"battleSmallInfo"},"功法：",(arts.find(function(a){return a.id===_char2.art;})||{}).name||"未修習"),React.createElement("div",{className:"battleSmallInfo",title:xt170DaoPassiveDesc(_char2)},"大道：",xt170DaoPassiveLabel(_char2)),React.createElement("div",{className:"battleBuffIconRow player"},playerStatusIcons.length?playerStatusIcons.map(function(x,i){var ico=x.name==="回春"?"🌿":x.name==="聚靈"?"🔷":"✨";return React.createElement("span",{key:x.name+i,className:"battleBuffIcon buff",title:x.side+" · "+x.name+" 剩餘 "+x.turns+" 回合"},ico," ",x.name,React.createElement("b",null,x.turns));}):React.createElement("span",{className:"battleBuffIcon empty"},"無狀態")),React.createElement("div",{className:"battleStatTags"},playerTags.map(function(t){return React.createElement("span",{key:t},t);}))),
 React.createElement("div",{className:"battleVs"},"VS"),
-React.createElement("div",{className:"battleCard enemyCard"},React.createElement("div",{className:"battleNameRow"},React.createElement("b",{className:mon.isBoss?"bad":""},mon.name||"未知敵人"),React.createElement("span",{className:"battleRealm"},realms[mon.req]||mon.type||"高階")),React.createElement("div",{className:"battleEnemyIcon"},mon.emoji||"👹"),meter("氣血",battle.monHp,mon.hp,"hp enemy"),React.createElement("div",{className:"battleSmallInfo"},"類型：",mon.type||"未知",mon.isBoss?" ｜ 王級怪物":""),React.createElement("div",{className:"battleStatTags"},enemyTags.map(function(t){return React.createElement("span",{key:t},t);})))),
+React.createElement("div",{className:"battleCard enemyCard"},React.createElement("div",{className:"battleNameRow"},React.createElement("b",{className:mon.isBoss?"bad":""},mon.name||"未知敵人"),React.createElement("span",{className:"battleRealm"},realms[mon.req]||mon.type||"高階")),React.createElement("div",{className:"battleEnemyIcon"},mon.emoji||"👹"),meter("氣血",battle.monHp,mon.hp,"hp enemy"),React.createElement("div",{className:"battleSmallInfo"},"類型：",mon.type||"未知",mon.isBoss?" ｜ 王級怪物":""),mon.isBoss&&bossSkillHints.length>0&&React.createElement("div",{className:"bossSkillHintBar"},React.createElement("span",{className:"hintTitle"},"Boss 技能"),bossSkillHints.map(function(x){return React.createElement("span",{key:x,className:"bossSkillHint"},x);})),React.createElement("div",{className:"battleBuffIconRow enemy"},enemyStatusIcons.length?enemyStatusIcons.map(function(x,i){var ico=x.name==="感電"?"⚡":x.name==="血咒"?"🩸":x.name==="中毒"?"☠️":x.name==="破防"?"🛡️":"✦";return React.createElement("span",{key:x.name+i,className:"battleBuffIcon debuff",title:x.side+" · "+x.name+" 剩餘 "+x.turns+" 回合"},ico," ",x.name,React.createElement("b",null,x.turns));}):React.createElement("span",{className:"battleBuffIcon empty"},"無狀態")),React.createElement("div",{className:"battleStatTags"},enemyTags.map(function(t){return React.createElement("span",{key:t},t);})))),
 React.createElement("div",{className:"battleActions"},React.createElement("div",{className:"battleSkillList"},skList.map(function(sk){return React.createElement("button",{className:"btn battleSkill "+(sel.id===sk.id?"sel":""),title:sk.desc,disabled:battle.done||_char2.mp<sk.mp,key:sk.id,onClick:function onClick(){return setBattle(function(b){return _objectSpread(_objectSpread({},b),{},{skillId:sk.id});});}},React.createElement("b",null,sk.name),React.createElement("small",null,"消耗 ",sk.mp));})),React.createElement("div",{className:"battleMainBtns"},React.createElement("button",{className:"btn",disabled:battle.done||_char2.mp<sel.mp,onClick:function onClick(){return useSkill(sel);}},"施展功法"),React.createElement("button",{className:"btn",disabled:battle.done&&!battle.won,onClick:function onClick(){return setBattle(function(b){return _objectSpread(_objectSpread({},b),{},{auto:!b.auto});});}},battle.auto?"停止自動":"自動戰鬥"),canRebattle&&React.createElement("button",{className:"btn",onClick:function onClick(){return start(battle.base||battle.monster,false,battle.skillId);}},"再戰一次"),React.createElement("button",{className:"btn",onClick:function onClick(){return setBattle(null);}},battle.done?"返回世界":"逃離戰鬥")),React.createElement("div",{className:"battleDesc muted"},"招式說明：",sel.desc)),
-React.createElement("div",{className:"battleLogPanel",ref:bref},React.createElement("div",{className:"battleLogTitle"},battle.done?resultTitle:"戰鬥訊息"),battle.done&&React.createElement("div",{className:"battleResult "+(battle.won?"win":"lose")},battle.won?(mon.isBoss?"王級目標已斬殺，戰利品已結算。":"勝利結算完成，收益已加入角色資料。"):"戰敗後已結算損失，請恢復氣血再戰。"),resultGrid&&React.createElement("div",{className:"battleResultGrid"},resultGrid.map(function(x){return React.createElement("span",{key:x.k,className:x.cls||""},React.createElement("small",null,x.k),React.createElement("br",null),React.createElement("b",null,x.v));})),battle.done&&devBattleAnalysis&&React.createElement("div",{className:"battleSummaryBox"},React.createElement("div",{className:"battleSummaryTitle"},React.createElement("span",null,"📊 本戰摘要"),React.createElement("small",null,"用於檢查戰鬥節奏")),React.createElement("div",{className:"battleSummaryGrid"},battleSummary.map(function(x){return React.createElement("span",{key:x.k,className:x.cls||""},React.createElement("small",null,x.k),React.createElement("b",null,x.v));}))),recentLogs.map(function(l,i){var txt=l&&l.m?l.m:String(l||"");var cls=l&&l.tag?l.tag:(txt.indexOf("掉落")>=0?"drop":(txt.indexOf("恢復")>=0||txt.indexOf("服用")>=0?"heal":(txt.indexOf("暴擊")>=0?"crit":(txt.indexOf("閃避")>=0||txt.indexOf("避開")>=0?"dodge":(txt.indexOf("反擊")>=0||txt.indexOf("戰敗")>=0?"hurt":"")))));return React.createElement("div",{key:i,className:"battleLogLine "+cls,style:{color:l&&l.c?l.c:null}},txt);}),!recentLogs.length&&React.createElement("span",{className:"muted"},"準備就緒。")));}
+React.createElement("div",{className:"battleLogPanel",ref:bref},React.createElement("div",{className:"battleLogTitle"},battle.done?resultTitle:"戰鬥訊息"),battle.done&&React.createElement("div",{className:"battleResult "+(battle.won?"win":"lose")},battle.won?(mon.isBoss?"王級目標已斬殺，戰利品已結算。":"勝利結算完成，收益已加入角色資料。"):"戰敗後已結算損失，請恢復氣血再戰。"),battleStatusBadges.length>0&&React.createElement("div",{className:"battleStatusBadgeRow"},battleStatusBadges.map(function(x,i){return React.createElement("span",{key:x.side+x.name+i,className:"battleStatusBadge "+x.kind},x.side," · ",x.name," ",x.turns); })),battleStatusText&&React.createElement("div",{className:"battleStatusBar compact"},battleStatusText),resultGrid&&React.createElement("div",{className:"battleResultGrid"},resultGrid.map(function(x){return React.createElement("span",{key:x.k,className:x.cls||""},React.createElement("small",null,x.k),React.createElement("br",null),React.createElement("b",null,x.v));})),battle.done&&devBattleAnalysis&&React.createElement("div",{className:"battleSummaryBox"},React.createElement("div",{className:"battleSummaryTitle"},React.createElement("span",null,"📊 本戰摘要"),React.createElement("small",null,"用於檢查戰鬥節奏")),React.createElement("div",{className:"battleSummaryGrid"},battleSummary.map(function(x){return React.createElement("span",{key:x.k,className:x.cls||""},React.createElement("small",null,x.k),React.createElement("b",null,x.v));}))),recentLogs.map(function(l,i){var txt=l&&l.m?l.m:String(l||"");var cls=l&&l.tag?l.tag:(txt.indexOf("掉落")>=0?"drop":(txt.indexOf("恢復")>=0||txt.indexOf("服用")>=0?"heal":(txt.indexOf("暴擊")>=0?"crit":(txt.indexOf("閃避")>=0||txt.indexOf("避開")>=0?"dodge":(txt.indexOf("反擊")>=0||txt.indexOf("戰敗")>=0?"hurt":"")))));return React.createElement("div",{key:i,className:"battleLogLine "+cls,style:{color:l&&l.c?l.c:null}},txt);}),!recentLogs.length&&React.createElement("span",{className:"muted"},"準備就緒。")));}
 function Hp(_ref4){
 var hp=_ref4.hp,max=_ref4.max;return React.createElement("div",null,React.createElement("div",{className:"bar"},React.createElement("div",{className:"fill",style:{width:clampPct(max?hp/max*100:0)+'%',background:'#e07aa0'}})),React.createElement("small",null,hp,"/",max));}
 function SellControl(_refSell){var item=_refSell.item,sell=_refSell.sell,max=item.qty||1,_useStateSell=useState(String(max)),_useStateSell2=_slicedToArray(_useStateSell,2),qty=_useStateSell2[0],setQty=_useStateSell2[1];var n=Math.max(1,Math.min(max,Math.floor(+qty||1)));return React.createElement("div",{className:"sellCtrl"},max>1&&React.createElement("input",{type:"number",min:"1",max:max,value:qty,onChange:function onChange(e){return setQty(e.target.value);},onBlur:function onBlur(e){if(e.target.value==="")setQty("1");}}),React.createElement("button",{className:"btn",onClick:function onClick(){return sell(item.uid,n);}},max>1?"賣出 x"+n:"賣出"));}
@@ -4441,13 +5240,13 @@ function isBossEquip(i){return !!(i&&(i.bossDrop||i.isBossDrop||i.sourceType==="
 function isSellable(i){var eq=(_char3.equipped||{})[i.slot]===i.uid;return !eq&&!xt168IsProtectedEquip(i);}
 var allEquipItems=_char3.bag.map(function(i){return normalizeEquipSetItem(i);}).filter(function(i){return i.slot;});
 function sortEquipSimple(a,b){var ae=((_char3.equipped||{})[a.slot]===a.uid)?0:1,be=((_char3.equipped||{})[b.slot]===b.uid)?0:1;if(ae!==be)return ae-be;return rankIndex(a.rank)-rankIndex(b.rank)||slots.indexOf(a.slot)-slots.indexOf(b.slot)||(a.req||0)-(b.req||0)||equipPowerOf(b)-equipPowerOf(a)||String(a.name||"").localeCompare(String(b.name||""),"zh-Hant");}
-var equipItems=allEquipItems.filter(function(i){return (rankFilter==="全部"||i.rank===rankFilter)&&(typeFilter==="全部"||i.slot===typeFilter);}).sort(sortEquipSimple);
+var equipRankOptions=["全部"].concat(Array.from(new Set(allEquipItems.map(function(e){return e.rank;}).filter(Boolean))).sort(function(a,b){if(a==="全部")return -1;if(b==="全部")return 1;return (rankOrder.indexOf(a)<0?999:rankOrder.indexOf(a))-(rankOrder.indexOf(b)<0?999:rankOrder.indexOf(b));}));if(rankFilter!=="全部"&&equipRankOptions.indexOf(rankFilter)<0)setRankFilter("全部");var equipItems=allEquipItems.filter(function(i){return (rankFilter==="全部"||i.rank===rankFilter)&&(typeFilter==="全部"||i.slot===typeFilter);}).sort(sortEquipSimple);
 var equipTipItem=normalizeEquipSetItem(allEquipItems.find(function(i){return i.uid===equipTipUid;}));
 function equippedMini(sl){var it=normalizeEquipSetItem(_char3.bag.find(function(i){var _eq;return i.uid===((_eq=_char3.equipped)===null||_eq===void 0?void 0:_eq[sl]);}));return React.createElement("div",{className:"equipMiniCard "+(it?"filled":"empty"),key:sl},React.createElement("small",null,slotIcon[sl]," ",sl),React.createElement("b",{style:{color:it?rankColor[it.rank]:undefined}},it?it.name:"未裝備"),it&&React.createElement("small",null,it.rank," · ",realms[it.req||0]||"通用",it.setName?" · "+it.setName:""));}
-function equipDetailPopup(i){if(!i)return null;var _eq2;var isEq=((_eq2=_char3.equipped)===null||_eq2===void 0?void 0:_eq2[i.slot])===i.uid;var realmLocked=!xt81618CanEquip(_char3,i);var isProtected=xt168IsProtectedEquip(i),protectReason=xt168ProtectReason(i),boss=isBossEquip(i);return React.createElement("div",{className:"equipTipMask",onClick:function onClick(){return setEquipTipUid(null);}},React.createElement("div",{className:"equipTipBox",onClick:function onClick(e){return e.stopPropagation();}},React.createElement("div",{className:"equipTipHead"},React.createElement("div",{className:"equipTipIcon"},itemIcon(i)),React.createElement("div",{className:"grow"},React.createElement("b",{className:i.mutation?"mutationName":"",style:{color:i.mutation?undefined:rankColor[i.rank]}},i.mutation&&String(i.name||"").indexOf("異變")<0?"✦異變 · "+i.name:i.name),React.createElement("div",{className:"muted"},i.rank," · ",i.slot," · 戰力 ",fmt(equipPowerOf(i)))),React.createElement("button",{className:"btn",onClick:function onClick(){return setEquipTipUid(null);}},"×")),React.createElement("div",{className:"equipTipTags"},isEq&&React.createElement("span",{className:"chip gold"},"已裝備"),isProtected&&React.createElement("span",{className:"lockBadge"},i.locked?"🔒 鎖定":protectReason),boss&&React.createElement("span",{className:"chip bad"},"Boss裝"),realmLocked&&React.createElement("span",{className:"chip bad"},"境界不足"),React.createElement("span",{className:"chip"},"需求：",realms[i.req||0]||"通用")),xt166RenderEquipTags(i),i.setName&&React.createElement(SetMiniTooltip,{setKey:i.setKey,count:(setBonusState(_char3)[i.setKey]||0)}),isProtected&&React.createElement("div",{className:"protectHint"},"手動鎖定：不會被出售、自動販售或一鍵賣出處理；解鎖後可正常販售。"),React.createElement("div",{className:"equipTipStats"},React.createElement("span",null,"攻擊 +",fmt(i.atk||0)),React.createElement("span",null,"防禦 +",fmt(i.def||0)),(i.hp||0)>0&&React.createElement("span",null,"氣血 +",fmt(i.hp)),(i.mp||0)>0&&React.createElement("span",null,"靈力 +",fmt(i.mp)),(i.critRate||0)>0&&React.createElement("span",null,"暴擊 +",i.critRate,"%"),(i.critDmg||0)>0&&React.createElement("span",null,"暴傷 +",i.critDmg,"%"),(i.dodge||0)>0&&React.createElement("span",null,"閃避 +",i.dodge,"%")),React.createElement("div",{className:"xtEquipTipActions"},React.createElement("button",{className:"btn lockBtn",onClick:function onClick(){xt168ToggleEquipLock(setChar,i.uid);}},i.locked?"解鎖":"鎖定"),React.createElement("button",{className:"btn xtEquipWearBtn",disabled:isEq||realmLocked,onClick:function onClick(){equip(i);setEquipTipUid(null);}},isEq?"裝備中":realmLocked?"境界不足":"裝備"),isEq||isProtected?React.createElement("button",{className:"btn",disabled:true},isProtected?"受保護":"不可出售"):React.createElement(SellControl,{item:i,sell:sell}))));}
+function equipDetailPopup(i){if(!i)return null;var _eq2;var isEq=((_eq2=_char3.equipped)===null||_eq2===void 0?void 0:_eq2[i.slot])===i.uid;var realmLocked=!xt81618CanEquip(_char3,i);var isProtected=xt168IsProtectedEquip(i),protectReason=xt168ProtectReason(i),boss=isBossEquip(i);return React.createElement("div",{className:"equipTipMask",onClick:function onClick(){return setEquipTipUid(null);}},React.createElement("div",{className:"equipTipBox",onClick:function onClick(e){return e.stopPropagation();}},React.createElement("div",{className:"equipTipHead"},React.createElement("div",{className:"equipTipIcon"},itemIcon(i)),React.createElement("div",{className:"grow"},React.createElement("b",{className:i.mutation?"mutationName":"",style:{color:i.mutation?undefined:rankColor[i.rank]}},i.mutation&&String(i.name||"").indexOf("異變")<0?"✦異變 · "+i.name:i.name),React.createElement("div",{className:"muted"},i.rank," · ",i.slot," · 戰力 ",fmt(equipPowerOf(i)))),React.createElement("button",{className:"btn",onClick:function onClick(){return setEquipTipUid(null);}},"×")),React.createElement("div",{className:"equipTipTags"},isEq&&React.createElement("span",{className:"chip gold"},"已裝備"),isProtected&&React.createElement("span",{className:"lockBadge"},i.locked?"🔒 鎖定":protectReason),boss&&React.createElement("span",{className:"chip bad"},"Boss裝"),realmLocked&&React.createElement("span",{className:"chip bad"},"境界不足"),React.createElement("span",{className:"chip"},"需求：",realms[i.req||0]||"通用")),xt166RenderEquipTags(i),i.setName&&React.createElement(SetMiniTooltip,{setKey:i.setKey,count:(setBonusState(_char3)[i.setKey]||0)}),i.slot&&xt270EquipBuildGuideNode(_char3,i),i.daoAffix&&React.createElement("div",{className:"daoAffixBox"},React.createElement("b",null,"大道詞綴"),React.createElement("div",null,xt200DaoAffixText(i)),React.createElement("small",{className:"muted"},i.daoAffix.desc||"與修煉大道共鳴的裝備詞綴。")),isProtected&&React.createElement("div",{className:"protectHint"},"手動鎖定：不會被出售、自動販售或一鍵賣出處理；解鎖後可正常販售。"),React.createElement("div",{className:"equipTipStats"},React.createElement("span",null,"攻擊 +",fmt(i.atk||0)),React.createElement("span",null,"防禦 +",fmt(i.def||0)),(i.hp||0)>0&&React.createElement("span",null,"氣血 +",fmt(i.hp)),(i.mp||0)>0&&React.createElement("span",null,"靈力 +",fmt(i.mp)),(i.critRate||0)>0&&React.createElement("span",null,"暴擊 +",i.critRate,"%"),(i.critDmg||0)>0&&React.createElement("span",null,"暴傷 +",i.critDmg,"%"),(i.dodge||0)>0&&React.createElement("span",null,"閃避 +",i.dodge,"%")),React.createElement("div",{className:"xtEquipTipActions"},React.createElement("button",{className:"btn lockBtn",onClick:function onClick(){xt168ToggleEquipLock(setChar,i.uid);}},i.locked?"解鎖":"鎖定"),React.createElement("button",{className:"btn xtEquipWearBtn",disabled:isEq||realmLocked,onClick:function onClick(){equip(i);setEquipTipUid(null);}},isEq?"裝備中":realmLocked?"境界不足":"裝備"),isEq||isProtected?React.createElement("button",{className:"btn",disabled:true},isProtected?"受保護":"不可出售"):React.createElement(SellControl,{item:i,sell:sell}))));}
 function card(i){var _eq;var isEq=((_eq=_char3.equipped)===null||_eq===void 0?void 0:_eq[i.slot])===i.uid;var realmLocked=!xt81618CanEquip(_char3,i);var isProtected=xt168IsProtectedEquip(i),boss=isBossEquip(i);var cname="equipItem equipSlotOnly "+(isEq?"sel ":"")+(realmLocked?"locked ":"")+(i.mutation?"mutationItem ":"")+(isProtected?"protectedItem ":"")+(i.locked?"lockedItem ":"")+(boss?"bossItem ":"");return React.createElement("button",{type:"button",className:cname,key:i.uid,title:xt166EquipTitle(i),onClick:function onClick(){return setEquipTipUid(i.uid);}},React.createElement("div",{className:"equipItemIcon"},itemIcon(i)),React.createElement("span",{className:"equipSlotName",style:{color:i.mutation?undefined:rankColor[i.rank]}},i.name),React.createElement("div",{className:"equipSlotBadges"},isEq&&React.createElement("i",{className:"gold"},"裝"),i.locked&&React.createElement("i",null,"鎖"),i.mutation&&React.createElement("i",null,"異"),boss&&React.createElement("i",null,"王"),realmLocked&&React.createElement("i",{className:"bad"},"禁")));}
 var typeTabs=React.createElement("div",{className:"segTabs"},["全部"].concat(slots).map(function(x){return React.createElement("button",{key:x,className:"btn "+(typeFilter===x?"sel":""),onClick:function onClick(){return setTypeFilter(x);}},x);}));
-var filterRow=React.createElement("div",{className:"row"},React.createElement("span",{className:"equipFilterLabel"},"品階"),React.createElement("select",{value:rankFilter,onChange:function onChange(e){return setRankFilter(e.target.value);}},["全部"].concat(ranks).map(function(x){return React.createElement("option",{key:x},x);})),React.createElement("span",{className:"equipCountPill"},"顯示 ",equipItems.length," / ",allEquipItems.length),React.createElement("button",{className:"btn",onClick:function onClick(){return bulk(rankFilter);}},"一鍵賣出裝備"),React.createElement("button",{className:"btn",onClick:sortBag},"一鍵整理裝備"));
+var filterRow=React.createElement("div",{className:"row"},React.createElement("span",{className:"equipFilterLabel"},"品階"),React.createElement("select",{value:rankFilter,onChange:function onChange(e){return setRankFilter(e.target.value);}},equipRankOptions.map(function(x){return React.createElement("option",{key:x},x);})),React.createElement("span",{className:"equipCountPill"},"顯示 ",equipItems.length," / ",allEquipItems.length),React.createElement("button",{className:"btn",onClick:function onClick(){return bulk(rankFilter);}},"一鍵賣出裝備"),React.createElement("button",{className:"btn",onClick:sortBag},"一鍵整理裝備"));
 var toolbar=React.createElement("div",{className:"equipToolbar equipToolbarSimple"},typeTabs,filterRow);
 var hero=React.createElement("div",{className:"equipHero equipHeroCompact"},React.createElement("div",{className:"equipCenter"},React.createElement("div",{className:"equipPortrait"},React.createElement("img",{src:_char3.gender==="女修"?FEMALE_PORTRAIT:MALE_PORTRAIT,alt:_char3.gender+"頭像"})),React.createElement("b",null,_char3.name),React.createElement("div",{className:"gold"},realms[_char3.level]||"大道境"),React.createElement("div",{className:"muted"},"本命功法：",art?art.name:"未修習")));
 var summary=React.createElement("div",{className:"equipSummary"},React.createElement("div",{className:"row"},React.createElement("h3",{className:"grow"},"已裝備"),React.createElement("span",{className:"muted"},equippedItems.length,"/",slots.length," 件已裝備")),React.createElement("div",{className:"equipMiniGrid"},slots.map(equippedMini)));
