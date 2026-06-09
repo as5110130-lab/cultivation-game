@@ -4,10 +4,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta name="game-version" content="v0.1.22-item_detail_split_bag_modal"/>
+<meta name="game-version" content="v0.1.203-idle_modal_done_button"/>
 <meta name="build-profile" content="semi-modular-single-html-utf8"/>
 <meta name="iteration-base" content="v0.1.1-clean"/>
-<title>仙途問道 - v0.1.22 詳情系統分層修正版</title>
+<title>仙途問道 - v0.1.203 掛機設定完成按鈕 rechecked</title>
 <style>
 /* =========================================================
    《仙途問道》v0.1.1 迭代基底版
@@ -448,7 +448,7 @@
 
 
 /* ===== v7.3 掛機設定：世界頁彈窗 / 自動販售 ===== */
-.idleBtn{border-color:rgba(126,203,161,.38)!important;background:linear-gradient(180deg,rgba(126,203,161,.16),rgba(41,26,14,.26))!important;color:#9ee6bd!important}.idleModalBox{width:min(560px,94vw);max-height:88vh;overflow:auto;padding:16px;background:linear-gradient(180deg,#0b1020,#070911);border:1px solid rgba(245,215,75,.35);border-radius:14px;box-shadow:0 22px 60px rgba(0,0,0,.55)}.idleHead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}.idleHead h3{margin:0;color:#f5d77f}.idleSection{padding:11px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.026);margin:9px 0}.idleSection h4{margin:0 0 8px;color:#e8d080}.idleRows{display:grid;gap:7px}.idleRow{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.idleRow input[type=number]{width:70px;padding:6px;background:rgba(255,255,255,.05);border:1px solid rgba(180,140,60,.3);border-radius:5px;color:#e8d080}.idleRow select{min-width:120px;padding:6px;background:rgba(255,255,255,.05);border:1px solid rgba(180,140,60,.3);border-radius:5px;color:#e8d080}.idleChecks{display:grid;grid-template-columns:repeat(auto-fit,minmax(82px,1fr));gap:6px}.idleCheck{padding:7px;border-radius:9px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.07);font-size:12px}.idleCheck input{margin-right:5px}.idleFoot{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}.statusAutoMoved{padding:12px;border:1px solid rgba(126,203,161,.16);border-radius:12px;background:rgba(126,203,161,.05)}@media(max-width:520px){.idleModalBox{padding:12px}.idleChecks{grid-template-columns:repeat(2,minmax(0,1fr))}.idleHead{display:block}.idleFoot .btn{flex:1}}
+.idleBtn{border-color:rgba(126,203,161,.38)!important;background:linear-gradient(180deg,rgba(126,203,161,.16),rgba(41,26,14,.26))!important;color:#9ee6bd!important}.idleSection{padding:11px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.026);margin:9px 0}.idleSection h4{margin:0 0 8px;color:#e8d080}.idleRows{display:grid;gap:7px}.idleRow{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.idleRow input[type=number]{width:70px;padding:6px;background:rgba(255,255,255,.05);border:1px solid rgba(180,140,60,.3);border-radius:5px;color:#e8d080}.idleRow select{min-width:120px;padding:6px;background:rgba(255,255,255,.05);border:1px solid rgba(180,140,60,.3);border-radius:5px;color:#e8d080}.idleChecks{display:grid;grid-template-columns:repeat(auto-fit,minmax(82px,1fr));gap:6px}.idleCheck{padding:7px;border-radius:9px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.07);font-size:12px}.idleCheck input{margin-right:5px}.statusAutoMoved{padding:12px;border:1px solid rgba(126,203,161,.16);border-radius:12px;background:rgba(126,203,161,.05)}@media(max-width:520px){.idleChecks{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 
 /* ===== v7.3.3 世界頁掛機按鈕位置調整 ===== */
@@ -828,77 +828,11 @@ html, body{
 .modal{
   padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom)) 10px;
 }
-.idleModalBox{
-  width:min(560px,94vw)!important;
-  max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
-  overflow:hidden!important;
-  display:flex!important;
-  flex-direction:column!important;
-  padding:0!important;
-}
-.idleHead{
-  flex:0 0 auto!important;
-  padding:14px 14px 8px!important;
-  margin:0!important;
-  border-bottom:1px solid rgba(245,215,75,.14);
-  background:rgba(5,7,13,.98);
-}
-.idleScroll{
-  flex:1 1 auto!important;
-  min-height:0!important;
-  overflow:auto!important;
-  padding:0 14px 12px!important;
-  -webkit-overflow-scrolling:touch;
-  overscroll-behavior:contain;
-}
-.idleFoot{
-  position:sticky!important;
-  bottom:0!important;
-  z-index:9!important;
-  flex:0 0 auto!important;
-  display:grid!important;
-  grid-template-columns:1fr 1fr!important;
-  gap:8px!important;
-  margin:0!important;
-  padding:10px 14px calc(12px + env(safe-area-inset-bottom))!important;
-  background:linear-gradient(180deg,rgba(8,11,22,.94),rgba(5,7,13,1));
-  border-top:1px solid rgba(245,215,75,.24);
-  box-shadow:0 -12px 24px rgba(0,0,0,.35);
-}
-.idleFoot .btn{
-  min-height:48px!important;
-  border-radius:10px!important;
-  font-size:14px!important;
-}
-@supports not (height:100dvh){
-  .idleModalBox{
-    max-height:calc(100vh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
-  }
-}
 @media(max-width:520px){
   .modal{
     place-items:end center!important;
     padding-left:8px!important;
     padding-right:8px!important;
-  }
-  .idleModalBox{
-    width:100%!important;
-    max-height:calc(92dvh - env(safe-area-inset-bottom))!important;
-    border-radius:14px 14px 0 0!important;
-  }
-  .idleHead{
-    padding:12px 12px 8px!important;
-  }
-  .idleScroll{
-    padding:0 12px 10px!important;
-  }
-  .idleFoot{
-    grid-template-columns:1fr!important;
-    padding:9px 12px calc(14px + env(safe-area-inset-bottom))!important;
-  }
-  .idleFoot .btn{
-    min-height:52px!important;
-    font-size:15px!important;
   }
 }
 
@@ -909,18 +843,6 @@ html, body{
   transform-origin:center bottom;
   width:min(520px,90vw)!important;
   max-height:calc((100dvh - 42px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) / .92)!important;
-}
-.idleHead{
-  padding:10px 12px 6px!important;
-}
-.idleHead h3{
-  font-size:16px!important;
-  margin:0 0 3px!important;
-}
-.idleHead p{
-  font-size:11px!important;
-  line-height:1.35!important;
-  margin:0!important;
 }
 .idleSection{
   padding:8px!important;
@@ -955,60 +877,10 @@ html, body{
   gap:5px!important;
   grid-template-columns:repeat(auto-fit,minmax(70px,1fr))!important;
 }
-.idleScroll{
-  padding:0 10px 8px!important;
-}
-.idleFoot{
-  padding:8px 10px calc(10px + env(safe-area-inset-bottom))!important;
-  gap:6px!important;
-}
-.idleFoot .btn{
-  min-height:40px!important;
-  font-size:13px!important;
-  border-radius:8px!important;
-}
-@media(max-width:520px){
-  .idleModalBox{
-    transform:scale(.88);
-    width:96vw!important;
-    max-height:calc((88dvh - env(safe-area-inset-bottom)) / .88)!important;
-    margin-bottom:calc(10px + env(safe-area-inset-bottom))!important;
-  }
-  .idleHead{
-    padding:9px 10px 5px!important;
-  }
-  .idleScroll{
-    padding:0 9px 7px!important;
-  }
-  .idleFoot{
-    grid-template-columns:1fr 1fr!important;
-    padding:7px 9px calc(9px + env(safe-area-inset-bottom))!important;
-  }
-  .idleFoot .btn{
-    min-height:38px!important;
-    font-size:12.5px!important;
-  }
-}
 @media(max-height:700px){
-  .idleModalBox{
-    transform:scale(.84);
-    max-height:calc((86dvh - env(safe-area-inset-bottom)) / .84)!important;
-  }
   .idleSection{
     padding:6px!important;
     margin:5px 0!important;
-  }
-  .idleHead p{
-    display:none!important;
-  }
-  .idleFoot .btn{
-    min-height:36px!important;
-  }
-}
-@media(max-height:620px){
-  .idleModalBox{
-    transform:scale(.78);
-    max-height:calc((84dvh - env(safe-area-inset-bottom)) / .78)!important;
   }
 }
 
@@ -1765,8 +1637,8 @@ html, body{
 
 
 /* ===== v8.15.4 掛機提示與背包風險提醒 ===== */
-.idleHintBar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px}.idleHintBar span{padding:4px 7px;border-radius:999px;border:1px solid rgba(126,203,161,.22);background:rgba(126,203,161,.07);color:#9ee6bd;font-size:11px}.idleWarnText{margin:7px 0 0!important;padding:7px 8px;border-radius:9px;border:1px solid rgba(245,215,75,.20);background:rgba(245,215,75,.055);line-height:1.45}.battleLogLine.warn{color:#ffcf6e!important}.idleModalBox{max-width:500px!important}.idleScroll{max-height:calc(100dvh - 190px);overflow:auto}.idleSection p.muted{font-size:11px;line-height:1.38}.idleChecks{grid-template-columns:repeat(auto-fit,minmax(72px,1fr))!important}.idleCheck{padding:6px!important}.idleFoot{position:sticky;bottom:0;background:linear-gradient(180deg,rgba(7,9,17,.72),#070911 55%);padding-top:8px}
-@media(max-width:520px){.idleModalBox{width:min(450px,92vw)!important;transform:scale(.90)!important}.idleRow{gap:5px}.idleRow select{min-width:104px}.idleHintBar span{font-size:10px;padding:3px 6px}.idleScroll{max-height:calc(100dvh - 176px)}}
+.idleHintBar{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px}.idleHintBar span{padding:4px 7px;border-radius:999px;border:1px solid rgba(126,203,161,.22);background:rgba(126,203,161,.07);color:#9ee6bd;font-size:11px}.idleWarnText{margin:7px 0 0!important;padding:7px 8px;border-radius:9px;border:1px solid rgba(245,215,75,.20);background:rgba(245,215,75,.055);line-height:1.45}.battleLogLine.warn{color:#ffcf6e!important}.idleSection p.muted{font-size:11px;line-height:1.38}.idleChecks{grid-template-columns:repeat(auto-fit,minmax(72px,1fr))!important}.idleCheck{padding:6px!important}
+@media(max-width:520px){.idleRow{gap:5px}.idleRow select{min-width:104px}.idleHintBar span{font-size:10px;padding:3px 6px}}
 
 
 /* ===== v8.17.5 創角靈根效果與大道選擇 ===== */
@@ -2966,7 +2838,7 @@ line-height:1.55!important;
   font-size:30px;
 }
 .itemDetailTitle{min-width:0}
-.itemDetailTitle b,.itemDetailTitle h3,.itemBagTitle h3{
+.itemDetailTitle b, .itemDetailTitle h3, .itemBagTitle h3{
   display:block;
   margin:0;
   font-size:16px;
@@ -2975,7 +2847,7 @@ line-height:1.55!important;
   white-space:normal;
   word-break:keep-all;
 }
-.itemDetailTitle small,.itemBagTitle small{
+.itemDetailTitle small, .itemBagTitle small{
   display:block;
   margin-top:3px;
   color:#8f8269;
@@ -2999,7 +2871,7 @@ line-height:1.55!important;
   gap:5px;
   margin:8px 12px 6px;
 }
-.itemDetailMeta .chip,.itemDetailMeta span{
+.itemDetailMeta .chip, .itemDetailMeta span{
   font-size:10.5px;
   padding:3px 7px;
   border-radius:999px;
@@ -3042,7 +2914,7 @@ line-height:1.55!important;
   gap:6px;
   margin:10px 12px 12px;
 }
-.itemDetailActions .btn,.itemDetailActions button{
+.itemDetailActions .btn, .itemDetailActions button{
   width:100%;
   min-width:0;
   min-height:36px;
@@ -3104,14 +2976,10 @@ line-height:1.55!important;
   margin:0;
   padding:0;
 }
-.itemDetailActions .sellCtrl input,
-.itemDetailActions .sellCtrl label,
-.itemDetailActions .sellCtrl small,
-.itemDetailActions .sellCtrl span{
+.itemDetailActions .sellCtrl input, .itemDetailActions .sellCtrl label, .itemDetailActions .sellCtrl small, .itemDetailActions .sellCtrl span{
   display:none!important;
 }
-.itemDetailActions .sellCtrl .btn,
-.itemDetailActions .sellCtrl button{
+.itemDetailActions .sellCtrl .btn, .itemDetailActions .sellCtrl button{
   width:100%;
   min-width:0;
 }
@@ -3160,8 +3028,7 @@ line-height:1.55!important;
   gap:7px;
   margin:10px 12px 12px;
 }
-.itemBagActions .btn,
-.itemBagActions button{
+.itemBagActions .btn, .itemBagActions button{
   min-width:74px;
   min-height:36px;
   padding:7px 10px;
@@ -3202,6 +3069,344 @@ line-height:1.55!important;
   .itemDetailActions{gap:5px;margin:8px 10px 10px}
   .itemBagMask{padding:10px}
   .itemBagCard{width:calc(100vw - 20px);max-height:76dvh}
+}
+
+/* ===== v0.1.23 EQUIP_DETAIL_SCROLL_LOCK ===== */
+/* 裝備詳情滾動鎖定：外框固定在底欄上方，只有 itemDetailScroll 滾動；放開後停在玩家滑到的位置。 */
+.itemDetailMask{
+  padding:0 8px calc(92px + env(safe-area-inset-bottom))!important;
+  align-items:flex-end!important;
+  overflow:hidden!important;
+  overscroll-behavior:contain!important;
+}
+.itemDetailSheet.itemDetailEquip{
+  max-height:calc(64dvh - env(safe-area-inset-bottom))!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.itemDetailSheet.itemDetailEquip .itemDetailScroll{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:calc(64dvh - env(safe-area-inset-bottom))!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior:contain!important;
+  touch-action:pan-y!important;
+  scroll-behavior:auto!important;
+  scroll-snap-type:none!important;
+  padding-bottom:12px!important;
+}
+.itemDetailSheet.itemDetailEquip .itemDetailScroll *{
+  scroll-snap-align:none!important;
+}
+.itemDetailSheet.itemDetailEquip .itemDetailHeader, .itemDetailSheet.itemDetailEquip .itemDetailActions{
+  position:relative!important;
+  top:auto!important;
+  bottom:auto!important;
+}
+@supports (height:100svh){
+  .itemDetailSheet.itemDetailEquip, .itemDetailSheet.itemDetailEquip .itemDetailScroll{
+    max-height:calc(64svh - env(safe-area-inset-bottom))!important;
+  }
+}
+@media(max-width:520px){
+  .itemDetailMask{
+    padding:0 6px calc(92px + env(safe-area-inset-bottom))!important;
+  }
+  .itemDetailSheet.itemDetailEquip, .itemDetailSheet.itemDetailEquip .itemDetailScroll{
+    max-height:calc(64dvh - env(safe-area-inset-bottom))!important;
+  }
+  @supports (height:100svh){
+    .itemDetailSheet.itemDetailEquip, .itemDetailSheet.itemDetailEquip .itemDetailScroll{
+      max-height:calc(64svh - env(safe-area-inset-bottom))!important;
+    }
+  }
+}
+
+/* ===== v0.1.201 XT_MODAL_UNIFIED_SYSTEM ===== */
+/* 共用彈窗外殼：先套用於掛機設定。其他彈窗後續可逐步接入，不再用多層 CSS 補丁互壓。 */
+.xtModalMask{
+  position:fixed;
+  inset:0;
+  z-index:170;
+  display:grid;
+  place-items:center;
+  padding:max(10px,env(safe-area-inset-top)) 10px max(10px,env(safe-area-inset-bottom));
+  background:rgba(0,0,0,.62);
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.xtModal{
+  width:min(560px,94vw);
+  max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border-radius:16px;
+  border:1px solid rgba(245,215,75,.35);
+  background:
+    radial-gradient(circle at 14% 0%,rgba(245,215,75,.10),transparent 32%),
+    linear-gradient(180deg,rgba(11,16,32,.99),rgba(7,9,17,.995));
+  box-shadow:0 22px 60px rgba(0,0,0,.58);
+  box-sizing:border-box;
+}
+.xtModalHead{
+  flex:0 0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  padding:12px 14px 9px;
+  border-bottom:1px solid rgba(245,215,75,.16);
+  background:rgba(5,7,13,.96);
+}
+.xtModalHead h3{
+  margin:0 0 3px;
+  color:#f5d77f;
+  font-size:17px;
+  line-height:1.2;
+}
+.xtModalHead p{
+  margin:0;
+  font-size:11px;
+  line-height:1.4;
+}
+.xtModalBody{
+  flex:1 1 auto;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  touch-action:pan-y;
+  padding:0 14px 12px;
+}
+.xtModalFoot{
+  flex:0 0 auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  padding:10px 14px calc(12px + env(safe-area-inset-bottom));
+  border-top:1px solid rgba(245,215,75,.24);
+  background:linear-gradient(180deg,rgba(8,11,22,.94),rgba(5,7,13,1));
+  box-shadow:0 -12px 24px rgba(0,0,0,.35);
+}
+.xtModalFoot .btn{
+  min-height:44px;
+  border-radius:10px;
+  font-size:14px;
+}
+.xtModalCompact{
+  width:min(520px,92vw);
+}
+
+/* 掛機設定接入共用 xtModal，但保留原 idle 內容樣式 */
+.idleModalBox{ /* 舊 class 保留作相容，不再承載核心版面 */
+  width:min(520px,92vw)!important;
+}
+.idleScroll{
+  display:block!important;
+}
+.idleSection{
+  padding:10px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  background:rgba(255,255,255,.026);
+  margin:9px 0;
+}
+.idleSection h4{
+  margin:0 0 8px;
+  color:#e8d080;
+}
+.idleRows{
+  display:grid;
+  gap:7px;
+}
+.idleRow{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  flex-wrap:wrap;
+}
+.idleRow input[type=number]{
+  width:70px;
+  padding:6px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(180,140,60,.3);
+  border-radius:5px;
+  color:#e8d080;
+}
+.idleRow select{
+  min-width:120px;
+  padding:6px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(180,140,60,.3);
+  border-radius:5px;
+  color:#e8d080;
+}
+.idleChecks{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(82px,1fr));
+  gap:6px;
+}
+.idleCheck{
+  padding:6px;
+  border-radius:8px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+  font-size:12px;
+}
+.idleCheck input{
+  margin-right:5px;
+}
+.idleHintBar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:6px;
+}
+.idleHintBar span{
+  font-size:10.5px;
+  padding:3px 7px;
+  border-radius:999px;
+  border:1px solid rgba(126,203,161,.18);
+  background:rgba(126,203,161,.07);
+  color:#9ee6bd;
+}
+.idleWarnText{
+  font-size:11px;
+  line-height:1.45;
+}
+@supports not (height:100dvh){
+  .xtModal{
+    max-height:calc(100vh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+}
+@media(max-width:520px){
+  .xtModalMask{
+    place-items:end center;
+    padding-left:8px;
+    padding-right:8px;
+    padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  }
+  .xtModal{
+    width:100%;
+    max-height:calc(92dvh - env(safe-area-inset-bottom));
+    border-radius:16px 16px 0 0;
+  }
+  .xtModalHead{
+    padding:11px 12px 8px;
+  }
+  .xtModalHead h3{
+    font-size:16px;
+  }
+  .xtModalBody{
+    padding:0 12px 10px;
+  }
+  .xtModalFoot{
+    padding:9px 12px calc(12px + env(safe-area-inset-bottom));
+  }
+  .xtModalFoot .btn{
+    min-height:42px;
+    font-size:13px;
+  }
+  .idleChecks{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-height:620px){
+  .xtModal{
+    max-height:calc(88dvh - env(safe-area-inset-bottom));
+  }
+  .xtModalHead p{
+    display:none;
+  }
+  .idleSection{
+    padding:7px;
+    margin:6px 0;
+  }
+}
+
+/* ===== v0.1.202 IDLE_MODAL_FOOTER_SAFE_AREA_FIX ===== */
+/* 掛機設定按鈕安全區：避免取消/確認保存貼在手機瀏覽器底部工具列而按不到。 */
+.xtModalMask{
+  padding-bottom:calc(22px + env(safe-area-inset-bottom))!important;
+}
+.xtModal{
+  max-height:calc(100dvh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
+}
+.xtModalFoot{
+  position:relative!important;
+  bottom:auto!important;
+  padding:10px 14px calc(18px + env(safe-area-inset-bottom))!important;
+}
+.xtModalBody{
+  padding-bottom:14px!important;
+}
+@supports not (height:100dvh){
+  .xtModal{
+    max-height:calc(100vh - 56px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important;
+  }
+}
+@media(max-width:520px){
+  .xtModalMask{
+    place-items:end center!important;
+    padding-bottom:calc(28px + env(safe-area-inset-bottom))!important;
+  }
+  .xtModal{
+    max-height:calc(86dvh - env(safe-area-inset-bottom))!important;
+    margin-bottom:calc(10px + env(safe-area-inset-bottom))!important;
+  }
+  .xtModalFoot{
+    padding:9px 12px calc(22px + env(safe-area-inset-bottom))!important;
+  }
+  .xtModalFoot .btn{
+    min-height:44px!important;
+  }
+}
+@media(max-height:680px){
+  .xtModal{
+    max-height:calc(82dvh - env(safe-area-inset-bottom))!important;
+  }
+  .xtModalMask{
+    padding-bottom:calc(18px + env(safe-area-inset-bottom))!important;
+  }
+  .xtModalFoot{
+    padding-bottom:calc(16px + env(safe-area-inset-bottom))!important;
+  }
+}
+
+
+/* ===== v0.1.203 IDLE_MODAL_DONE_BUTTON ===== */
+/* 掛機設定簡化：移除上方關閉，底部改為單一完成按鈕。 */
+.xtModalHead.idleHead{
+  display:block!important;
+}
+.xtModalFoot.idleFootSingle{
+  grid-template-columns:1fr!important;
+}
+.xtModalFoot.idleFootSingle .btn{
+  width:100%!important;
+  min-height:46px!important;
+  font-size:15px!important;
+  font-weight:800!important;
+}
+@media(max-width:520px){
+  .xtModalFoot.idleFootSingle .btn{
+    min-height:46px!important;
+  }
+}
+
+
+/* ===== v0.1.203 RECHECK IDLE_FOOT_CLEAN_FIX ===== */
+/* rechecked：移除舊 idleFoot display:contents 後，明確恢復完成按鈕底部容器。 */
+.xtModalFoot.idleFootSingle{
+  display:grid!important;
+  grid-template-columns:1fr!important;
 }
 </style>
 </head>
@@ -3527,8 +3732,8 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 "use strict";
 
 /* ===== v8.0.1 工程核心設定 / Build Manifest ===== */
-var GAME_BUILD_VERSION="v0.1.22-item_detail_split_bag_modal";
-var GAME_BUILD_NAME="詳情系統分層修正版";
+var GAME_BUILD_VERSION="v0.1.203-idle_modal_done_button";
+var GAME_BUILD_NAME="掛機設定完成按鈕 rechecked";
 var SAVE_VERSION="v0.1.1";
 var MIN_COMPATIBLE_SAVE="v8.9.8";
 var GAME_MODULE_PROFILE={
@@ -5718,7 +5923,7 @@ function equip(it){if(!it.slot)return;setChar(function(c){if(!xt81618CanEquip(c,
 function refreshAuction(){setChar(function(c){if((c.stones||0)<2000){setNotice("靈石不足，刷新黑市需要 2000 靈石。");return c;}setAuc(auctionList(c.level));return _objectSpread(_objectSpread({},c),{},{stones:(c.stones||0)-2000});});}
 function bid(it){setChar(function(c){if(c.stones<it.auctionPrice){setNotice("靈石不足，無法拍下。");return c;}if(c.bag.length>=bagMax(c)){setNotice("背包已滿，請先整理。");return c;}setAuc(function(a){return a.filter(function(x){return x.uid!==it.uid;});});
 var cp=_objectSpread({},it);delete cp.auctionPrice;return addItem(_objectSpread(_objectSpread({},c),{},{stones:c.stones-it.auctionPrice}),cp);});}if(screen==="menu")return React.createElement("div",{className:"landingPage"},React.createElement("div",{className:"landingBox"},React.createElement("div",{className:"landingSeal"},"⛰"),React.createElement("h1",{className:"landingTitle"},"仙途問道"),React.createElement("p",{className:"landingSub"},"大道三千 · 問道長生"),React.createElement("div",{className:"landingMeta"},React.createElement("span",null,"版本 ",GAME_BUILD_VERSION),React.createElement("span",null,_char&&_char.name?"道號："+_char.name:"尚未開闢道途")),React.createElement("div",{className:"landingActions"},React.createElement("button",{className:"btn landingBtn primary",disabled:!(_char&&_char.name),onClick:function onClick(){setScreen("game");}},_char&&_char.name?"問道歸途":"尚未開闢道途"),React.createElement("button",{className:"btn landingBtn",onClick:function onClick(){if(_char&&_char.name&&!confirm("已有道途存檔，若重新開闢並完成建角，將覆蓋現有角色。是否繼續？"))return;setName("");setGender("男修");setSect(0);setDaoChoice(rootRecommendedDaoId(spiritRoots[0]));setScreen("create");}},"開闢道途"),React.createElement("button",{className:"btn landingBtn",onClick:function onClick(){return setScreen("settings");}},"洞天設置"),React.createElement("button",{className:"btn landingBtn",onClick:function onClick(){return setScreen("announcements");}},"天機告示")),React.createElement("div",{className:"landingFoot"},"單檔 HTML · 存檔保存於本機瀏覽器")));
-if(screen==="announcements")return React.createElement("div",{className:"landingPage"},React.createElement("div",{className:"landingBox"},React.createElement("div",{className:"landingSeal"},"📜"),React.createElement("h1",{className:"landingTitle"},"天機告示"),React.createElement("p",{className:"landingSub"},"版本公告、世界異象與修仙紀錄"),React.createElement("div",{className:"settingsList"},React.createElement("div",{className:"settingCard"},React.createElement("b",null,"v0.1.22 詳情系統分層修正版"),React.createElement("p",{className:"muted"},"以 v0.1.21 為基礎重新分層：裝備維持底部 sheet，背包改為置中 itemBagModal；兩者共用視覺語言但不共用滾動結構，避免背包被底部抽屜影響。核心穩定區未改動。")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"目前開發重點"),React.createElement("p",{className:"muted"},"後續優先完善身法系統、丹修強化、Boss 機制、副本玩法、宗門玩法、裝備詞條、UI 美化與 MMORPG 化世界感；核心穩定區暫不改動。")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"道友須知"),React.createElement("p",{className:"muted"},"此版為 v0.1.1 迭代起點；不再進行存檔 recovery patch、不掃 localStorage、不自動 restore，也不自動 migrate 重建角色。"))),React.createElement("div",{className:"landingActions"},React.createElement("button",{className:"btn landingBtn",onClick:function onClick(){return setScreen("menu");}},"返回問道首頁"))));if(screen==="settings")return React.createElement("div",{className:"landingPage"},React.createElement("div",{className:"landingBox"},React.createElement("div",{className:"landingSeal"},"⚙"),React.createElement("h1",{className:"landingTitle"},"洞天設置"),React.createElement("p",{className:"landingSub"},"存檔、版本與本機資料管理"),React.createElement("div",{className:"settingsList"},React.createElement("div",{className:"settingCard"},React.createElement("b",null,"目前存檔"),React.createElement("p",{className:"muted"},_char&&_char.name?"已找到道號「"+_char.name+"」，靈根「"+spiritRootOf(_char).name+"」。":"目前沒有角色存檔。")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"清除所有存檔"),React.createElement("p",{className:"muted"},"大改版、測試錯誤或想重新開局時使用。此操作會刪除本遊戲在瀏覽器 localStorage 內的 cg_save、cg_ 與 xiantu_ 相關資料，並重新載入首頁。"),React.createElement("button",{className:"btn dangerBtn",onClick:resetSaveFromHome},"清除存檔 · 重開仙途")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"戰鬥分析顯示 · 開發工具"),React.createElement("p",{className:"muted"},"開發期用來檢查回合數、輸出、承傷、暴擊與閃避；正式遊玩時可關閉，戰鬥結算會更乾淨。此開關位於洞天設置，切換後會保存到角色存檔。"),React.createElement("div",{className:"settingToggleRow"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:devBattleAnalysis,onChange:function onChange(e){var checked=e.target.checked;setChar(function(c){return c?_objectSpread(_objectSpread({},c),{},{devBattleAnalysis:checked}):c;});}}),devBattleAnalysis?"已開啟":"已關閉"),React.createElement("span",{className:"muted"},devBattleAnalysis?"顯示本戰摘要":"隱藏本戰摘要"))),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"掛機預設"),React.createElement("p",{className:"muted"},"新角色預設：自動喝血藥與靈力藥皆開啟，低於 30% 使用；自動販售裝備、物品、功法皆預設關閉。既有角色仍以目前存檔設定為準。")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"版本資訊"),React.createElement("p",{className:"muted"},GAME_BUILD_VERSION," · ",GAME_BUILD_NAME))),React.createElement("div",{className:"landingActions"},React.createElement("button",{className:"btn landingBtn",onClick:function onClick(){return setScreen("menu");}},"返回問道首頁"))));if(screen==="create")return React.createElement("div",{className:"create"},React.createElement("div",{className:"panel"},React.createElement("h2",null,"\u89D2\u8272\u5275\u5EFA"),React.createElement("input",{className:"input",placeholder:"\u8F38\u5165\u9053\u865F",value:name,onChange:function onChange(e){return setName(e.target.value);},maxLength:"8"}),React.createElement("h3",null,"\u6027\u5225"),React.createElement("div",{className:"row"},["男修","女修"].map(function(g){return React.createElement("button",{key:g,className:"btn "+(gender===g?"sel":""),onClick:function onClick(){return setGender(g);}},g==="男修"?"♂ 男修":"♀ 女修");})),React.createElement("h3",null,"測靈 · 先天靈根"),React.createElement("p",{className:"muted"},"靈根代表先天天賦；點擊後只查看完整效果，不會自動改變本命大道。凡品靈根已重製為平衡型，不再是白板。"),React.createElement("div",{className:"grid"},spiritRoots.map(function(s,i){return React.createElement("div",{key:s.name,onClick:function onClick(){setSect(i);},className:'card '+(sect===i?'sel':'')},React.createElement("b",null,s.name),React.createElement("p",{className:"muted"},s.desc),React.createElement("small",{className:"gold"},s.position||s.flavor));})),React.createElement("div",{className:"rootDetailBox"},React.createElement("h4",null,(spiritRoots[sect]||spiritRoots[0]).name," · ",(spiritRoots[sect]||spiritRoots[0]).position),React.createElement("p",{className:"muted"},(spiritRoots[sect]||spiritRoots[0]).flavor),React.createElement("div",{className:"rootEffectTags"},xt175RootEffectText(spiritRoots[sect]||spiritRoots[0]).map(function(t,idx){return React.createElement("span",{key:t,className:idx===0?"main":""},t);})),React.createElement("p",{className:"muted",style:{marginBottom:0}},"適合大道：",((spiritRoots[sect]||spiritRoots[0]).recommendDao||[]).join("、")||"皆可")),React.createElement("h3",null,"本命大道"),React.createElement("p",{className:"muted"},"大道是後天修煉方向，會決定戰鬥被動。選擇後會正確保存到狀態頁與戰鬥頁。"),React.createElement("div",{className:"daoCreateGrid"},daoPaths.map(function(d){return React.createElement("div",{key:d.id,onClick:function onClick(){return setDaoChoice(d.id);},className:"daoCreateCard "+(daoChoice===d.id?"sel":"")},React.createElement("b",null,d.icon," ",d.name),React.createElement("small",null,d.desc));})),React.createElement("div",{className:"rootDetailBox"},React.createElement("h4",null,"目前選擇：",daoPathById(daoChoice).icon," ",daoPathById(daoChoice).name," · ",xt176DaoBattleRole(daoChoice)),React.createElement("p",{className:"muted"},xt170DaoPassiveDesc({daoMainPath:daoChoice})),React.createElement("div",{className:"rootEffectTags"},(daoPathById(daoChoice).tags||[]).map(function(t,idx){return React.createElement("span",{key:t,className:idx===0?"main":""},t);})),React.createElement("div",{className:"daoDetailGrid"},React.createElement("div",{className:"daoDetailMini"},React.createElement("small",null,"推薦靈根"),React.createElement("b",null,xt176DaoRecommendRoots(daoChoice))),React.createElement("div",{className:"daoDetailMini"},React.createElement("small",null,"推薦 Build"),React.createElement("b",null,xt176DaoBuildText(daoChoice))))),React.createElement("br",null),React.createElement("button",{className:"btn",onClick:create},"\u5165\u9053\u4FEE\u4ED9")," ",React.createElement("button",{className:"btn",onClick:function onClick(){return setScreen("menu");}},"\u8FD4\u56DE")));
+if(screen==="announcements")return React.createElement("div",{className:"landingPage"},React.createElement("div",{className:"landingBox"},React.createElement("div",{className:"landingSeal"},"📜"),React.createElement("h1",{className:"landingTitle"},"天機告示"),React.createElement("p",{className:"landingSub"},"版本公告、世界異象與修仙紀錄"),React.createElement("div",{className:"settingsList"},React.createElement("div",{className:"settingCard"},React.createElement("b",null,"v0.1.203 掛機設定完成按鈕版"),React.createElement("p",{className:"muted"},"掛機設定彈窗簡化：移除上方關閉按鈕，底部取消/確認保存改為單一「完成」按鈕，點擊後保存目前設定並關閉。戰鬥、存檔、裝備詳情與背包 modal 未改動。")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"目前開發重點"),React.createElement("p",{className:"muted"},"後續優先完善身法系統、丹修強化、Boss 機制、副本玩法、宗門玩法、裝備詞條、UI 美化與 MMORPG 化世界感；核心穩定區暫不改動。")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"道友須知"),React.createElement("p",{className:"muted"},"此版為 v0.1.1 迭代起點；不再進行存檔 recovery patch、不掃 localStorage、不自動 restore，也不自動 migrate 重建角色。"))),React.createElement("div",{className:"landingActions"},React.createElement("button",{className:"btn landingBtn",onClick:function onClick(){return setScreen("menu");}},"返回問道首頁"))));if(screen==="settings")return React.createElement("div",{className:"landingPage"},React.createElement("div",{className:"landingBox"},React.createElement("div",{className:"landingSeal"},"⚙"),React.createElement("h1",{className:"landingTitle"},"洞天設置"),React.createElement("p",{className:"landingSub"},"存檔、版本與本機資料管理"),React.createElement("div",{className:"settingsList"},React.createElement("div",{className:"settingCard"},React.createElement("b",null,"目前存檔"),React.createElement("p",{className:"muted"},_char&&_char.name?"已找到道號「"+_char.name+"」，靈根「"+spiritRootOf(_char).name+"」。":"目前沒有角色存檔。")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"清除所有存檔"),React.createElement("p",{className:"muted"},"大改版、測試錯誤或想重新開局時使用。此操作會刪除本遊戲在瀏覽器 localStorage 內的 cg_save、cg_ 與 xiantu_ 相關資料，並重新載入首頁。"),React.createElement("button",{className:"btn dangerBtn",onClick:resetSaveFromHome},"清除存檔 · 重開仙途")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"戰鬥分析顯示 · 開發工具"),React.createElement("p",{className:"muted"},"開發期用來檢查回合數、輸出、承傷、暴擊與閃避；正式遊玩時可關閉，戰鬥結算會更乾淨。此開關位於洞天設置，切換後會保存到角色存檔。"),React.createElement("div",{className:"settingToggleRow"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:devBattleAnalysis,onChange:function onChange(e){var checked=e.target.checked;setChar(function(c){return c?_objectSpread(_objectSpread({},c),{},{devBattleAnalysis:checked}):c;});}}),devBattleAnalysis?"已開啟":"已關閉"),React.createElement("span",{className:"muted"},devBattleAnalysis?"顯示本戰摘要":"隱藏本戰摘要"))),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"掛機預設"),React.createElement("p",{className:"muted"},"新角色預設：自動喝血藥與靈力藥皆開啟，低於 30% 使用；自動販售裝備、物品、功法皆預設關閉。既有角色仍以目前存檔設定為準。")),React.createElement("div",{className:"settingCard"},React.createElement("b",null,"版本資訊"),React.createElement("p",{className:"muted"},GAME_BUILD_VERSION," · ",GAME_BUILD_NAME))),React.createElement("div",{className:"landingActions"},React.createElement("button",{className:"btn landingBtn",onClick:function onClick(){return setScreen("menu");}},"返回問道首頁"))));if(screen==="create")return React.createElement("div",{className:"create"},React.createElement("div",{className:"panel"},React.createElement("h2",null,"\u89D2\u8272\u5275\u5EFA"),React.createElement("input",{className:"input",placeholder:"\u8F38\u5165\u9053\u865F",value:name,onChange:function onChange(e){return setName(e.target.value);},maxLength:"8"}),React.createElement("h3",null,"\u6027\u5225"),React.createElement("div",{className:"row"},["男修","女修"].map(function(g){return React.createElement("button",{key:g,className:"btn "+(gender===g?"sel":""),onClick:function onClick(){return setGender(g);}},g==="男修"?"♂ 男修":"♀ 女修");})),React.createElement("h3",null,"測靈 · 先天靈根"),React.createElement("p",{className:"muted"},"靈根代表先天天賦；點擊後只查看完整效果，不會自動改變本命大道。凡品靈根已重製為平衡型，不再是白板。"),React.createElement("div",{className:"grid"},spiritRoots.map(function(s,i){return React.createElement("div",{key:s.name,onClick:function onClick(){setSect(i);},className:'card '+(sect===i?'sel':'')},React.createElement("b",null,s.name),React.createElement("p",{className:"muted"},s.desc),React.createElement("small",{className:"gold"},s.position||s.flavor));})),React.createElement("div",{className:"rootDetailBox"},React.createElement("h4",null,(spiritRoots[sect]||spiritRoots[0]).name," · ",(spiritRoots[sect]||spiritRoots[0]).position),React.createElement("p",{className:"muted"},(spiritRoots[sect]||spiritRoots[0]).flavor),React.createElement("div",{className:"rootEffectTags"},xt175RootEffectText(spiritRoots[sect]||spiritRoots[0]).map(function(t,idx){return React.createElement("span",{key:t,className:idx===0?"main":""},t);})),React.createElement("p",{className:"muted",style:{marginBottom:0}},"適合大道：",((spiritRoots[sect]||spiritRoots[0]).recommendDao||[]).join("、")||"皆可")),React.createElement("h3",null,"本命大道"),React.createElement("p",{className:"muted"},"大道是後天修煉方向，會決定戰鬥被動。選擇後會正確保存到狀態頁與戰鬥頁。"),React.createElement("div",{className:"daoCreateGrid"},daoPaths.map(function(d){return React.createElement("div",{key:d.id,onClick:function onClick(){return setDaoChoice(d.id);},className:"daoCreateCard "+(daoChoice===d.id?"sel":"")},React.createElement("b",null,d.icon," ",d.name),React.createElement("small",null,d.desc));})),React.createElement("div",{className:"rootDetailBox"},React.createElement("h4",null,"目前選擇：",daoPathById(daoChoice).icon," ",daoPathById(daoChoice).name," · ",xt176DaoBattleRole(daoChoice)),React.createElement("p",{className:"muted"},xt170DaoPassiveDesc({daoMainPath:daoChoice})),React.createElement("div",{className:"rootEffectTags"},(daoPathById(daoChoice).tags||[]).map(function(t,idx){return React.createElement("span",{key:t,className:idx===0?"main":""},t);})),React.createElement("div",{className:"daoDetailGrid"},React.createElement("div",{className:"daoDetailMini"},React.createElement("small",null,"推薦靈根"),React.createElement("b",null,xt176DaoRecommendRoots(daoChoice))),React.createElement("div",{className:"daoDetailMini"},React.createElement("small",null,"推薦 Build"),React.createElement("b",null,xt176DaoBuildText(daoChoice))))),React.createElement("br",null),React.createElement("button",{className:"btn",onClick:create},"\u5165\u9053\u4FEE\u4ED9")," ",React.createElement("button",{className:"btn",onClick:function onClick(){return setScreen("menu");}},"\u8FD4\u56DE")));
 if(!_char){return React.createElement("div",{className:"create"},React.createElement("div",{className:"box"},React.createElement("b",null,"沒有可用存檔"),React.createElement("p",{className:"muted"},"存檔不存在或已損壞，請回首頁重新建立角色。"),React.createElement("button",{className:"btn",onClick:function onClick(){try{localStorage.removeItem(SAVE_KEY);}catch(e){}setScreen("menu");}},"回首頁")));}var s=stats(_char),need=stageNeedOf(_char),expPct=Math.min(100,_char.exp/need*100),hpPct=Math.min(100,(_char.hp||0)/s.hp*100),mpPct=Math.min(100,(_char.mp||0)/s.mp*100);return React.createElement("div",{className:"app"},React.createElement("div",{className:"top"},React.createElement("div",{className:"avatar"},React.createElement("img",{src:_char.gender==="女修"?FEMALE_PORTRAIT:MALE_PORTRAIT,alt:_char.gender+"頭像"})),React.createElement("div",{className:"topIdentity"},React.createElement("b",null,_char.name),React.createElement("div",{className:"muted"},_char.gender," · ",realms[_char.level]||"大道境","（破境",Math.round(breakChance(_char.level)*100),"%）")),React.createElement("div",{className:"bars"},React.createElement(Bar,{n:"\u4FEE\u70BA",p:expPct,c:"#f5d74b",t:"".concat(fmt(_char.exp),"/").concat(fmt(need))}),React.createElement(Bar,{n:"\u6C23\u8840",p:hpPct,c:"#e07aa0",t:"".concat(_char.hp||0,"/").concat(s.hp)}),React.createElement(Bar,{n:"\u9748\u529B",p:mpPct,c:"#7a9ff5",t:"".concat(_char.mp||0,"/").concat(s.mp)}))),React.createElement(WorldTimeBar,{started:_char.started,now:now,onEventClick:function onEventClick(){return setEventTip(xt104EventNoticeText(_char,now));}}),eventTip&&React.createElement(React.Fragment,null,React.createElement("div",{className:"eventTipLayer",onClick:function onClick(){return setEventTip("");}}),React.createElement("div",{className:"eventTipBox",onClick:function onClick(e){if(e&&e.stopPropagation)e.stopPropagation();}},React.createElement("div",{className:"eventTipHead"},React.createElement("b",null,"🌊 靈氣潮汐"),React.createElement("button",{type:"button",className:"eventTipClose",onClick:function onClick(){return setEventTip("");}},"×")),React.createElement("pre",{className:"eventTipText"},eventTip),React.createElement("div",{className:"eventTipHint"},"點空白處關閉"))),React.createElement(WorldTicker,null),React.createElement("div",{className:"main"},tab==="cultivate"&&React.createElement(Status,{log:log,"char":_char,setChar:setChar})," ",tab==="hunt"&&React.createElement(Hunt,{"char":_char,setChar:setChar,battle:battle,setBattle:setBattle,start:start,useSkill:useSkill,bref:bref,devBattleAnalysis:devBattleAnalysis})," ",tab==="equip"&&React.createElement(Equip,{"char":_char,setChar:setChar,equip:equip,sell:sell,bulk:bulk,sortBag:sortBag})," ",tab==="art"&&React.createElement(Art,{"char":_char,setChar:setChar})," ",tab==="bag"&&React.createElement(Bag,{"char":_char,setChar:setChar,equip:equip,sell:sell,useItem:useItem,learn:learn,sortBag:sortBag})," ",tab==="sect"&&React.createElement(SectPage,{"char":_char,setChar:setChar,start:start,setNotice:setNotice,setTab:setTab,now:now})," ",tab==="town"&&React.createElement(Town,{"char":_char,buy:buy,sell:sell,auc:auc,setAuc:setAuc,refreshAuction:refreshAuction,bid:bid,stock:stock,now:now})),React.createElement("div",{className:"nav"},[["cultivate","📜","狀態"],["hunt","🌏","世界"],["equip","🛡","裝備"],["art","📖","功法"],["bag","🎒","背包"],["sect","⛩","宗門"],["town","🏯","城鎮"]].map(function(x){return React.createElement("button",{key:x[0],className:tab===x[0]?"on":"",onClick:function onClick(){return setTab(x[0]);}},x[1],React.createElement("br",null),x[2]);})),notice&&React.createElement("div",{className:"modal"},React.createElement("div",{className:"box"},React.createElement("p",null,notice),React.createElement("button",{className:"btn",onClick:function onClick(){return setNotice("");}},"\u78BA\u8A8D"))));}
 function Bar(_ref){
 var n=_ref.n,p=_ref.p,c=_ref.c,t=_ref.t;return React.createElement("div",{className:"barrow"},React.createElement("b",null,n),React.createElement("div",{className:"bar"},React.createElement("div",{className:"fill",style:{width:clampPct(p)+'%',background:c}})),React.createElement("span",null,t));}
@@ -5730,7 +5935,7 @@ function resonancePanel(){var r=st.resonance||xt210DaoResonance(_charS),daoOrder
 return React.createElement("div",{className:"page statusPage"},React.createElement("div",{className:"statusHeroV7"},React.createElement("div",{className:"statusPortraitV7"},React.createElement("img",{src:_charS.gender==="女修"?FEMALE_PORTRAIT:MALE_PORTRAIT,alt:_charS.gender+"頭像"})),React.createElement("div",null,React.createElement("div",{className:"statusNameRow"},React.createElement("h2",null,_charS.name),React.createElement("span",{className:"realmBadgeV7"},realm)),React.createElement("div",{className:"powerV7"},React.createElement("small",null,"戰力"),React.createElement("b",null,fmt(power))),React.createElement("div",{className:"statusMetaV7"},React.createElement("span",null,"性別：",_charS.gender),React.createElement("span",null,"靈根：",rootName),React.createElement("span",null,"大道：",xt170DaoPassiveLabel(_charS)),React.createElement("span",{title:xt170DaoPassiveDesc(_charS)},"被動：",xt170DaoPassiveDesc(_charS)),React.createElement("span",null,"宗門：",guild?guild.name:"未加入"),React.createElement("span",null,"主修：",art?art.name:"未修習")))),React.createElement("div",{className:"statusProgressGrid"},meter("修為",fmt(_charS.exp)+" / "+fmt(need),expPct,"exp"),meter("氣血",(_charS.hp||0)+" / "+st.hp,hpPct,"hp"),meter("靈力",(_charS.mp||0)+" / "+st.mp,mpPct,"mp")),resonancePanel(),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"基礎戰鬥屬性"),React.createElement("span",null,"裝備、功法、境界會即時影響")),React.createElement("div",{className:"statusStatGridV7"},stat("⚔ 攻擊",st.atk),stat("🛡 防禦",st.def),stat("❤️ 最大氣血",st.hp),stat("🔷 最大靈力",st.mp),stat("🎯 暴擊率",st.critRate+"% / "+st.critRateCap+"%"),stat("💥 暴擊傷害",st.critDmg+"% / "+st.critDmgCap+"%"),stat("🌀 閃避率",st.dodge+"%"))),React.createElement("div",{className:"statusSectionV7"},React.createElement("div",{className:"statusSectionHead"},React.createElement("h3",null,"最近成長紀錄"),React.createElement("span",null,"已隱藏自動服藥洗版訊息")),React.createElement("div",{className:"statusTimelineV7"},cleanLog.map(function(l){return React.createElement("div",{key:l.id,className:l.t},l.m);}),!cleanLog.length&&React.createElement("p",{className:"muted"},"尚無紀錄。"))));}
 function AutoPotion(_refA){var c=_refA["char"],setChar=_refA.setChar,cfg=normalizeAutoPotion(c.autoPotion),hpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.hp;}),mpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.mp;});function upd(kind,key,val){setChar(function(ch){var ap=normalizeAutoPotion(ch.autoPotion);ap[kind]=_objectSpread(_objectSpread({},ap[kind]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},ch),{},{autoPotion:ap});});}function row(kind,label,items){var st=cfg[kind];return React.createElement("div",{className:"card autoBox"},React.createElement("div",{className:"row"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return upd(kind,"enabled",e.target.checked);}})," ",label,"自動吃藥"),React.createElement("span",{className:"muted"},"低於"),React.createElement("input",{type:"number",min:"1",max:"99",placeholder:"30",value:st.pct,onChange:function onChange(e){var v=e.target.value;return upd(kind,"pct",v===""?"":Math.max(1,Math.min(99,parseInt(v,10)||1)));},onBlur:function onBlur(e){if(e.target.value==="")upd(kind,"pct",30);}}),React.createElement("span",null,"%"),React.createElement("select",{value:st.itemName,onChange:function onChange(e){return upd(kind,"itemName",e.target.value);}},React.createElement("option",{value:""},"自動選擇"),items.map(function(i){return React.createElement("option",{key:i.uid,value:i.name},i.name," x",i.qty||1);}))));}return React.createElement("div",null,React.createElement("h3",null,"自動服用丹藥"),React.createElement("p",{className:"muted"},"可分別設定氣血與靈力低於指定百分比時，自動使用指定丹藥；未指定時會自動選擇可用丹藥。"),row("hp","氣血",hpItems),row("mp","靈力",mpItems));}
 /* ===== Module 13：UI 彈窗 - 掛機設定 / Idle Settings Modal ===== */
-function IdleSettingsModal(_refIdle){var c=_refIdle["char"],setChar=_refIdle.setChar,onClose=_refIdle.onClose,cfg=normalizeAutoPotion(c.autoPotion),sellCfg=normalizeAutoSell(c.autoSell),hpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.hp;}),mpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.mp;});var _useStateLocal=useState({autoPotion:cfg,autoSell:sellCfg}),_useStateLocal2=_slicedToArray(_useStateLocal,2),local=_useStateLocal2[0],setLocal=_useStateLocal2[1];function setPotion(kind,key,val){setLocal(function(x){var ap=normalizeAutoPotion(x.autoPotion);ap[kind]=_objectSpread(_objectSpread({},ap[kind]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoPotion:ap});});}function setSellGroup(g,key,val){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g]=_objectSpread(_objectSpread({},as[g]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function setSellOption(g,key,val){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g].options=as[g].options||{};as[g].options[key]=val;return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function toggleRank(g,r){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g].ranks[r]=!as[g].ranks[r];return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function save(){setChar(function(ch){return _objectSpread(_objectSpread({},ch),{},{autoPotion:normalizeAutoPotion(local.autoPotion),autoSell:normalizeAutoSell(local.autoSell)});});onClose();}function potionRow(kind,label,items){var st=local.autoPotion[kind];return React.createElement("div",{className:"idleRow"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setPotion(kind,"enabled",e.target.checked);}})," ",label),React.createElement("span",{className:"muted"},"低於"),React.createElement("input",{type:"number",min:"1",max:"99",value:st.pct,onChange:function onChange(e){var v=e.target.value;return setPotion(kind,"pct",v===""?"":Math.max(1,Math.min(99,parseInt(v,10)||1)));},onBlur:function onBlur(e){if(e.target.value==="")setPotion(kind,"pct",30);}}),React.createElement("span",null,"%"),React.createElement("select",{value:st.itemName,onChange:function onChange(e){return setPotion(kind,"itemName",e.target.value);}},React.createElement("option",{value:""},"自動選擇"),items.map(function(i){return React.createElement("option",{key:i.uid,value:i.name},i.name," x",i.qty||1);})));}function sellSection(g,title,desc){var st=local.autoSell[g];return React.createElement("div",{className:"idleSection"},React.createElement("div",{className:"idleRow"},React.createElement("h4",{className:"grow"},title),React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setSellGroup(g,"enabled",e.target.checked);}})," 啟用")),React.createElement("p",{className:"muted"},desc),React.createElement("div",{className:"idleChecks"},autoSellRanks.map(function(r){return React.createElement("label",{key:g+r,className:"idleCheck",style:{color:rankColor[r]}},React.createElement("input",{type:"checkbox",checked:!!st.ranks[r],onChange:function onChange(){return toggleRank(g,r);}}),r);})),g==="equip"&&React.createElement("div",{className:"idleChecks"},React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeSet!==false,onChange:function onChange(e){return setSellOption(g,"excludeSet",e.target.checked);}}),"排除套裝"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeMutation!==false,onChange:function onChange(e){return setSellOption(g,"excludeMutation",e.target.checked);}}),"排除異變"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeBoss!==false,onChange:function onChange(e){return setSellOption(g,"excludeBoss",e.target.checked);}}),"排除 Boss 裝"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeProtected!==false,onChange:function onChange(e){return setSellOption(g,"excludeProtected",e.target.checked);}}),"排除鎖定裝")));}return React.createElement("div",{className:"modal"},React.createElement("div",{className:"idleModalBox"},React.createElement("div",{className:"idleHead"},React.createElement("div",null,React.createElement("h3",null,"掛機設定"),React.createElement("p",{className:"muted"},"自動喝水與自動販售統一在這裡設定，確認後會保存到角色存檔。"),React.createElement("div",{className:"idleHintBar"},React.createElement("span",null,"預設喝藥 30%"),React.createElement("span",null,"自動販售預設關"),React.createElement("span",null,"背包滿會提醒"),React.createElement("span",null,"手動鎖定安全排除"))),React.createElement("button",{className:"btn",onClick:onClose},"關閉")),React.createElement("div",{className:"idleScroll"},React.createElement("div",{className:"idleSection"},React.createElement("h4",null,"自動補給"),React.createElement("p",{className:"muted idleWarnText"},"掛機戰鬥中若氣血或靈力低於設定比例，會自動服用丹藥，並在戰鬥訊息顯示補給原因。"),React.createElement("div",{className:"idleRows"},potionRow("hp","自動喝血藥",hpItems),potionRow("mp","自動喝靈力藥",mpItems))),sellSection("equip","自動販售裝備","依品階自動賣出戰鬥掉落裝備；鎖定裝永不自動販售；套裝、異變與 Boss 裝可依規則排除；新掉落不會自動鎖定。"),sellSection("item","自動販售物品","依品階自動賣出丹藥、材料與一般物品掉落。"),sellSection("art","自動販售功法","功法預設不自動賣，避免誤賣高階玉簡；玩家可自行勾選品階。"),React.createElement("p",{className:"muted idleWarnText"},"提醒：自動販售維持關閉時，長時間掛機可能讓背包快速滿格；系統會在戰鬥結算時提示剩餘空位。")),React.createElement("div",{className:"idleFoot"},React.createElement("button",{className:"btn",onClick:onClose},"取消"),React.createElement("button",{className:"btn sel",onClick:save},"確認保存"))));}
+function IdleSettingsModal(_refIdle){var c=_refIdle["char"],setChar=_refIdle.setChar,onClose=_refIdle.onClose,cfg=normalizeAutoPotion(c.autoPotion),sellCfg=normalizeAutoSell(c.autoSell),hpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.hp;}),mpItems=c.bag.filter(function(i){return i.cat==="丹藥"&&i.effect&&i.effect.mp;});var _useStateLocal=useState({autoPotion:cfg,autoSell:sellCfg}),_useStateLocal2=_slicedToArray(_useStateLocal,2),local=_useStateLocal2[0],setLocal=_useStateLocal2[1];function setPotion(kind,key,val){setLocal(function(x){var ap=normalizeAutoPotion(x.autoPotion);ap[kind]=_objectSpread(_objectSpread({},ap[kind]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoPotion:ap});});}function setSellGroup(g,key,val){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g]=_objectSpread(_objectSpread({},as[g]),{},_defineProperty({},key,val));return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function setSellOption(g,key,val){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g].options=as[g].options||{};as[g].options[key]=val;return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function toggleRank(g,r){setLocal(function(x){var as=normalizeAutoSell(x.autoSell);as[g].ranks[r]=!as[g].ranks[r];return _objectSpread(_objectSpread({},x),{},{autoSell:as});});}function save(){setChar(function(ch){return _objectSpread(_objectSpread({},ch),{},{autoPotion:normalizeAutoPotion(local.autoPotion),autoSell:normalizeAutoSell(local.autoSell)});});onClose();}function potionRow(kind,label,items){var st=local.autoPotion[kind];return React.createElement("div",{className:"idleRow"},React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setPotion(kind,"enabled",e.target.checked);}})," ",label),React.createElement("span",{className:"muted"},"低於"),React.createElement("input",{type:"number",min:"1",max:"99",value:st.pct,onChange:function onChange(e){var v=e.target.value;return setPotion(kind,"pct",v===""?"":Math.max(1,Math.min(99,parseInt(v,10)||1)));},onBlur:function onBlur(e){if(e.target.value==="")setPotion(kind,"pct",30);}}),React.createElement("span",null,"%"),React.createElement("select",{value:st.itemName,onChange:function onChange(e){return setPotion(kind,"itemName",e.target.value);}},React.createElement("option",{value:""},"自動選擇"),items.map(function(i){return React.createElement("option",{key:i.uid,value:i.name},i.name," x",i.qty||1);})));}function sellSection(g,title,desc){var st=local.autoSell[g];return React.createElement("div",{className:"idleSection"},React.createElement("div",{className:"idleRow"},React.createElement("h4",{className:"grow"},title),React.createElement("label",null,React.createElement("input",{type:"checkbox",checked:st.enabled,onChange:function onChange(e){return setSellGroup(g,"enabled",e.target.checked);}})," 啟用")),React.createElement("p",{className:"muted"},desc),React.createElement("div",{className:"idleChecks"},autoSellRanks.map(function(r){return React.createElement("label",{key:g+r,className:"idleCheck",style:{color:rankColor[r]}},React.createElement("input",{type:"checkbox",checked:!!st.ranks[r],onChange:function onChange(){return toggleRank(g,r);}}),r);})),g==="equip"&&React.createElement("div",{className:"idleChecks"},React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeSet!==false,onChange:function onChange(e){return setSellOption(g,"excludeSet",e.target.checked);}}),"排除套裝"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeMutation!==false,onChange:function onChange(e){return setSellOption(g,"excludeMutation",e.target.checked);}}),"排除異變"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeBoss!==false,onChange:function onChange(e){return setSellOption(g,"excludeBoss",e.target.checked);}}),"排除 Boss 裝"),React.createElement("label",{className:"idleCheck"},React.createElement("input",{type:"checkbox",checked:st.options&&st.options.excludeProtected!==false,onChange:function onChange(e){return setSellOption(g,"excludeProtected",e.target.checked);}}),"排除鎖定裝")));}return React.createElement("div",{className:"xtModalMask"},React.createElement("div",{className:"xtModal xtModalCompact idleModalBox"},React.createElement("div",{className:"xtModalHead idleHead"},React.createElement("div",null,React.createElement("h3",null,"掛機設定"),React.createElement("p",{className:"muted"},"自動喝水與自動販售統一在這裡設定，確認後會保存到角色存檔。"),React.createElement("div",{className:"idleHintBar"},React.createElement("span",null,"預設喝藥 30%"),React.createElement("span",null,"自動販售預設關"),React.createElement("span",null,"背包滿會提醒"),React.createElement("span",null,"手動鎖定安全排除")))),React.createElement("div",{className:"xtModalBody idleScroll"},React.createElement("div",{className:"idleSection"},React.createElement("h4",null,"自動補給"),React.createElement("p",{className:"muted idleWarnText"},"掛機戰鬥中若氣血或靈力低於設定比例，會自動服用丹藥，並在戰鬥訊息顯示補給原因。"),React.createElement("div",{className:"idleRows"},potionRow("hp","自動喝血藥",hpItems),potionRow("mp","自動喝靈力藥",mpItems))),sellSection("equip","自動販售裝備","依品階自動賣出戰鬥掉落裝備；鎖定裝永不自動販售；套裝、異變與 Boss 裝可依規則排除；新掉落不會自動鎖定。"),sellSection("item","自動販售物品","依品階自動賣出丹藥、材料與一般物品掉落。"),sellSection("art","自動販售功法","功法預設不自動賣，避免誤賣高階玉簡；玩家可自行勾選品階。"),React.createElement("p",{className:"muted idleWarnText"},"提醒：自動販售維持關閉時，長時間掛機可能讓背包快速滿格；系統會在戰鬥結算時提示剩餘空位。")),React.createElement("div",{className:"xtModalFoot idleFoot idleFootSingle"},React.createElement("button",{className:"btn sel",onClick:save},"完成"))));}
 function Hunt(_ref3){
 var _char2=_ref3["char"],setChar=_ref3.setChar,battle=_ref3.battle,setBattle=_ref3.setBattle,start=_ref3.start,useSkill=_ref3.useSkill,bref=_ref3.bref,devBattleAnalysis=_ref3.devBattleAnalysis!==false;
 var _useState23=useState(0),_useState24=_slicedToArray(_useState23,2),pick=_useState24[0],setPick=_useState24[1],_useState25=useState(0),_useState26=_slicedToArray(_useState25,2),mapPick=_useState26[0],setMapPick=_useState26[1],_useState27w=useState("map"),_useState28w=_slicedToArray(_useState27w,2),worldMode=_useState28w[0],setWorldMode=_useState28w[1],_useStateIdle=useState(false),_useStateIdle2=_slicedToArray(_useStateIdle,2),idleOpen=_useStateIdle2[0],setIdleOpen=_useStateIdle2[1];
@@ -5810,6 +6015,25 @@ var _char3=_ref5["char"],setChar=_ref5.setChar,equip=_ref5.equip,sell=_ref5.sell
 var _useState27=useState("全部"),_useState28=_slicedToArray(_useState27,2),rankFilter=_useState28[0],setRankFilter=_useState28[1];
 var _useStateEqType=useState("全部"),_useStateEqType2=_slicedToArray(_useStateEqType,2),typeFilter=_useStateEqType2[0],setTypeFilter=_useStateEqType2[1];
 var _useStateEquipTip=useState(null),_useStateEquipTip2=_slicedToArray(_useStateEquipTip,2),equipTipUid=_useStateEquipTip2[0],setEquipTipUid=_useStateEquipTip2[1];
+var itemDetailScrollRef=React.useRef(null);
+var itemDetailScrollTopRef=React.useRef(0);
+var itemDetailLastUidRef=React.useRef(null);
+React.useLayoutEffect(function(){
+  if(!equipTipUid){
+    itemDetailScrollTopRef.current=0;
+    itemDetailLastUidRef.current=null;
+    return;
+  }
+  if(itemDetailLastUidRef.current!==equipTipUid){
+    itemDetailLastUidRef.current=equipTipUid;
+    itemDetailScrollTopRef.current=0;
+  }
+  var el=itemDetailScrollRef.current;
+  if(!el)return;
+  var y=itemDetailScrollTopRef.current||0;
+  if(Math.abs((el.scrollTop||0)-y)>2)el.scrollTop=y;
+},[equipTipUid]);
+
 var art=arts.find(function(a){return a.id===_char3.art;});
 var equippedItems=slots.map(function(sl){var it=normalizeEquipSetItem(_char3.bag.find(function(i){return i.uid===(_char3.equipped||{})[sl];}));return xt81618CanEquip(_char3,it)?it:null;}).filter(Boolean);
 function equipPowerOf(i){return Math.floor((i.atk||0)*2.2+(i.def||0)*2+(i.hp||0)*.28+(i.mp||0)*.18+(i.critRate||0)*80+(i.critDmg||0)*22+(i.dodge||0)*85+(i.req||0)*38);}
@@ -5821,7 +6045,7 @@ function sortEquipSimple(a,b){var ae=((_char3.equipped||{})[a.slot]===a.uid)?0:1
 var equipRankOptions=["全部"].concat(Array.from(new Set(allEquipItems.map(function(e){return e.rank;}).filter(Boolean))).sort(function(a,b){if(a==="全部")return -1;if(b==="全部")return 1;return (rankOrder.indexOf(a)<0?999:rankOrder.indexOf(a))-(rankOrder.indexOf(b)<0?999:rankOrder.indexOf(b));}));if(rankFilter!=="全部"&&equipRankOptions.indexOf(rankFilter)<0)setRankFilter("全部");var equipItems=allEquipItems.filter(function(i){return (rankFilter==="全部"||i.rank===rankFilter)&&(typeFilter==="全部"||i.slot===typeFilter);}).sort(sortEquipSimple);
 var equipTipItem=normalizeEquipSetItem(allEquipItems.find(function(i){return i.uid===equipTipUid;}));
 function equippedMini(sl){var it=normalizeEquipSetItem(_char3.bag.find(function(i){var _eq;return i.uid===((_eq=_char3.equipped)===null||_eq===void 0?void 0:_eq[sl]);}));return React.createElement("div",{className:"equipMiniCard "+(it?"filled":"empty"),key:sl},React.createElement("small",null,slotIcon[sl]," ",sl),React.createElement("b",{style:{color:it?rankColor[it.rank]:undefined}},it?it.name:"未裝備"),it&&React.createElement("small",null,it.rank," · ",realms[it.req||0]||"通用",it.setName?" · "+it.setName:""));}
-function equipDetailPopup(i){if(!i)return null;var _eq2;var isEq=((_eq2=_char3.equipped)===null||_eq2===void 0?void 0:_eq2[i.slot])===i.uid;var realmLocked=!xt81618CanEquip(_char3,i);var isProtected=xt168IsProtectedEquip(i),protectReason=xt168ProtectReason(i),boss=isBossEquip(i);return React.createElement("div",{className:"itemDetailMask",onClick:function onClick(){return setEquipTipUid(null);}},React.createElement("div",{className:"itemDetailSheet itemDetailEquip",onClick:function onClick(e){return e.stopPropagation();}},React.createElement("div",{className:"itemDetailScroll"},React.createElement("div",{className:"itemDetailHeader"},React.createElement("div",{className:"itemDetailIcon"},itemIcon(i)),React.createElement("div",{className:"itemDetailTitle"},React.createElement("b",{className:i.mutation?"mutationName":"",style:{color:i.mutation?undefined:rankColor[i.rank]}},i.mutation&&String(i.name||"").indexOf("異變")<0?"✦異變 · "+i.name:i.name),React.createElement("div",{className:"muted"},i.rank," · ",i.slot," · 戰力 ",fmt(equipPowerOf(i)))),React.createElement("button",{className:"btn itemDetailClose",onClick:function onClick(){return setEquipTipUid(null);}},"×")),React.createElement("div",{className:"itemDetailMeta"},isEq&&React.createElement("span",{className:"chip gold"},"已裝備"),isProtected&&React.createElement("span",{className:"lockBadge"},i.locked?"🔒 鎖定":protectReason),boss&&React.createElement("span",{className:"chip bad"},"Boss裝"),realmLocked&&React.createElement("span",{className:"chip bad"},"境界不足"),React.createElement("span",{className:"chip"},"需求：",realms[i.req||0]||"通用")),xt166RenderEquipTags(i),i.setName&&React.createElement(SetMiniTooltip,{setKey:i.setKey,count:(setBonusState(_char3)[i.setKey]||0)}),i.slot&&xt279EquipCompareNode(_char3,i),i.slot&&xt270EquipBuildGuideNode(_char3,i),i.daoAffix&&xt274DaoProgressNode(_char3,i.daoAffix.dao),i.daoAffix&&React.createElement("div",{className:"daoAffixBox"},React.createElement("b",null,"大道詞綴"),React.createElement("div",null,xt200DaoAffixText(i)),React.createElement("small",{className:"muted"},i.daoAffix.desc||"與修煉大道共鳴的裝備詞綴。")),isProtected&&React.createElement("div",{className:"protectHint"},"手動鎖定：不會被出售、自動販售或一鍵賣出處理；解鎖後可正常販售。"),React.createElement("div",{className:"itemDetailStats"},React.createElement("span",null,"攻擊 +",fmt(i.atk||0)),React.createElement("span",null,"防禦 +",fmt(i.def||0)),(i.hp||0)>0&&React.createElement("span",null,"氣血 +",fmt(i.hp)),(i.mp||0)>0&&React.createElement("span",null,"靈力 +",fmt(i.mp)),(i.critRate||0)>0&&React.createElement("span",null,"暴擊 +",i.critRate,"%"),(i.critDmg||0)>0&&React.createElement("span",null,"暴傷 +",i.critDmg,"%"),(i.dodge||0)>0&&React.createElement("span",null,"閃避 +",i.dodge,"%")),React.createElement("div",{className:"itemDetailActions"},React.createElement("button",{className:"btn lockBtn",onClick:function onClick(){xt168ToggleEquipLock(setChar,i.uid);}},i.locked?"解鎖":"鎖定"),React.createElement("button",{className:"btn xtEquipWearBtn",disabled:isEq||realmLocked,onClick:function onClick(){equip(i);setEquipTipUid(null);}},isEq?"裝備中":realmLocked?"境界不足":"裝備"),isEq||isProtected?React.createElement("button",{className:"btn",disabled:true},isProtected?"受保護":"不可出售"):React.createElement(SellControl,{item:i,sell:sell})))));}
+function equipDetailPopup(i){if(!i)return null;var _eq2;var isEq=((_eq2=_char3.equipped)===null||_eq2===void 0?void 0:_eq2[i.slot])===i.uid;var realmLocked=!xt81618CanEquip(_char3,i);var isProtected=xt168IsProtectedEquip(i),protectReason=xt168ProtectReason(i),boss=isBossEquip(i);return React.createElement("div",{className:"itemDetailMask",onClick:function onClick(){return setEquipTipUid(null);}},React.createElement("div",{className:"itemDetailSheet itemDetailEquip",onClick:function onClick(e){return e.stopPropagation();}},React.createElement("div",{className:"itemDetailScroll",ref:itemDetailScrollRef,onScroll:function onScroll(e){itemDetailScrollTopRef.current=e.currentTarget.scrollTop||0;}},React.createElement("div",{className:"itemDetailHeader"},React.createElement("div",{className:"itemDetailIcon"},itemIcon(i)),React.createElement("div",{className:"itemDetailTitle"},React.createElement("b",{className:i.mutation?"mutationName":"",style:{color:i.mutation?undefined:rankColor[i.rank]}},i.mutation&&String(i.name||"").indexOf("異變")<0?"✦異變 · "+i.name:i.name),React.createElement("div",{className:"muted"},i.rank," · ",i.slot," · 戰力 ",fmt(equipPowerOf(i)))),React.createElement("button",{className:"btn itemDetailClose",onClick:function onClick(){return setEquipTipUid(null);}},"×")),React.createElement("div",{className:"itemDetailMeta"},isEq&&React.createElement("span",{className:"chip gold"},"已裝備"),isProtected&&React.createElement("span",{className:"lockBadge"},i.locked?"🔒 鎖定":protectReason),boss&&React.createElement("span",{className:"chip bad"},"Boss裝"),realmLocked&&React.createElement("span",{className:"chip bad"},"境界不足"),React.createElement("span",{className:"chip"},"需求：",realms[i.req||0]||"通用")),xt166RenderEquipTags(i),i.setName&&React.createElement(SetMiniTooltip,{setKey:i.setKey,count:(setBonusState(_char3)[i.setKey]||0)}),i.slot&&xt279EquipCompareNode(_char3,i),i.slot&&xt270EquipBuildGuideNode(_char3,i),i.daoAffix&&xt274DaoProgressNode(_char3,i.daoAffix.dao),i.daoAffix&&React.createElement("div",{className:"daoAffixBox"},React.createElement("b",null,"大道詞綴"),React.createElement("div",null,xt200DaoAffixText(i)),React.createElement("small",{className:"muted"},i.daoAffix.desc||"與修煉大道共鳴的裝備詞綴。")),isProtected&&React.createElement("div",{className:"protectHint"},"手動鎖定：不會被出售、自動販售或一鍵賣出處理；解鎖後可正常販售。"),React.createElement("div",{className:"itemDetailStats"},React.createElement("span",null,"攻擊 +",fmt(i.atk||0)),React.createElement("span",null,"防禦 +",fmt(i.def||0)),(i.hp||0)>0&&React.createElement("span",null,"氣血 +",fmt(i.hp)),(i.mp||0)>0&&React.createElement("span",null,"靈力 +",fmt(i.mp)),(i.critRate||0)>0&&React.createElement("span",null,"暴擊 +",i.critRate,"%"),(i.critDmg||0)>0&&React.createElement("span",null,"暴傷 +",i.critDmg,"%"),(i.dodge||0)>0&&React.createElement("span",null,"閃避 +",i.dodge,"%")),React.createElement("div",{className:"itemDetailActions"},React.createElement("button",{className:"btn lockBtn",onClick:function onClick(){xt168ToggleEquipLock(setChar,i.uid);}},i.locked?"解鎖":"鎖定"),React.createElement("button",{className:"btn xtEquipWearBtn",disabled:isEq||realmLocked,onClick:function onClick(){equip(i);setEquipTipUid(null);}},isEq?"裝備中":realmLocked?"境界不足":"裝備"),isEq||isProtected?React.createElement("button",{className:"btn",disabled:true},isProtected?"受保護":"不可出售"):React.createElement(SellControl,{item:i,sell:sell})))));}
 function card(i){var _eq;var isEq=((_eq=_char3.equipped)===null||_eq===void 0?void 0:_eq[i.slot])===i.uid;var realmLocked=!xt81618CanEquip(_char3,i);var isProtected=xt168IsProtectedEquip(i),boss=isBossEquip(i);var cname="equipItem equipSlotOnly "+(isEq?"sel ":"")+(realmLocked?"locked ":"")+(i.mutation?"mutationItem ":"")+(isProtected?"protectedItem ":"")+(i.locked?"lockedItem ":"")+(boss?"bossItem ":"");return React.createElement("button",{type:"button",className:cname,key:i.uid,title:xt166EquipTitle(i),onClick:function onClick(){return setEquipTipUid(i.uid);}},React.createElement("div",{className:"equipItemIcon"},itemIcon(i)),React.createElement("span",{className:"equipSlotName",style:{color:i.mutation?undefined:rankColor[i.rank]}},i.name),React.createElement("div",{className:"equipSlotBadges"},isEq&&React.createElement("i",{className:"gold"},"裝"),i.locked&&React.createElement("i",null,"鎖"),i.mutation&&React.createElement("i",null,"異"),boss&&React.createElement("i",null,"王"),realmLocked&&React.createElement("i",{className:"bad"},"禁")));}
 var typeTabs=React.createElement("div",{className:"segTabs"},["全部"].concat(slots).map(function(x){return React.createElement("button",{key:x,className:"btn "+(typeFilter===x?"sel":""),onClick:function onClick(){return setTypeFilter(x);}},x);}));
 var filterRow=React.createElement("div",{className:"row"},React.createElement("span",{className:"equipFilterLabel"},"品階"),React.createElement("select",{value:rankFilter,onChange:function onChange(e){return setRankFilter(e.target.value);}},equipRankOptions.map(function(x){return React.createElement("option",{key:x},x);})),React.createElement("span",{className:"equipCountPill"},"顯示 ",equipItems.length," / ",allEquipItems.length),React.createElement("button",{className:"btn",onClick:function onClick(){return bulk(rankFilter);}},"一鍵賣出裝備"),React.createElement("button",{className:"btn",onClick:sortBag},"一鍵整理裝備"));
